@@ -1,0 +1,43 @@
+export type Zone = 'home'|'works'|'barca'|'photos'|'reactions'|'notes';
+export type WorldItem = { id:string; type:'intro'|'project'|'photo'|'sticker'|'text'|'note'; x:number;y:number;w:number;h:number;rotation?:number;title?:string;body?:string;src?:string;video?:string;zone:Zone;accent?:string;gallery?:string[]; };
+export const zones: {id:Zone;label:string;x:number;y:number;w:number;h:number}[] = [
+ {id:'home',label:'Начало',x:5140,y:3310,w:1340,h:940},
+ {id:'works',label:'Сайты',x:3950,y:4470,w:1530,h:1050},
+ {id:'barca',label:'Барселона',x:6830,y:3220,w:1580,h:1180},
+ {id:'photos',label:'Личное',x:5440,y:1940,w:1450,h:1140},
+ {id:'reactions',label:'Реакции',x:6620,y:4710,w:1320,h:1000},
+ {id:'notes',label:'На полях',x:3770,y:2670,w:1200,h:1020},
+];
+export const items:WorldItem[] = [
+ {id:'hello',type:'intro',zone:'home',x:5200,y:3450,w:670,h:365,title:'Личный\nархив.',body:'Я Сергей. Собираю здесь свои сайты,\nфотографии и мысли. Архив пополняется.'},
+ {id:'portrait',type:'photo',zone:'home',x:5970,y:3400,w:300,h:370,rotation:7,src:'portrait.jpg',title:'Привет, это я'},
+ {id:'home-cat',type:'sticker',zone:'home',x:6180,y:3660,w:205,h:200,rotation:-9,src:'cat-home-relaxed.webp',title:'Кошка одобряет'},
+ {id:'home-note',type:'note',zone:'home',x:5220,y:3940,w:320,h:275,rotation:-5,title:'Планы на сегодня',body:'Посмотреть.\nУвлечься.\nСделать по-своему.',accent:'yellow'},
+ {id:'home-hand',type:'sticker',zone:'home',x:5520,y:3930,w:170,h:195,rotation:7,src:'person-modular-present.webp',title:'Посмотри сюда'},
+ {id:'nori',type:'project',zone:'home',x:5800,y:3940,w:550,h:340,rotation:-4,src:'nori.jpg',video:'nori.mp4',title:'Nori',body:'Маленькое существо. Большой характер. Сайт, с которым хочется поиграть.',accent:'mint'},
+ {id:'works-title',type:'text',zone:'works',x:4010,y:4490,w:1200,h:150,title:'Мои сайты.',body:'Мои эксперименты с дизайном, движением и взаимодействием.'},
+ {id:'sakura',type:'project',zone:'works',x:4000,y:4700,w:660,h:390,rotation:-3,src:'sakura.jpg',video:'sakura.mp4',title:'Sakura',body:'Цвет, движение и настроение. Одна из работ, к которой можно присмотреться.',accent:'pink'},
+ {id:'sagrada',type:'project',zone:'works',x:4750,y:4690,w:650,h:390,rotation:4,src:'sagrada.jpg',video:'sagrada.mp4',title:'Sagrada',body:'Архитектура становится путешествием. Запись прогулки по сайту.',accent:'yellow'},
+ {id:'sky',type:'project',zone:'works',x:4290,y:5180,w:640,h:365,rotation:-2,src:'sky.jpg',video:'sky.mp4',title:'Sky Town',body:'Ещё один мир, собранный внутри браузера.',accent:'blue'},
+ {id:'work-sticker',type:'sticker',zone:'works',x:5130,y:5210,w:230,h:245,rotation:10,src:'person-casual-impressed.webp',title:'Кажется, получилось'},
+ {id:'barca-title',type:'text',zone:'barca',x:6870,y:3240,w:1140,h:155,title:'Больше, чем клуб.',body:'Моя Барселона: от любимой команды до собственной платформы.'},
+ {id:'barca',type:'project',zone:'barca',x:6870,y:3450,w:940,h:560,rotation:2,src:'barca-68.png',title:'Barcelona Vision',body:'Платформа о Барселоне: состав, тактика, игроки и матчи. Приблизься к любому экрану.',gallery:['barca-77.png','barca-90.png','barca-95.png','barca-110.png'],accent:'blue'},
+ {id:'barca-sticker',type:'sticker',zone:'barca',x:7750,y:3780,w:235,h:255,rotation:8,src:'person-football-laugh.webp',title:'Когда любимая команда забивает'},
+ {id:'barca-note',type:'note',zone:'barca',x:7380,y:4080,w:410,h:270,rotation:-4,title:'Barcelona Vision',body:'Состав, тактика, матчи.\nНажми на платформу, чтобы рассмотреть экраны.',accent:'pink'},
+ {id:'barca-person',type:'photo',zone:'barca',x:8040,y:3520,w:335,h:450,rotation:-6,src:'barca-person.jpg',title:'Без лишних объяснений'},
+ {id:'photos-title',type:'text',zone:'photos',x:5480,y:1960,w:1120,h:170,title:'Кадры на память.',body:'Места, моменты и я — без отдельного повода.'},
+ {id:'night',type:'photo',zone:'photos',x:5460,y:2180,w:470,h:640,rotation:-5,src:'night.jpg',title:'Город за стеклом'},
+ {id:'photo-close',type:'photo',zone:'photos',x:6010,y:2270,w:345,h:460,rotation:6,src:'closeup.jpg',title:'Чуть ближе'},
+ {id:'photo-other',type:'photo',zone:'photos',x:6420,y:2200,w:350,h:470,rotation:-4,src:'portrait.jpg',title:'Между делом'},
+ {id:'photo-cat',type:'sticker',zone:'photos',x:6290,y:2630,w:245,h:250,rotation:12,src:'27-peek-left.webp',title:'Я тоже в кадре'},
+ {id:'photo-caption',type:'note',zone:'photos',x:5740,y:2910,w:440,h:250,rotation:2,title:'Не всё должно стать проектом.',body:'Что-то можно просто оставить на память.',accent:'white'},
+ {id:'react-title',type:'text',zone:'reactions',x:6680,y:4730,w:1230,h:190,title:'Все мои состояния.',body:'Нажми на стикер. Здесь можно немного подурачиться.'},
+ ...['person-casual-stop.webp','person-football-facepalm.webp','person-modular-peek.webp','09-facepalm.webp','20-victory-paws-up.webp','06-happy-amused.webp'].map((src,i)=>({id:`reaction-${i}`,type:'sticker' as const,zone:'reactions' as const,x:6690+(i%3)*370,y:4990+Math.floor(i/3)*330,w:280,h:275,rotation:(i%2?1:-1)*9,src,title:['Стоп, давай ещё раз','Ну как так-то','Можно посмотреть?','Без комментариев','Вот теперь хорошо','Мне нравится'][i]})),
+ {id:'notes-title',type:'text',zone:'notes',x:3820,y:2710,w:1100,h:160,title:'Мысли на полях.',body:'Короткие заметки о работе, идеях и том, что хочется попробовать.'},
+ {id:'notes-mila',type:'sticker',zone:'notes',x:4910,y:3190,w:205,h:250,rotation:-8,src:'cat-home-reach.webp',title:'Мила тянет лапу'},
+ {id:'note-1',type:'note',zone:'notes',x:3820,y:2940,w:490,h:340,rotation:-4,title:'Вот теперь нравится.',body:'Люблю момент, когда довёл сайт до конца и сам смотришь: «Вот оно». А когда в ответ прилетает «вау» — ещё приятнее.',accent:'yellow'},
+ {id:'note-2',type:'note',zone:'notes',x:4430,y:2940,w:490,h:340,rotation:4,title:'Проверить ещё раз.',body:'Нейросеть часто ошибается в мелочах. После каждой правки проверяю снова: можно исправить одно и сломать другое. Детали нужно оттачивать.',accent:'pink'},
+ {id:'note-3',type:'note',zone:'notes',x:3820,y:3380,w:490,h:350,rotation:2,title:'Не просто вау.',body:'Хочу разобраться, где эффект помогает бизнесу, а где мешает. Научиться делать красиво — только часть дела. Важно понимать, зачем это нужно.',accent:'white'},
+ {id:'note-4',type:'note',zone:'notes',x:4430,y:3390,w:490,h:300,rotation:-3,title:'Однажды — в 3D.',body:'Хочу сделать полноценный 3D-мир, по которому можно гулять и всё рассматривать. Не просто смотреть на сайт, а оказаться внутри.',accent:'yellow'},
+];
+export const WORLD={w:12000,h:8000};
