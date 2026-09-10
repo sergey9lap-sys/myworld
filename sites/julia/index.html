@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Юлия Спицина — уроки вокала для взрослых</title>
+  <meta name="description" content="Уроки вокала для взрослых онлайн и в Краснодаре: начните петь увереннее, разберите любимую песню или подготовьтесь к выступлению.">
+  <meta name="theme-color" content="#111111">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/unbounded-600.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="fonts/golos-400.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+<!--
+THESIS: A visitor does not read about “an individual approach”; they immediately turn a confirmed goal into a ready-to-send lesson request. The page refuses a standard coach portfolio and repeated photo-led sections.
+OWN-WORLD: Warm paper, near-black ink, and one coral signal; Unbounded display type, Golos body, hard editorial frames, one monochrome portrait, and a compact three-step lesson brief.
+STORY: Recognise the desired result, assemble a ready-to-send trial-lesson request, understand the lesson mechanics, choose a real-life destination, trust sourced evidence, and contact Julia.
+FIRST VIEWPORT: The result-led headline owns the left two-thirds, Julia's single cropped portrait interrupts the right edge, and the coral action sits directly beneath the promise.
+FORM: Interactive lesson brief, grounded in confirmed goals and formats. Three choices assemble a ready-to-send Telegram message, turning interaction into the first practical step toward a trial lesson.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+-->
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <h1 id="hero-title">Пойте свободно<br><span>Своим голосом</span></h1>
+      <p>Я&nbsp;помогаю взрослым перестать стесняться своего звучания, разобрать любимую песню<br>или&nbsp;подготовиться к&nbsp;выступлению.</p>
+      <a class="button button-accent" href="https://t.me/spitsina_julia" target="_blank" rel="noopener">Записаться на пробный урок <svg class="voice-action" viewBox="0 0 64 24" aria-hidden="true"><path d="M2 11v2m6-6v10m6-14v18m6-13v8m6-5v2M40 19 54 5M43 5h11v11"/></svg></a>
+    </div>
+    <figure class="hero-photo"><img src="assets/julia-01.jpg" width="1667" height="2222" alt="Преподаватель вокала Юлия Спицина" fetchpriority="high"><figcaption>Юлия Спицина<br>преподаватель вокала</figcaption></figure>
+    <a class="scroll-cue" href="#voice">Собрать запрос на урок <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"/></svg></a>
+  </section>
+
+  <section class="request-lab" id="voice" aria-labelledby="request-title">
+    <div class="request-heading">
+      <h2 id="request-title">Соберите запрос<br>на&nbsp;пробный урок</h2>
+      <p>Выберите цель, свой&nbsp;опыт и&nbsp;удобный формат. В&nbsp;конце получите готовое сообщение — останется отправить его мне&nbsp;в Telegram.</p>
+    </div>
+    <div class="request-builder">
+      <form class="brief-form" id="lesson-brief">
+        <fieldset><legend>Что хотите получить от&nbsp;занятий?</legend><div class="choice-row">
+          <label><input type="radio" name="goal" value="начать петь для себя"><span>Петь для себя</span></label>
+          <label><input type="radio" name="goal" value="подготовить песню к записи"><span>Записать песню</span></label>
+          <label><input type="radio" name="goal" value="подготовиться к выступлению"><span>Подготовить выступление</span></label>
+        </div></fieldset>
+        <fieldset><legend>Какой у вас опыт?</legend><div class="choice-row">
+          <label><input type="radio" name="experience" value="опыта пока нет"><span>Начинаю с нуля</span></label>
+          <label><input type="radio" name="experience" value="уже был опыт занятий"><span>Немного занимался(ась)</span></label>
+          <label><input type="radio" name="experience" value="занимаюсь вокалом сейчас"><span>Занимаюсь сейчас</span></label>
+        </div></fieldset>
+        <fieldset><legend>Как&nbsp;удобнее заниматься?</legend><div class="choice-row">
+          <label><input type="radio" name="format" value="онлайн"><span>Онлайн</span></label>
+          <label><input type="radio" name="format" value="офлайн в Краснодаре"><span>В&nbsp;Краснодаре</span></label>
+          <label><input type="radio" name="format" value="формат пока не выбрал(а)"><span>Пока не знаю</span></label>
+        </div></fieldset>
+      </form>
+      <aside class="brief-result" aria-labelledby="brief-result-title">
+        <div class="brief-progress" aria-hidden="true"><i></i><i></i><i></i></div>
+        <span id="brief-result-title">Ваше сообщение</span>
+        <p id="brief-message" aria-live="polite">Ответьте на три вопроса — здесь появится готовое сообщение, которое можно отправить мне.</p>
+        <div class="brief-actions">
+          <a class="button button-accent is-disabled" id="brief-send" href="https://t.me/spitsina_julia" target="_blank" rel="noopener" aria-disabled="true">Отправить в Telegram <svg class="voice-action" viewBox="0 0 64 24" aria-hidden="true"><path d="M2 11v2m6-6v10m6-14v18m6-13v8m6-5v2M40 19 54 5M43 5h11v11"/></svg></a>
+          <button class="copy-button" id="brief-copy" type="button" disabled>Скопировать текст</button>
+        </div>
+        <small id="copy-status" role="status" aria-live="polite">Сообщение собирается только в вашем браузере.</small>
+      </aside>
+    </div>
+  </section>
+
+  <section class="method" aria-labelledby="method-title">
+    <div class="section-title"><h2 id="method-title">На&nbsp;уроке вы&nbsp;поймёте,<br>как&nbsp;петь свободнее</h2><p>Не&nbsp;набор упражнений «на&nbsp;будущее», а&nbsp;один слышимый результат и&nbsp;понимание, как&nbsp;повторить его в&nbsp;песне.</p></div>
+    <div class="method-tabs" data-method-tabs>
+      <div class="method-tablist" role="tablist" aria-label="Как строится работа на занятии">
+        <button type="button" role="tab" id="method-tab-1" aria-controls="method-panel-1" aria-selected="true"><span>01</span>Услышать</button>
+        <button type="button" role="tab" id="method-tab-2" aria-controls="method-panel-2" aria-selected="false" tabindex="-1"><span>02</span>Настроить</button>
+        <button type="button" role="tab" id="method-tab-3" aria-controls="method-panel-3" aria-selected="false" tabindex="-1"><span>03</span>Закрепить</button>
+      </div>
+      <div class="method-panels">
+        <article class="method-panel" id="method-panel-1" role="tabpanel" aria-labelledby="method-tab-1"><span class="method-result">Первый результат</span><h3>Услышите, что&nbsp;в&nbsp;голосе уже работает</h3><p>Я&nbsp;помогу отличить свободное звучание от&nbsp;лишнего напряжения<br>— без&nbsp;расплывчатой оценки «хорошо или&nbsp;плохо».</p></article>
+        <article class="method-panel" id="method-panel-2" role="tabpanel" aria-labelledby="method-tab-2"><span class="method-result">Работа на&nbsp;уроке</span><h3>Получите упражнения именно под&nbsp;свою задачу</h3><p>Подберём работу с&nbsp;выдохом, координацией и&nbsp;артикуляцией<br>под&nbsp;тот фрагмент песни, который нужно изменить сейчас.</p></article>
+        <article class="method-panel" id="method-panel-3" role="tabpanel" aria-labelledby="method-tab-3"><span class="method-result">После урока</span><h3>Сможете повторить новое звучание самостоятельно</h3><p>Закрепите изменение прямо в&nbsp;песне и&nbsp;поймёте, на&nbsp;что опираться,<br>когда будете петь без&nbsp;преподавателя.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="destinations" aria-labelledby="destinations-title">
+    <div class="destinations-copy"><h2 id="destinations-title">Вы&nbsp;подготовите песню<br>для&nbsp;той цели, которая нужна вам</h2><p>Можно заниматься для&nbsp;удовольствия, записать песню<br>или&nbsp;выйти к&nbsp;слушателям. Сцена — возможность,<br>а&nbsp;не обязательная часть обучения.</p></div>
+    <div class="destination-stage">
+      <img src="assets/vocal-paths.png" width="2172" height="724" alt="" loading="lazy">
+      <div class="route" aria-label="Варианты цели занятий">
+        <article><strong>Для себя</strong><p>Петь любимые песни свободнее<br>и&nbsp;получать удовольствие от&nbsp;своего голоса.</p></article>
+        <article><strong>Для записи</strong><p>Разобрать композицию и&nbsp;подготовить её&nbsp;к&nbsp;записи, когда будете готовы.</p></article>
+        <article><strong>Для выступления</strong><p>Подготовить песню и&nbsp;попробовать сцену на&nbsp;ученическом концерте.</p></article>
+      </div>
+    </div>
+    <p class="fact-line">У&nbsp;вас может появиться возможность подготовиться к&nbsp;ученическому концерту с&nbsp;живыми музыкантами. Я&nbsp;провожу такие концерты дважды в&nbsp;год; условия участия обсудим отдельно.</p>
+  </section>
+
+  <section class="proof" aria-labelledby="proof-title">
+    <div class="proof-copy">
+      <h2 id="proof-title">Со&nbsp;мной уже начали петь<br>более 300 учеников</h2>
+      <p>Среди учеников есть те, кто пришёл без&nbsp;опыта, и&nbsp;те, кому хотелось развить уже поставленный голос или&nbsp;подготовить сольное выступление.</p>
+      <div class="stories">
+        <article><h3>Алина подготовила первое сольное выступление</h3><p>Она пришла с&nbsp;хорошей вокальной базой и&nbsp;хотела выйти на&nbsp;новый уровень.</p></article>
+        <article><h3>Никита стал петь осознаннее</h3><p>Работа с деталями помогла добавить голосу новые краски.</p></article>
+      </div>
+      <blockquote><span class="quote-text">На&nbsp;занятиях всегда весело и&nbsp;душевно, узнаю много нового о&nbsp;вокале — и&nbsp;работа идёт продуктивно</span><cite>Из&nbsp;опубликованного отзыва ученицы</cite></blockquote>
+    </div>
+    <div class="reviews-panel" aria-labelledby="reviews-title"><h3 id="reviews-title">Что говорят ученики</h3><p>Нажмите на любой скриншот, чтобы прочитать его полностью.</p><div class="review-screens"><a href="assets/review-01.jpg" target="_blank" rel="noopener" aria-label="Открыть первый отзыв полностью"><img src="assets/review-01.jpg" alt="Развёрнутый отзыв ученицы" loading="lazy"></a><a href="assets/review-02.jpg" target="_blank" rel="noopener" aria-label="Открыть второй отзыв полностью"><img src="assets/review-02.jpg" alt="Короткий отзыв ученицы" loading="lazy"></a></div></div>
+  </section>
+
+  <section class="contact" aria-labelledby="contact-title">
+    <h2 id="contact-title">Запишитесь<br>на&nbsp;пробный урок</h2>
+    <p>Напишите, хотите ли&nbsp;вы начать петь, подготовить запись или&nbsp;выступление.<br>Я&nbsp;расскажу об&nbsp;актуальной стоимости, длительности и&nbsp;свободном времени.</p>
+    <a class="button button-accent" href="https://t.me/spitsina_julia" target="_blank" rel="noopener">Написать мне в Telegram <svg class="voice-action" viewBox="0 0 64 24" aria-hidden="true"><path d="M2 11v2m6-6v10m6-14v18m6-13v8m6-5v2M40 19 54 5M43 5h11v11"/></svg></a>
+  </section>
+</main>
+<footer><span>Юлия Спицина</span><p>Уроки вокала для взрослых</p><a href="#main">В начало <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V4m-6 6 6-6 6 6"/></svg></a></footer>
+</body>
+</html>

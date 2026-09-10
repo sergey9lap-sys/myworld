@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Эльмира — методолог для экспертов и онлайн-школ</title>
+  <meta name="description" content="Создайте образовательный продукт или улучшите тот, что уже есть. Консультации, проектирование обучения, стратегические сессии и аудит продукта с Эльмирой.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#101211">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Эльмира — методолог для экспертов и онлайн-школ">
+  <meta property="og:description" content="Структура курса, план действий и рекомендации по улучшению продукта. Посмотрите форматы работы и примеры материалов после сессии.">
+  <meta property="og:image" content="assets/social-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Эльмира — методолог. Из экспертизы — в понятную систему.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Эльмира — методолог">
+  <meta name="twitter:description" content="Структура курса, план действий и рекомендации по улучшению продукта.">
+  <meta name="twitter:image" content="assets/social-preview.jpg">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/cormorant-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="refinement.css">
+  <link rel="stylesheet" href="structure.css">
+  <link rel="stylesheet" href="readability.css">
+  <script src="vendor/gsap.min.js" defer></script>
+  <script src="vendor/ScrollTrigger.min.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="materials.js" defer></script>
+</head>
+<body>
+<!-- THESIS: A personal, lucid presentation of methodological work: tangible educational structure, not generic growth promises.
+OWN-WORLD: Graphite and muted plum surfaces, dusty rose emphasis, botanical portraits and open service offers. Teal belongs only to actions. No white section backgrounds.
+STORY: Introduction, inspect deliverables, meet Elmira and her client experience, compare compact formats, contact in Telegram.
+FIRST VIEWPORT: No header. Title enters first, supporting text follows, then CTA and portrait. Large outlined audience chips follow. Portrait remains integrated into graphite.
+FORM: User revision replaces ambiguous disclosures with four visible offers. GSAP sequences each section from headline through explanation to proof and actions, with reduced-motion and script-failure fallbacks.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md -->
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<main id="main">
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <h1 id="hero-title">Создайте образовательный продукт&nbsp;<em>или улучшите тот, что уже есть</em></h1>
+      <p>Помогу выстроить структуру обучения, практику и&nbsp;путь ученика к&nbsp;результату. А&nbsp;если нужно посмотреть шире — связать ваши продукты и&nbsp;услуги в&nbsp;единую систему.</p>
+      <a class="button" href="#materials">Посмотреть материалы <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"/></svg></a>
+      <div class="hero-audience"><span>Для экспертов</span><span>Для онлайн-школ</span></div>
+    </div>
+    <figure class="hero-photo"><img src="assets/elmira-hero.jpg" width="853" height="1280" alt="Эльмира в окружении розовых пионов" fetchpriority="high"><figcaption>Эльмира<br><span>методолог</span></figcaption></figure>
+  </section>
+  <section class="materials" id="materials" aria-labelledby="materials-title">
+    <div class="wrap materials-layout">
+      <div class="materials-copy"><h2 id="materials-title">У&nbsp;вас останутся<br><em>структура, план действий и&nbsp;запись сессии</em></h2><p>Решения фиксируем в&nbsp;документах: вы&nbsp;видите,<br>как&nbsp;устроен продукт и&nbsp;что делать дальше. Вот<br>как&nbsp;выглядят материалы стратегической сессии.</p><ol class="deliverables"><li><h3>Увидите продукты в&nbsp;одной системе</h3><p>Визуальная карта связывает ваши идеи, продукты и&nbsp;каналы продвижения.</p></li><li><h3>Будете знать, что делать дальше</h3><p>Рабочий документ собирает решения, гипотезы и&nbsp;ближайшие шаги.</p></li><li><h3>Сможете вернуться к&nbsp;обсуждению</h3><p>Запись встречи поможет восстановить детали и&nbsp;ничего не&nbsp;потерять.</p></li></ol><p class="fine-print">Состав материалов зависит от&nbsp;формата и&nbsp;вашего запроса.</p></div>
+      <div class="material-visual">
+        <div class="material-tabs" role="tablist" aria-label="Примеры материалов" hidden>
+          <button type="button" role="tab" id="tab-map" aria-controls="material-panel" aria-selected="true" data-material="map">Карта стратегии</button>
+          <button type="button" role="tab" id="tab-document" aria-controls="material-panel" aria-selected="false" tabindex="-1" data-material="document">План действий</button>
+          <button type="button" role="tab" id="tab-recording" aria-controls="material-panel" aria-selected="false" tabindex="-1" data-material="recording">Запись сессии</button>
+        </div>
+        <div id="material-panel" role="tabpanel" aria-labelledby="tab-map">
+          <a class="material-preview" href="assets/materials.jpg" target="_blank" rel="noopener" data-open-material aria-label="Увеличить пример карты стратегии">
+            <div class="preview-toolbar"><span id="preview-title">Визуальная карта стратегии</span><span class="preview-expand">Увеличить <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg></span></div>
+            <div class="source-crop map" id="preview-crop"><img src="assets/materials.jpg" width="960" height="1280" alt="Пример карты стратегии: продукты, каналы и связи на доске" loading="lazy"></div>
+          </a>
+          <p id="preview-caption">Продукты, идеи и&nbsp;каналы продвижения собраны в&nbsp;одну систему.</p>
+        </div>
+        <span class="visual-note">Примеры материалов после сессии</span>
+      </div>
+    </div>
+  </section>
+  <section class="clients" id="clients" aria-labelledby="clients-title"><div class="wrap clients-layout">
+    <div class="clients-intro"><h2 id="clients-title">Я — Эльмира, методолог.<br><em>Работала с&nbsp;более<br>чем 150&nbsp;клиентами</em></h2><p>Психологи, врачи, предприниматели и&nbsp;авторы <span class="unbroken">онлайн-проектов.</span> В&nbsp;работе учитываю нишу, аудиторию и&nbsp;задачу конкретного эксперта.</p><a class="button cases-button" href="cases.html">Посмотреть кейсы <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a></div>
+    <div class="client-list">
+      <article class="client"><div class="avatar a1" aria-hidden="true"></div><div><h3>Анна Молоткова</h3><p>Детский стоматолог</p></div><div class="followers">72,4 тыс.<small>подписчиков</small></div></article>
+      <article class="client"><div class="avatar a2" aria-hidden="true"></div><div><h3>Валентина Прокофьева</h3><p>Работа с командой в MLM</p></div><div class="followers">60,7 тыс.<small>подписчиков</small></div></article>
+      <article class="client"><div class="avatar a3" aria-hidden="true"></div><div><h3>Алексей Разумов</h3><p>Сексолог, психотерапевт, писатель</p></div><div class="followers">26 тыс.<small>подписчиков</small></div></article>
+      <article class="client"><div class="avatar a4" aria-hidden="true"></div><div><h3>Ольга Конзелевская</h3><p>Недвижимость и обучение</p></div><div class="followers">114 тыс.<small>подписчиков</small></div></article>
+      <article class="client"><div class="avatar a5" aria-hidden="true"></div><div><h3>Дина Перу</h3><p>Психолог, терапия для женщин</p></div><div class="followers">334 тыс.<small>подписчиков</small></div></article>
+      <p class="fine-print">Размер аудитории указан по&nbsp;материалам эксперта.</p>
+    </div>
+  </div></section>
+  <section class="formats" id="formats" aria-labelledby="formats-title">
+    <div class="wrap">
+      <div class="section-heading"><h2 id="formats-title">Вы&nbsp;получите структуру курса<br><em>или&nbsp;рекомендации по&nbsp;улучшению продукта</em></h2><p>Один конкретный запрос, структура нового курса, продуктовая линейка или&nbsp;глубокий аудит — выберите свою задачу.</p></div>
+      <div class="offers">
+        <article class="offer"><h3>Консультация</h3><p class="offer-question">Поймёте, что мешает продажам</p><p>Разберём один запрос:<br>где теряются клиенты<br>и&nbsp;что мешает продавать ваши услуги.</p><div class="offer-result"><span>Что вы получите</span><p>Пошаговый план изменений по&nbsp;вашему запросу.</p></div><div class="offer-bottom"><div class="offer-meta"><strong>7 000 Р</strong><span>60 минут · Zoom</span></div><a class="button" href="https://t.me/almira_method" target="_blank" rel="noopener" aria-label="Записаться: Консультация">Записаться <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></div></article>
+        <article class="offer"><h3>Сессия проектирования</h3><p class="offer-question">Получите основу программы обучения</p><p>Выстроим путь ученика к&nbsp;результату: последовательность обучения, нагрузку и&nbsp;практику.</p><div class="offer-result"><span>Что вы получите</span><p>Структура курса с&nbsp;результатами обучения и&nbsp;заданиями, запись сессии.</p></div><div class="offer-bottom"><div class="offer-meta"><strong>12 000 Р</strong><span>2 часа · Zoom</span></div><a class="button" href="https://t.me/almira_method" target="_blank" rel="noopener" aria-label="Записаться: Сессия проектирования">Записаться <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></div></article>
+        <article class="offer"><h3>Стратегическая сессия</h3><p class="offer-question">Поймёте, какие продукты предлагать и&nbsp;в&nbsp;каком порядке</p><p>Соберём продуктовую линейку: роль каждой услуги, связи между ними и&nbsp;приоритеты развития.</p><div class="offer-result"><span>Что вы получите</span><p>Продуктовая матрица, план следующих шагов и&nbsp;запись сессии.</p></div><div class="offer-bottom"><div class="offer-meta"><strong>17 000 Р</strong><span>2–2,5 часа · Zoom</span></div><a class="button" href="https://t.me/almira_method" target="_blank" rel="noopener" aria-label="Записаться: Стратегическая сессия">Записаться <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></div></article>
+        <article class="offer"><h3>Аудит продукта</h3><p class="offer-question">Получите план улучшений всего курса</p><p>До&nbsp;встречи изучу материалы курса: структуру, задания и&nbsp;поддержку. Найду слабые места на&nbsp;пути ученика.</p><div class="offer-result"><span>Что вы получите</span><p>Заключение с&nbsp;сильными сторонами и&nbsp;рекомендациями, разбор на&nbsp;2&nbsp;часа.</p></div><div class="offer-bottom"><div class="offer-meta"><strong>от 25 000 Р</strong><span>Зависит от объёма</span></div><a class="button" href="https://t.me/almira_method" target="_blank" rel="noopener" aria-label="Заказать аудит: Аудит продукта">Заказать аудит <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></div></article>
+      </div>
+    </div>
+  </section>
+  <section class="contact" id="contact" aria-labelledby="contact-title"><div class="petal-field" aria-hidden="true"><i></i><i></i><i></i></div><div class="wrap contact-layout"><div class="contact-image"><img src="assets/elmira-contact.jpg" width="1280" height="1024" alt="Чёрно-белый портрет Эльмиры с пионами" loading="lazy"></div><div class="contact-copy"><h2 id="contact-title">Получите рекомендации<br><em>по&nbsp;вашему продукту на&nbsp;консультации</em></h2><p>Напишите, что сейчас не&nbsp;получается в&nbsp;обучении или&nbsp;продажах. Согласуем запрос и&nbsp;время встречи. Если нужен другой формат — помогу его выбрать.</p><a class="button" href="https://t.me/almira_method" target="_blank" rel="noopener">Запись на консультацию <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a></div></div></section>
+</main>
+<dialog id="material-dialog" aria-labelledby="dialog-title">
+  <div class="dialog-header"><h2 id="dialog-title">Визуальная карта стратегии</h2><form method="dialog"><button class="dialog-close" aria-label="Закрыть просмотр и вернуться на сайт">Закрыть <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></form></div>
+  <div class="source-crop map" id="dialog-crop"><img src="assets/materials.jpg" width="960" height="1280" alt="Увеличенный пример материалов стратегической сессии"></div>
+  <div class="dialog-footer"><button type="button" data-material-prev aria-label="Предыдущий пример">Назад</button><span id="material-counter" aria-live="polite">1 / 3</span><button type="button" data-material-next aria-label="Следующий пример">Следующий пример</button></div>
+</dialog>
+<footer class="footer wrap"><a class="identity" href="#main"><span>Эльмира<span class="identity-dot">.</span></span><small>методолог</small></a><p>Из экспертизы — в понятную систему.</p><a href="#main" class="back-top">В начало <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V4m-6 6 6-6 6 6"/></svg></a></footer>
+</body></html>

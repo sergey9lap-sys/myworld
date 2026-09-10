@@ -10,3 +10,5 @@ tmp/
 Thumbs.db
 coverage/
 .vercel/
+sites/*/dist/
+public/p/
