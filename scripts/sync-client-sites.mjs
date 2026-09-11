@@ -10,6 +10,7 @@ const publishRoot = path.join(root, 'public', 'p');
 const sites = [
   { slug: 'elmira', directory: path.join(root, 'sites', 'elmira') },
   { slug: 'julia', directory: path.join(root, 'sites', 'julia') },
+  { slug: 'ilmira', directory: path.join(root, 'sites', 'ilmira') },
 ];
 
 await mkdir(publishRoot, { recursive: true });
