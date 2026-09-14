@@ -134,7 +134,7 @@
 /* Refinement: quoted opening, distinct text groups, no empty result column. */
 .hero-quote h1{font-size:clamp(29px,2.9vw,41px)}
 .hero-method{border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin-top:20px;font-size:16px;line-height:1.55}
-.hero-method ul{display:flex;flex-wrap:wrap;gap:8px 22px;padding:0;margin:12px 0 0;list-style:none;color:var(--gold-dark);font-weight:600}
+.hero-method .hero-growth-areas{margin:12px 0 0;color:var(--gold-dark);font-weight:600;text-align:left}
 .hero-method+.hero-promise{margin-top:18px}
 .strategy-lead{font-family:var(--font-body);font-size:20px;line-height:1.5;max-width:40ch;font-weight:500}
 .uniqueness{margin-top:20px;padding:18px 20px;border:1px solid #655230;border-radius:16px}
@@ -180,8 +180,6 @@
  .header{display:none}
  .hero-quote h1{font-size:clamp(17px,4.8vw,32px)}
  .hero-method{padding:16px}
- .hero-method ul{display:block}
- .hero-method li+li{margin-top:6px}
  .strategy-lead{font-size:19px}
  .uniqueness{padding:18px}
  .outcome-list{grid-template-columns:minmax(0,1fr)}
