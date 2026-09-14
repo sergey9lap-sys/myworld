@@ -100,6 +100,10 @@ Default HTML/CSS is visible. GSAP enhances only after both dependencies load. Ea
 
 ## Content
 
+### Material tabs — 2026-09-14
+
+Switching fixed-size material previews must preserve page scroll. Do not call page-wide ScrollTrigger.refresh() from tab selection; arrow-key tab focus uses preventScroll. Verified touch selection of all three previews and keyboard selection at 440px without scroll movement.
+
 ### Mobile CTA rail — 2026-09-14
 
 On phone layouts all primary CTAs share a centered width of `calc(100vw - 72px)` and a minimum height of 58px. Do not restore independent 290/310px caps in hero, cases, pricing or contact. Pricing containers must accommodate this same rail. Verified mobile widths: 360 → 288px, 390 → 318px, 440 → 368px. Desktop sizing stays unchanged.

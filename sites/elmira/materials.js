@@ -29,7 +29,8 @@
       panel.getAnimations().forEach(a=>a.cancel());
       panel.animate([{opacity:.55,transform:'translateY(5px)'},{opacity:1,transform:'translateY(0)'}],{duration:240,easing:'cubic-bezier(.22,1,.36,1)'});
     }
-    window.ScrollTrigger?.refresh();
+    // The preview keeps its dimensions; refreshing page-wide scroll triggers
+    // here can reset the scroll position in mobile Safari.
   }
   document.querySelector('.material-tabs').hidden=false;
   tabs.forEach((tab,i)=>{
@@ -40,7 +41,7 @@
       if(event.key==='ArrowLeft')index=active-1;
       if(event.key==='Home')index=0;
       if(event.key==='End')index=tabs.length-1;
-      if(index!==undefined){event.preventDefault();select(index);tabs[active].focus()}
+      if(index!==undefined){event.preventDefault();select(index);tabs[active].focus({preventScroll:true})}
     });
   });
   opener.addEventListener('click',event=>{
