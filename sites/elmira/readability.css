@@ -89,7 +89,10 @@
 
 /* Mobile-first hero composition: Elmira is present in the opening glance, not after the CTA stack. */
 @media(max-width:600px){
- :root{--mobile-action-width:min(100%,290px)}
+ :root{--mobile-action-width:calc(100vw - 72px)}
+ /* One mobile CTA rail, including the buttons inside pricing cards. */
+ .offer{padding-inline:16px}
+ .offer-bottom{width:100%;min-width:0}
  .hero{
   display:grid;
   grid-template-columns:minmax(0,1.06fr) minmax(148px,.94fr);

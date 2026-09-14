@@ -100,6 +100,10 @@ Default HTML/CSS is visible. GSAP enhances only after both dependencies load. Ea
 
 ## Content
 
+### Mobile CTA rail — 2026-09-14
+
+On phone layouts all primary CTAs share a centered width of `calc(100vw - 72px)` and a minimum height of 58px. Do not restore independent 290/310px caps in hero, cases, pricing or contact. Pricing containers must accommodate this same rail. Verified mobile widths: 360 → 288px, 390 → 318px, 440 → 368px. Desktop sizing stays unchanged.
+
 ### Voice revisions — 2026-09-08
 
 Service offers now distinguish one focused consultation request, a course structure with practice, a product matrix with next steps, and an independent review before a two-hour audit discussion. Deliverables are concrete; audit does not promise a turnkey course rebuild. Shared offer rows and 58px CTA heights remain aligned. Short-laptop spacing is tightened without reducing font sizes.

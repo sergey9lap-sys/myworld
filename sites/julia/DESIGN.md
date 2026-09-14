@@ -218,6 +218,8 @@ Final composition correction: on phones the portrait spans both the headline and
 
 ### Don't:
 
+- **Mobile CTA rule (2026-09-14):** hero, request-result, copy and contact buttons use the same centered `calc(100vw - 72px)` width. No separate 320px hero cap. Minimum height 58px; long labels can wrap on narrow screens. Preserve disabled states and desktop sizing. Verified: 360 → 288px, 390 → 318px, 440 → 368px.
+
 - **Don't** возвращать отвергнутую многоцветную палитру, goal selector или повторяющиеся photo-led секции.
 - **Don't** добавлять тени, мягкие карточные контейнеры или отдельный декоративный цвет.
 - **Don't** добавлять интерактив, который не даёт человеку понятного результата или следующего действия.
