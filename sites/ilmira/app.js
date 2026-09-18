@@ -1,10 +1,29 @@
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const form = document.querySelector('#request-form');
+const serviceInput = document.querySelector('#service-select');
+const formStatus = document.querySelector('#form-status');
+
+document.querySelectorAll('.service-cta[data-service]').forEach(link => {
+  link.addEventListener('click', () => {
+    serviceInput.value = link.dataset.service;
+  });
+});
+
 form.addEventListener('submit', event => {
   event.preventDefault();
-  document.querySelector('#form-status').textContent = 'Форма заполнена. Это демонстрация: данные никуда не отправлены. Для обращения используйте Telegram в разделе «Контакты».';
+  if (!form.reportValidity()) return;
+  const data = new FormData(form);
+  const message = [
+    'Здравствуйте, Ильмира! Хочу записаться.',
+    `Формат: ${data.get('service')}`,
+    `Имя: ${data.get('name')}`,
+    `Email: ${data.get('email')}`,
+    `Телефон: ${data.get('phone')}`
+  ].join('\n');
+  const telegramUrl = `https://t.me/Ilmirakirim?text=${encodeURIComponent(message)}`;
+  formStatus.innerHTML = `Открываю Telegram. Если переход не сработал, <a href="${telegramUrl}" target="_blank" rel="noopener">нажмите здесь</a>.`;
+  window.open(telegramUrl, '_blank', 'noopener');
 });
-form.removeAttribute('inert');
 
 const dialog = document.querySelector('#lightbox');
 document.querySelectorAll('[data-image]').forEach(button => {
