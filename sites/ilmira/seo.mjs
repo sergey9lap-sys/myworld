@@ -19,13 +19,16 @@ export function addSeo(html) {
     '@graph': [
       { '@type': 'Person', '@id': `${publicUrl}#person`, name: config.name, alternateName: 'Ильмира Ганеева', jobTitle: config.jobTitle,
         url: publicUrl, image, sameAs: ['https://t.me/Ilmirakirim', 'https://www.youtube.com/channel/UC8gE2sFN1QuCtX1hdNEyp-w'],
-        email: 'ilmiraganeeva.com@yandex.ru', telephone: '+79174678700', areaServed: 'Worldwide', knowsLanguage: 'ru' },
+        email: 'ilmiraganeeva.com@yandex.ru', telephone: '+79174678700', areaServed: 'Worldwide', knowsLanguage: 'ru',
+        knowsAbout: ['Стратегия предпринимателя', 'Экономика бизнеса', 'Инвестиционное мышление', 'Психология предпринимательства', 'Личный бренд'] },
       { '@type': 'WebSite', '@id': `${publicUrl}#website`, url: publicUrl, name: `${config.name} — стратегический консультант`, inLanguage: 'ru',
         publisher: { '@id': `${publicUrl}#person` } },
       { '@type': 'WebPage', '@id': `${publicUrl}#webpage`, url: publicUrl, name: title,
-        description, inLanguage: 'ru', isPartOf: { '@id': `${publicUrl}#website` }, mainEntity: { '@id': `${publicUrl}#person` } },
+        description, inLanguage: 'ru', dateModified: config.lastModified, primaryImageOfPage: image,
+        isPartOf: { '@id': `${publicUrl}#website` }, mainEntity: { '@id': `${publicUrl}#person` } },
       { '@type': 'Service', '@id': `${publicUrl}#service`, name: 'Стратегические консультации для предпринимателей и экспертов',
         description: 'Персональная стратегия роста в доходе, влиянии и масштабе с опорой на экономику, инвестиции и психологию.',
+        serviceType: 'Стратегический консалтинг', audience: { '@type': 'Audience', audienceType: 'Предприниматели и эксперты' },
         provider: { '@id': `${publicUrl}#person` }, areaServed: 'Worldwide', availableChannel: { '@type': 'ServiceChannel', serviceUrl: `${publicUrl}#request`, availableLanguage: 'ru' } }
     ]
   };
@@ -33,6 +36,7 @@ export function addSeo(html) {
     `<link rel="canonical" href="${escape(publicUrl)}">`,
     '<meta property="og:type" content="website">',
     '<meta property="og:locale" content="ru_RU">',
+    '<meta property="og:site_name" content="Ильмира Кирим">',
     `<meta property="og:url" content="${escape(publicUrl)}">`,
     `<meta property="og:title" content="${escape(title)}">`,
     `<meta property="og:description" content="${escape(description)}">`,
@@ -46,5 +50,5 @@ export function addSeo(html) {
   ].join('\n  ');
   return html.replace('<!-- ILMIRA_SEO -->', metadata);
 }
-export const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${escape(publicUrl)}</loc></url></urlset>\n`;
-export const robots = `User-agent: *\nAllow: /\nSitemap: ${new URL('sitemap.xml', assetRoot).href}\n`;
+export const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${escape(publicUrl)}</loc><lastmod>${config.lastModified}</lastmod></url></urlset>\n`;
+export const robots = `User-agent: *\nAllow: /\n\nUser-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: ChatGPT-User\nAllow: /\n\nUser-agent: GPTBot\nAllow: /\n\nUser-agent: Google-Extended\nAllow: /\n\nSitemap: ${new URL('sitemap.xml', assetRoot).href}\n`;

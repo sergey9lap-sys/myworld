@@ -2,12 +2,22 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const form = document.querySelector('#request-form');
 const serviceInput = document.querySelector('#service-select');
 const formStatus = document.querySelector('#form-status');
+const personalDataConsent = form?.querySelector('input[name="personal-data"]');
+const mailingConsent = form?.querySelector('input[name="mailing"]');
+const submitButton = form?.querySelector('button[type="submit"]');
 
 document.querySelectorAll('.service-cta[data-service]').forEach(link => {
   link.addEventListener('click', () => {
     serviceInput.value = link.dataset.service;
   });
 });
+
+const syncSubmitState = () => {
+  if (submitButton) submitButton.disabled = !personalDataConsent?.checked;
+};
+
+personalDataConsent?.addEventListener('change', syncSubmitState);
+syncSubmitState();
 
 form.addEventListener('submit', event => {
   event.preventDefault();
@@ -18,7 +28,9 @@ form.addEventListener('submit', event => {
     `Формат: ${data.get('service')}`,
     `Имя: ${data.get('name')}`,
     `Email: ${data.get('email')}`,
-    `Телефон: ${data.get('phone')}`
+    `Телефон: ${data.get('phone')}`,
+    `Согласие на обработку данных: ${personalDataConsent?.checked ? 'да' : 'нет'}`,
+    `Согласие на рассылку: ${mailingConsent?.checked ? 'да' : 'нет'}`
   ].join('\n');
   const telegramUrl = `https://t.me/Ilmirakirim?text=${encodeURIComponent(message)}`;
   formStatus.innerHTML = `Открываю Telegram. Если переход не сработал, <a href="${telegramUrl}" target="_blank" rel="noopener">нажмите здесь</a>.`;

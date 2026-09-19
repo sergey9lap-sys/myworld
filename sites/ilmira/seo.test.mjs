@@ -10,11 +10,15 @@ assert.equal(source.slice(source.indexOf('<body>')), html.slice(html.indexOf('<b
 const graph = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1])['@graph'];
 assert.equal(graph[0]['@type'], 'Person');
 assert.equal(graph[2].mainEntity['@id'], graph[0]['@id']);
+assert.equal(graph[2].dateModified, '2026-09-19');
 assert.equal(graph[0].url, publicUrl);
 assert.equal(new URL(graph[0].image).protocol, 'https:');
 assert(graph[0].sameAs.includes('https://t.me/Ilmirakirim'));
 assert(sitemap.includes(`<loc>${publicUrl}</loc>`));
+assert(sitemap.includes('<lastmod>2026-09-19</lastmod>'));
 assert(robots.includes('Allow: /'));
+assert(robots.includes('User-agent: OAI-SearchBot'));
+assert(robots.includes('User-agent: Google-Extended'));
 assert(html.includes('id="request-form"'), 'Request form is present');
 assert(!html.includes('id="request-form" inert'), 'Request form is active');
 console.log('SEO checks passed: metadata, JSON-LD, sitemap, visible-copy preservation and active request form');
