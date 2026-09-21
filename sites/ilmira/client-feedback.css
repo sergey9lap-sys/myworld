@@ -53,6 +53,7 @@
 .paris-backdrop{position:absolute;z-index:-1;inset:0 42% 0 -30px;background:linear-gradient(90deg,#f5eedff0 0%,#f5eedf85 52%,#f5eedf00 80%),url('assets/paris-invitation.png') 75% center/cover no-repeat;opacity:.7;pointer-events:none}
 .paris-heading{font-size:38px;max-width:100%;padding-bottom:18px;border-bottom:1px solid var(--gold)}
 .paris-heading em{color:var(--gold-dark)}
+.audit .paris-heading em{color:var(--ink)}
 .paris-copy{font-size:16px;line-height:1.6}
 .paris-intro{font-size:15px}
 .paris-acrostic{list-style:none;margin:12px 0 22px;padding:0;font-size:23px;line-height:1.6}
