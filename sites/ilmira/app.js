@@ -2,24 +2,15 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const serviceDialog = document.querySelector('#service-dialog');
 const serviceForm = document.querySelector('#service-form');
 const serviceMessages = {
-  'Консультация «Код предпринимателя»': 'Хочу на консультацию.',
-  'Сессия «Личная стратегия предпринимателя»': 'Хочу на стратегическую сессию.',
-  'Индивидуальное сопровождение': 'Интересует индивидуальное сопровождение.',
-  'Премиум-группа': 'Хочу в группу.'
+  'Консультация «Код предпринимателя»': 'Хочу на консультацию',
+  'Сессия «Личная стратегия предпринимателя»': 'Хочу на стратегическую сессию',
+  'Индивидуальное сопровождение': 'Интересует индивидуальное сопровождение',
+  'Премиум-группа': 'Хочу в группу'
 };
 
 const buildMessage = (form, data) => {
-  const consent = form.querySelector('input[name="personal-data"]');
-  const mailing = form.querySelector('input[name="mailing"]');
   const service = data.get('service');
-  return [
-    form.dataset.message || serviceMessages[service] || 'Хочу записаться.',
-    `Имя: ${data.get('name')}`,
-    `Электронная почта: ${data.get('email')}`,
-    `Телефон: ${data.get('phone')}`,
-    `Согласие на обработку данных: ${consent.checked ? 'да' : 'нет'}`,
-    `Согласие на рассылку: ${mailing.checked ? 'да' : 'нет'}`
-  ].join('\n');
+  return form.dataset.message || serviceMessages[service] || 'Хочу записаться';
 };
 
 document.querySelectorAll('.record-form').forEach(form => {
@@ -48,7 +39,7 @@ document.querySelectorAll('.service-cta[data-service]').forEach(link => {
     const service = link.dataset.service;
     serviceForm.reset();
     serviceForm.querySelector('input[name="service"]').value = service;
-    serviceForm.dataset.message = serviceMessages[service] || 'Хочу записаться.';
+    serviceForm.dataset.message = serviceMessages[service] || 'Хочу записаться';
     serviceDialog.querySelector('#service-dialog-title').textContent = service;
     serviceForm.querySelector('.form-status').textContent = '';
     serviceForm.querySelectorAll('[data-messenger]').forEach(button => { button.setAttribute('aria-pressed', 'false'); });
