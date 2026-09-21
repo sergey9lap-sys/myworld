@@ -1,4 +1,34 @@
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const cookieNotice = document.querySelector('#cookie-notice');
+const cookieConsentName = 'ilmira_cookie_consent';
+
+const hasCookieConsent = () => document.cookie
+  .split('; ')
+  .some(cookie => cookie.startsWith(`${cookieConsentName}=`));
+
+const saveCookieConsent = () => {
+  const secure = window.location.protocol === 'https:' ? '; Secure' : '';
+  document.cookie = `${cookieConsentName}=accepted; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
+};
+
+const dismissCookieNotice = () => {
+  saveCookieConsent();
+  cookieNotice.classList.add('is-closing');
+  window.setTimeout(() => {
+    cookieNotice.hidden = true;
+    cookieNotice.setAttribute('aria-hidden', 'true');
+  }, reduceMotion.matches ? 0 : 220);
+};
+
+if (!hasCookieConsent()) {
+  cookieNotice.hidden = false;
+  cookieNotice.setAttribute('aria-hidden', 'false');
+  requestAnimationFrame(() => cookieNotice.classList.add('is-visible'));
+}
+
+cookieNotice.querySelector('.cookie-notice-accept').addEventListener('click', dismissCookieNotice);
+cookieNotice.querySelector('.cookie-notice-close').addEventListener('click', dismissCookieNotice);
+
 const serviceDialog = document.querySelector('#service-dialog');
 const serviceForm = document.querySelector('#service-form');
 const serviceMessages = {
@@ -31,11 +61,35 @@ const copyMessage = async message => {
   }
 };
 
+const validatePhone = input => {
+  const value = input.value.trim();
+  const digits = value.replace(/\D/g, '');
+  const hasValidCharacters = /^\+?[\d\s().-]+$/.test(value);
+
+  if (!value) {
+    input.setCustomValidity('');
+  } else if (!hasValidCharacters) {
+    input.setCustomValidity('Используйте только цифры, +, пробелы, скобки и дефисы.');
+  } else if (digits.length < 7) {
+    input.setCustomValidity('Введите номер полностью — не менее 7 цифр.');
+  } else if (digits.length > 15) {
+    input.setCustomValidity('В международном номере может быть не более 15 цифр.');
+  } else {
+    input.setCustomValidity('');
+  }
+};
+
+document.querySelectorAll('input[type="tel"]').forEach(input => {
+  input.addEventListener('input', () => validatePhone(input));
+  input.addEventListener('blur', () => validatePhone(input));
+});
+
 document.querySelectorAll('.record-form').forEach(form => {
   const messengerButtons = Array.from(form.querySelectorAll('[data-messenger]'));
   form.addEventListener('submit', event => event.preventDefault());
   messengerButtons.forEach(button => button.addEventListener('click', () => {
     messengerButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    form.querySelectorAll('input[type="tel"]').forEach(input => validatePhone(input));
     if (!form.reportValidity()) return;
     const message = buildMessage(form, new FormData(form));
     const encodedMessage = encodeURIComponent(message);
@@ -54,7 +108,7 @@ document.querySelectorAll('.record-form').forEach(form => {
       });
       return;
     }
-    form.querySelector('.form-status').textContent = 'Сообщение уже заполнено — перед отправкой его можно отредактировать в мессенджере.';
+    form.querySelector('.form-status').textContent = '';
   }));
 });
 
