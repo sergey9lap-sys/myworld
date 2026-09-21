@@ -237,3 +237,59 @@
  .footer{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
  .footer .brand,.footer p,.footer-legal{grid-column:auto;grid-row:auto;flex-basis:auto}
 }
+
+/* Client updates, 21 September 2026: direct service booking and messenger choice. */
+@media(min-width:761px){
+ .hero-profile figcaption small{display:none}
+}
+.header-global{margin-left:24px;padding-left:24px;border-left:1px solid var(--line);color:var(--gold-dark);font-size:12px;font-weight:650;line-height:1.45;white-space:nowrap}
+.header nav{margin-left:auto}
+.strategy-copy>.uniqueness~p{max-width:62ch}
+.source-contacts{grid-template-columns:repeat(4,minmax(0,1fr))}
+.service-dialog{width:min(680px,calc(100vw - 32px));max-height:min(92dvh,900px);overflow:auto;border:1px solid var(--line);border-radius:20px;padding:32px;background:#fff;color:var(--ink);box-shadow:0 28px 80px color-mix(in srgb,var(--black) 34%,transparent)}
+.service-dialog::backdrop{background:color-mix(in srgb,var(--black) 78%,transparent);backdrop-filter:blur(5px)}
+.dialog-close{position:absolute;top:10px;right:10px;display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;background:transparent;color:var(--ink);font-size:30px;line-height:1}
+.service-dialog-head{padding-right:48px;margin-bottom:24px}
+.service-dialog-head>p{color:var(--gold-dark);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.service-dialog-head h2{font-size:clamp(27px,4vw,39px);line-height:1.25;margin-top:8px}
+.messenger-picker{margin-top:24px}
+.messenger-picker[hidden]{display:none}
+.messenger-picker>p{font-size:16px;font-weight:700}
+.messenger-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
+.messenger-button{display:flex;align-items:center;justify-content:center;min-height:46px;padding:10px;border:1px solid var(--cta);border-radius:10px;background:var(--cta);color:#fff;font-size:14px;font-weight:700;text-align:center;transition:background 160ms ease,border-color 160ms ease,transform 160ms var(--ease-out),box-shadow 160ms ease}
+.messenger-button[aria-pressed="true"]{background:var(--cta-hover);border-color:var(--gold);box-shadow:0 8px 22px color-mix(in srgb,var(--cta) 28%,transparent);transform:translateY(-2px)}
+.form-status{margin-top:12px;font-size:13px;font-weight:600;line-height:1.5}
+.form-status:empty{display:none}
+@media(hover:hover) and (pointer:fine){.messenger-button:hover{background:var(--cta-hover);border-color:var(--cta-hover);transform:translateY(-2px)}}
+.telegram-promo-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,.78fr);gap:64px;align-items:center}
+.telegram-promo-copy{max-width:650px}
+.telegram-promo-copy h2{max-width:15ch}
+.telegram-promo-copy p{max-width:48ch;margin-top:18px;color:var(--gold-light);font-size:17px;line-height:1.65}
+.telegram-showcase{position:relative;display:flex;flex-direction:column;justify-self:end;width:min(100%,430px);min-height:570px;overflow:hidden;border:1px solid var(--gold);border-radius:16px;background:color-mix(in srgb,var(--cta) 42%,var(--black));color:#fff;transition:transform 180ms var(--ease-out),border-color 180ms ease}
+.telegram-showcase-head{position:relative;z-index:2;display:block;padding:28px 28px 20px;text-align:center}
+.telegram-showcase-head strong{display:block;font-family:var(--font-display);color:var(--gold-light);font-size:30px;font-weight:400;line-height:1.3}
+.telegram-showcase-head>span{display:block;max-width:25ch;margin:8px auto 0;font-size:15px;line-height:1.5}
+.telegram-device{position:relative;display:block;width:72%;height:355px;margin:0 auto -28px;overflow:hidden;border:7px solid var(--black);border-bottom:0;border-radius:30px 30px 0 0;background:var(--black);transform:rotate(-1.5deg);transform-origin:50% 100%;box-shadow:0 22px 44px color-mix(in srgb,var(--black) 42%,transparent)}
+.telegram-device img{display:block;width:100%;height:auto;transform:translateY(-18px)}
+.telegram-mark{position:absolute;z-index:3;right:32px;top:235px;display:grid;place-items:center;width:68px;height:68px;border-radius:50%;background:var(--cta);color:#fff;box-shadow:0 14px 30px color-mix(in srgb,var(--black) 38%,transparent)}
+.telegram-mark svg{width:35px;height:35px}
+.telegram-showcase-action{position:relative;z-index:4;display:flex;align-items:center;justify-content:space-between;min-height:62px;margin-top:auto;padding:14px 22px;background:var(--cta);color:#fff;font-size:15px;font-weight:700;transition:background 160ms ease}
+.telegram-showcase-action svg{width:25px;height:25px;transition:transform 180ms var(--ease-out)}
+@media(hover:hover) and (pointer:fine){.telegram-showcase:hover{transform:translateY(-4px);border-color:var(--gold-light)}.telegram-showcase:hover .telegram-showcase-action{background:var(--cta-hover)}.telegram-showcase:hover .telegram-showcase-action svg{transform:translateX(6px)}}
+@media(max-width:1100px){.source-contacts{grid-template-columns:repeat(2,minmax(0,1fr))}.telegram-promo-layout{gap:36px}}
+@media(max-width:900px){.header-global{display:none}}
+@media(max-width:760px){
+ .hero-profile figcaption small{display:block;margin-top:8px}
+ .source-contacts{grid-template-columns:minmax(0,1fr)}
+ .service-dialog{padding:26px 20px}
+ .messenger-actions{grid-template-columns:minmax(0,1fr)}
+ .telegram-promo-layout{grid-template-columns:minmax(0,1fr);gap:28px}
+ .telegram-promo-copy h2{max-width:none}
+ .telegram-showcase{justify-self:stretch;width:100%;min-height:540px}
+ .telegram-showcase-head{padding:25px 22px 18px}
+ .telegram-showcase-head strong{font-size:27px}
+ .telegram-device{width:78%;height:332px;margin-bottom:-22px}
+ .telegram-mark{right:24px;top:220px;width:60px;height:60px}
+ .telegram-mark svg{width:31px;height:31px}
+}
+@media(prefers-reduced-motion:reduce){.messenger-button,.telegram-showcase,.telegram-showcase-action,.telegram-showcase-action svg{transition:none}.messenger-button:hover,.messenger-button[aria-pressed="true"],.telegram-showcase:hover,.telegram-showcase:hover .telegram-showcase-action svg{transform:none}}

@@ -1,40 +1,62 @@
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-const form = document.querySelector('#request-form');
-const serviceInput = document.querySelector('#service-select');
-const formStatus = document.querySelector('#form-status');
-const personalDataConsent = form?.querySelector('input[name="personal-data"]');
-const mailingConsent = form?.querySelector('input[name="mailing"]');
-const submitButton = form?.querySelector('button[type="submit"]');
+const serviceDialog = document.querySelector('#service-dialog');
+const serviceForm = document.querySelector('#service-form');
+const serviceMessages = {
+  'Консультация «Код предпринимателя»': 'Хочу на консультацию.',
+  'Сессия «Личная стратегия предпринимателя»': 'Хочу на стратегическую сессию.',
+  'Индивидуальное сопровождение': 'Интересует индивидуальное сопровождение.',
+  'Премиум-группа': 'Хочу в группу.'
+};
+
+const buildMessage = (form, data) => {
+  const consent = form.querySelector('input[name="personal-data"]');
+  const mailing = form.querySelector('input[name="mailing"]');
+  const service = data.get('service');
+  return [
+    form.dataset.message || serviceMessages[service] || 'Хочу записаться.',
+    `Имя: ${data.get('name')}`,
+    `Электронная почта: ${data.get('email')}`,
+    `Телефон: ${data.get('phone')}`,
+    `Согласие на обработку данных: ${consent.checked ? 'да' : 'нет'}`,
+    `Согласие на рассылку: ${mailing.checked ? 'да' : 'нет'}`
+  ].join('\n');
+};
+
+document.querySelectorAll('.record-form').forEach(form => {
+  const messengerButtons = Array.from(form.querySelectorAll('[data-messenger]'));
+  form.addEventListener('submit', event => event.preventDefault());
+  messengerButtons.forEach(button => button.addEventListener('click', () => {
+    messengerButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    if (button.dataset.messenger === 'max') return;
+    if (!form.reportValidity()) return;
+    const encodedMessage = encodeURIComponent(buildMessage(form, new FormData(form)));
+    const url = button.dataset.messenger === 'telegram'
+      ? `https://t.me/Ilmirakirim?text=${encodedMessage}`
+      : `https://api.whatsapp.com/send/?phone=79174678700&text=${encodedMessage}`;
+    form.querySelector('.form-status').textContent = 'Сообщение уже заполнено — перед отправкой его можно отредактировать в мессенджере.';
+    window.open(url, '_blank', 'noopener');
+  }));
+});
 
 document.querySelectorAll('.service-cta[data-service]').forEach(link => {
-  link.addEventListener('click', () => {
-    serviceInput.value = link.dataset.service;
+  link.addEventListener('click', event => {
+    event.preventDefault();
+    const service = link.dataset.service;
+    serviceForm.reset();
+    serviceForm.querySelector('input[name="service"]').value = service;
+    serviceForm.dataset.message = serviceMessages[service] || 'Хочу записаться.';
+    serviceDialog.querySelector('#service-dialog-title').textContent = service;
+    serviceForm.querySelector('.form-status').textContent = '';
+    serviceForm.querySelectorAll('[data-messenger]').forEach(button => { button.setAttribute('aria-pressed', 'false'); });
+    serviceDialog.showModal();
   });
 });
 
-const syncSubmitState = () => {
-  if (submitButton) submitButton.disabled = !personalDataConsent?.checked;
-};
-
-personalDataConsent?.addEventListener('change', syncSubmitState);
-syncSubmitState();
-
-form.addEventListener('submit', event => {
-  event.preventDefault();
-  if (!form.reportValidity()) return;
-  const data = new FormData(form);
-  const message = [
-    'Здравствуйте, Ильмира! Хочу записаться.',
-    `Формат: ${data.get('service')}`,
-    `Имя: ${data.get('name')}`,
-    `Email: ${data.get('email')}`,
-    `Телефон: ${data.get('phone')}`,
-    `Согласие на обработку данных: ${personalDataConsent?.checked ? 'да' : 'нет'}`,
-    `Согласие на рассылку: ${mailingConsent?.checked ? 'да' : 'нет'}`
-  ].join('\n');
-  const telegramUrl = `https://t.me/Ilmirakirim?text=${encodeURIComponent(message)}`;
-  formStatus.innerHTML = `Открываю Telegram. Если переход не сработал, <a href="${telegramUrl}" target="_blank" rel="noopener">нажмите здесь</a>.`;
-  window.open(telegramUrl, '_blank', 'noopener');
+serviceDialog.querySelector('.dialog-close').addEventListener('click', () => serviceDialog.close());
+serviceDialog.addEventListener('click', event => {
+  if (event.target !== serviceDialog) return;
+  const rect = serviceDialog.getBoundingClientRect();
+  if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) serviceDialog.close();
 });
 
 const dialog = document.querySelector('#lightbox');
