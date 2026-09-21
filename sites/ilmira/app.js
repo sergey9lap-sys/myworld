@@ -27,13 +27,17 @@ document.querySelectorAll('.record-form').forEach(form => {
   form.addEventListener('submit', event => event.preventDefault());
   messengerButtons.forEach(button => button.addEventListener('click', () => {
     messengerButtons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-    if (button.dataset.messenger === 'max') return;
     if (!form.reportValidity()) return;
     const encodedMessage = encodeURIComponent(buildMessage(form, new FormData(form)));
-    const url = button.dataset.messenger === 'telegram'
-      ? `https://t.me/Ilmirakirim?text=${encodedMessage}`
-      : `https://api.whatsapp.com/send/?phone=79174678700&text=${encodedMessage}`;
-    form.querySelector('.form-status').textContent = 'Сообщение уже заполнено — перед отправкой его можно отредактировать в мессенджере.';
+    const urls = {
+      telegram: `https://t.me/Ilmirakirim?text=${encodedMessage}`,
+      whatsapp: `https://api.whatsapp.com/send/?phone=79174678700&text=${encodedMessage}`,
+      max: 'https://max.ru/u/f9LHodD0cOLRWDX_zzh9jrKMMMfNdTBlYNt9mufT-kFZwIGb8zte1_3nHVA'
+    };
+    const url = urls[button.dataset.messenger];
+    form.querySelector('.form-status').textContent = button.dataset.messenger === 'max'
+      ? 'Профиль Ильмиры в Максе открыт в новой вкладке — отправьте ей сообщение.'
+      : 'Сообщение уже заполнено — перед отправкой его можно отредактировать в мессенджере.';
     window.open(url, '_blank', 'noopener');
   }));
 });
