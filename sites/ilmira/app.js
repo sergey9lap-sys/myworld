@@ -61,27 +61,60 @@ const copyMessage = async message => {
   }
 };
 
+const phoneLibrary = window.libphonenumber;
+const featuredCountries = ['RU', 'BY', 'KZ', 'US', 'CA', 'DE', 'FR', 'IT', 'ES', 'GB'];
+const countryNames = { RU: 'Россия', BY: 'Беларусь', KZ: 'Казахстан', US: 'США', CA: 'Канада', GB: 'Великобритания' };
+const regionNames = typeof Intl.DisplayNames === 'function'
+  ? new Intl.DisplayNames(['ru'], { type: 'region' })
+  : null;
+const countryName = country => countryNames[country] || regionNames?.of(country) || country;
+
+if (phoneLibrary) {
+  const countries = phoneLibrary.getCountries();
+  const orderedCountries = [
+    ...featuredCountries.filter(country => countries.includes(country)),
+    ...countries.filter(country => !featuredCountries.includes(country))
+      .sort((a, b) => countryName(a).localeCompare(countryName(b), 'ru'))
+  ];
+  document.querySelectorAll('.phone-country-select').forEach(select => {
+    const options = document.createDocumentFragment();
+    orderedCountries.forEach(country => {
+      const option = document.createElement('option');
+      option.value = country;
+      option.textContent = `${countryName(country)} +${phoneLibrary.getCountryCallingCode(country)}`;
+      options.append(option);
+    });
+    select.replaceChildren(options);
+    select.value = 'RU';
+  });
+}
+
 const validatePhone = input => {
   const value = input.value.trim();
-  const digits = value.replace(/\D/g, '');
-  const hasValidCharacters = /^\+?[\d\s().-]+$/.test(value);
-
+  const country = input.closest('form').querySelector('.phone-country-select').value;
   if (!value) {
     input.setCustomValidity('');
-  } else if (!hasValidCharacters) {
+  } else if (!/^\+?[\d\s().-]+$/.test(value)) {
     input.setCustomValidity('Используйте только цифры, +, пробелы, скобки и дефисы.');
-  } else if (digits.length < 7) {
-    input.setCustomValidity('Введите номер полностью — не менее 7 цифр.');
-  } else if (digits.length > 15) {
-    input.setCustomValidity('В международном номере может быть не более 15 цифр.');
+  } else if (!phoneLibrary) {
+    input.setCustomValidity('Не удалось загрузить проверку номера. Обновите страницу и попробуйте снова.');
   } else {
-    input.setCustomValidity('');
+    const parsed = phoneLibrary.parsePhoneNumberFromString(value, country);
+    input.setCustomValidity(parsed?.isValid() && parsed.country === country
+      ? ''
+      : 'Проверьте номер и выбранную страну. Можно ввести номер с кодом + или без него.');
   }
 };
 
-document.querySelectorAll('input[type="tel"]').forEach(input => {
+document.querySelectorAll('.record-form').forEach(form => {
+  const input = form.querySelector('input[type="tel"]');
+  const country = form.querySelector('.phone-country-select');
   input.addEventListener('input', () => validatePhone(input));
   input.addEventListener('blur', () => validatePhone(input));
+  country.addEventListener('change', () => {
+    if (phoneLibrary) form.querySelector('.phone-country-code').textContent = `+${phoneLibrary.getCountryCallingCode(country.value)}`;
+    validatePhone(input);
+  });
 });
 
 document.querySelectorAll('.record-form').forEach(form => {
@@ -117,6 +150,9 @@ document.querySelectorAll('.service-cta[data-service]').forEach(link => {
     event.preventDefault();
     const service = link.dataset.service;
     serviceForm.reset();
+    const servicePhone = serviceForm.querySelector('input[type="tel"]');
+    servicePhone.setCustomValidity('');
+    serviceForm.querySelector('.phone-country-code').textContent = '+7';
     serviceForm.querySelector('input[name="service"]').value = service;
     serviceForm.dataset.message = serviceMessages[service] || 'Хочу записаться';
     serviceDialog.querySelector('#service-dialog-title').textContent = service;

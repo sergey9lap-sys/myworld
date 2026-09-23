@@ -11,6 +11,15 @@ for (const file of ['index.html', 'style.css', 'client-feedback.css', 'app.js'])
 }
 await cp(path.join(root, 'assets'), path.join(output, 'assets'), { recursive: true });
 await cp(path.join(root, 'documents'), path.join(output, 'documents'), { recursive: true });
+await mkdir(path.join(output, 'vendor'), { recursive: true });
+await copyFile(
+  path.join(root, '../../node_modules/libphonenumber-js/bundle/libphonenumber-max.js'),
+  path.join(output, 'vendor/libphonenumber-max.js')
+);
+await copyFile(
+  path.join(root, '../../node_modules/libphonenumber-js/LICENSE'),
+  path.join(output, 'vendor/libphonenumber-js-LICENSE.txt')
+);
 await writeFile(path.join(output, 'index.html'), addSeo(await readFile(path.join(root, 'index.html'), 'utf8')));
 await writeFile(path.join(output, 'sitemap.xml'), sitemap);
 await writeFile(path.join(output, 'robots.txt'), robots);

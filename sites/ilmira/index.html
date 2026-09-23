@@ -13,6 +13,7 @@
   <link rel="preload" href="assets/hero.jpg" as="image">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="client-feedback.css">
+  <script src="vendor/libphonenumber-max.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -101,7 +102,10 @@
           <div class="form-row">
             <label>Имя<input name="name" autocomplete="name" placeholder="Как к вам обращаться" required maxlength="80"></label>
             <label>Электронная почта<input name="email" type="email" autocomplete="email" placeholder="name@example.ru" required maxlength="120"></label>
-            <label>Телефон<input name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+7 999 000-00-00" required minlength="7" maxlength="30" title="Введите международный номер: от 7 до 15 цифр; можно использовать +, пробелы, скобки и дефисы"></label>
+            <div class="phone-entry">
+              <label>Код страны<span class="phone-country-wrap"><select name="country" class="phone-country-select" required><option value="RU">Россия +7</option></select><span class="phone-country-code" aria-hidden="true">+7</span></span></label>
+              <label>Телефон<input name="phone" type="tel" autocomplete="tel-national" inputmode="tel" placeholder="Номер" required maxlength="30" title="Введите номер выбранной страны; международный формат с + тоже допустим"></label>
+            </div>
           </div>
           <input type="hidden" name="service" value="Стратегический аудит">
           <div class="form-consents">
@@ -167,7 +171,10 @@
     <div class="form-row">
       <label>Имя<input name="name" autocomplete="name" placeholder="Как к вам обращаться" required maxlength="80"></label>
       <label>Электронная почта<input name="email" type="email" autocomplete="email" placeholder="name@example.ru" required maxlength="120"></label>
-      <label>Телефон<input name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+7 999 000-00-00" required minlength="7" maxlength="30" title="Введите международный номер: от 7 до 15 цифр; можно использовать +, пробелы, скобки и дефисы"></label>
+      <div class="phone-entry">
+        <label>Код страны<span class="phone-country-wrap"><select name="country" class="phone-country-select" required><option value="RU">Россия +7</option></select><span class="phone-country-code" aria-hidden="true">+7</span></span></label>
+        <label>Телефон<input name="phone" type="tel" autocomplete="tel-national" inputmode="tel" placeholder="Номер" required maxlength="30" title="Введите номер выбранной страны; международный формат с + тоже допустим"></label>
+      </div>
     </div>
     <input type="hidden" name="service" value="">
     <div class="form-consents">
