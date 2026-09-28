@@ -12,3 +12,4 @@ coverage/
 .vercel/
 sites/*/dist/
 public/p/
+public/st-kids/

@@ -1,0 +1,257 @@
+/* The original copy and imagery are unchanged; related ideas now share a frame. */
+.route-home [data-source-record="rec622025102"]{margin-top:24px}
+@media(max-width:760px){.route-home [data-source-record="rec622025102"]{margin-top:28px}}
+
+/* The collage itself is original. Internal-page hero photos do not need an extra arch. */
+.source-page-hero .inner-hero-art::before{content:none}
+.source-page-hero .inner-hero-art{background:none;border:0;border-radius:0}
+.source-page-hero .inner-hero-art img{border-radius:0}
+
+/* One media radius on every route, including galleries inside long methodology blocks. */
+.source-gallery-track figure,.source-gallery-track img,.source-video{border-radius:20px!important}
+.source-gallery-track figure{overflow:hidden}
+
+/* Names, roles, and the original four portraits remain inseparable at any width. */
+.source-team{padding-block:22px 76px;border-top:0}
+.team-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.team-card{display:flex;flex-direction:column;min-width:0;padding:20px;background:#fffaf3;border:1px solid #d6ddd1;border-radius:20px}
+.team-card img{width:100%;aspect-ratio:1;object-fit:contain;border-radius:16px;background:#ecf2ed}
+.team-card figcaption{padding:18px 2px 2px}
+.team-card h3{margin:0 0 9px;color:#24553f;font:650 clamp(17px,1.5vw,22px)/1.25 Manrope,Arial,sans-serif;letter-spacing:-.02em}
+.team-card p{margin:0;color:#24553f;font-size:15px;line-height:1.55}
+.source-team .source-actions{margin-top:26px}
+
+/* The clinic's three protocols are three source statements, not a run-on paragraph. */
+.source-protocols{padding-block:62px}
+.source-protocols h2,.source-trust h2,.source-question h2,.source-price-section h2{color:#e36844}
+.protocol-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.protocol-grid article{display:flex;align-items:flex-start;padding:25px;background:#fffaf3;border:1px solid #d6ddd1;border-radius:18px}
+.protocol-grid p{margin:0;color:#24553f;font-size:16px;line-height:1.6}
+.source-protocols .source-gallery{max-width:760px;margin-top:30px}
+.source-protocols .source-gallery-track img{height:320px;object-fit:contain}
+
+/* The original principle and three questions lead directly into the specialist cards. */
+.source-trust{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.8fr);gap:34px 50px;align-items:start;padding-block:64px 34px}
+.source-trust h2{margin:0 0 20px;font-size:clamp(32px,3.2vw,48px);line-height:1.14}
+.trust-intro p{max-width:62ch;margin:0 0 16px;color:#24553f;font-size:16px;line-height:1.65}
+.trust-questions{display:grid;gap:10px;align-self:center;margin:0;padding:0;list-style:none;counter-reset:trust}
+.trust-questions li{counter-increment:trust;display:flex;gap:16px;align-items:center;padding:17px 20px;background:#fffaf3;border:1px solid #d6ddd1;border-radius:16px;color:#24553f;font-size:16px;font-weight:650;line-height:1.4}
+.trust-questions li::before{content:'0' counter(trust);color:#b54526;font-size:13px;font-weight:750}
+.source-trust .source-gallery{grid-column:1/-1;max-width:760px}
+.source-trust .source-gallery-track img{height:300px}
+
+/* Pair each profitable-page question with the answer that used to sit in another section. */
+.source-question{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:40px;align-items:start;padding:34px 36px;margin-block:15px;background:#fffaf3;border:1px solid #d6ddd1;border-radius:20px}
+.source-question h2{margin:0;font-size:clamp(28px,2.7vw,40px);line-height:1.15}
+.source-question .question-answer p{margin:0 0 13px;color:#24553f;font-size:16px;line-height:1.6}
+.source-question .question-answer h3{margin:0 0 12px;color:#24553f}
+.source-question .question-answer .source-copy-groups{gap:20px}
+.source-question .question-answer .source-copy-groups>div{padding:0;border:0}
+.source-question:first-of-type{border-color:#e36844}
+.source-question#rec624843327{border-color:#e36844}
+.source-question#rec624843327>div:first-child{padding:24px;background:#24553f;border-radius:16px}
+.source-question#rec624843327 h2{color:#fffaf3}
+
+/* The comparison is explicit: city average on the left, clinic offer on the right. */
+.source-price-section{padding-block:60px}
+.source-price-section h2{max-width:1100px;margin:0 0 28px;font:650 clamp(28px,2.3vw,36px)/1.18 Manrope,Arial,sans-serif;letter-spacing:-.025em}
+.source-price-section .comparison-prices{margin:0;gap:18px}
+.source-price-section .comparison-prices>div{min-height:210px;padding:27px 30px;border-radius:20px}
+.source-price-section .comparison-prices .market-price{background:#fffaf3;border:1px solid #d6ddd1}
+.source-price-section .comparison-prices .clinic-price{background:#24553f;border:1px solid #24553f}
+.source-price-section .comparison-prices h3{max-width:32ch;margin:0 0 15px;color:#24553f;font:650 19px/1.35 Manrope,Arial,sans-serif}
+.source-price-section .comparison-prices p{font-size:15px}
+.source-price-section .comparison-prices strong{font-size:clamp(30px,3vw,44px)}
+.source-price-section .clinic-price h3,.source-price-section .clinic-price strong{color:#fffaf3}
+.source-price-section .clinic-price span{color:#ffc7aa}
+.source-price-section .comparison-notes{margin-top:28px}
+.source-price-section .comparison-note{padding:22px 24px;background:#fffaf3;border:1px solid #d6ddd1;border-radius:18px}
+.source-price-section .comparison-note h3{color:#24553f}
+.source-price-section .source-gallery{max-width:680px;margin-top:28px}
+
+/* A clear diagnostic CTA, with the primary-visit price in a normal typographic label. */
+.source-service-callout{display:flex;justify-content:space-between;gap:32px;align-items:center;padding:36px 42px;margin-block:30px;background:#24553f;border-radius:22px}
+.source-service-callout h2{margin:0 0 18px;color:#fffaf3;font-size:clamp(30px,3vw,44px)}
+.source-service-callout p{margin:0 0 9px;color:#fffaf3;font-size:15px}
+.source-service-callout strong{color:#fffaf3;font:650 clamp(28px,3vw,44px)/1.1 Manrope,Arial,sans-serif}
+.source-service-callout .source-actions{margin:0;flex:none}
+
+/* Plain top rules become readable groups; source wording is left intact. */
+.route-technique .source-section:not(.has-media) .source-copy-groups.multiple,
+.route-services .source-section:not(.has-media) .source-copy-groups.multiple,
+.route-about-clinic .source-section:not(.has-media) .source-copy-groups.multiple{gap:14px}
+.route-technique .source-section:not(.has-media):not(:has(.source-copy-groups.multiple)),
+.route-services .source-section:not(.has-media):not(:has(.source-copy-groups.multiple)),
+.route-about-clinic .source-section:not(.has-media):not(:has(.source-copy-groups.multiple)){
+ padding:32px 36px;margin-block:18px;border:1px solid #d6ddd1;border-radius:20px;background:#fffaf3
+}
+.route-technique .source-section:not(.has-media) .source-copy-groups.multiple>div,
+.route-services .source-section:not(.has-media) .source-copy-groups.multiple>div,
+.route-about-clinic .source-section:not(.has-media) .source-copy-groups.multiple>div{padding:23px 25px;border:1px solid #d6ddd1;border-radius:18px;background:#fffaf3}
+.route-technique [data-source-record="rec624075708"]{align-items:start;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:32px;padding-block:45px}
+.route-technique [data-source-record="rec624075708"] .source-gallery-track img{height:370px;object-fit:cover}
+.route-technique [data-source-record="rec624075708"] .source-copy-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.route-technique [data-source-record="rec624075708"] .source-copy-groups>div{padding:15px 17px;background:#fffaf3;border:1px solid #d6ddd1;border-radius:16px}
+.route-technique [data-source-record="rec624075708"] .source-copy-groups h3{font-size:18px}
+.route-technique [data-source-record="rec624075708"] .source-copy-groups p{font-size:14px;line-height:1.45}
+
+/* Articles and client histories are two distinct reading surfaces, not ruled paragraphs. */
+.route-articles [data-source-record="rec626520317"],.route-articles [data-source-record="rec626524092"]{padding:36px 42px;margin-block:20px;border:1px solid #d6ddd1;border-radius:20px;background:#fffaf3}
+.route-articles [data-source-record="rec626520317"] .source-copy-groups>div,
+.route-articles [data-source-record="rec626524092"] .source-copy-groups>div{border:0;padding:0}
+.route-articles [data-source-record="rec626520317"] h2,
+.route-articles [data-source-record="rec626524092"] h2{color:#e36844}
+.route-articles [data-source-record="rec626520317"] .source-copy-groups p:nth-child(2),
+.route-articles [data-source-record="rec626520317"] .source-copy-groups p:nth-child(3),
+.route-articles [data-source-record="rec626520317"] .source-copy-groups p:nth-child(4){position:relative;margin:0;padding:11px 0 11px 19px;border-bottom:1px solid #d6ddd1}
+.route-articles [data-source-record="rec626520317"] .source-copy-groups p:nth-child(2)::before,
+.route-articles [data-source-record="rec626520317"] .source-copy-groups p:nth-child(3)::before,
+.route-articles [data-source-record="rec626520317"] .source-copy-groups p:nth-child(4)::before{content:'';position:absolute;left:0;top:22px;width:7px;height:7px;border-radius:50%;background:#e36844}
+
+@media(max-width:900px){
+ .team-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .protocol-grid{grid-template-columns:1fr}
+ .source-trust,.source-question{grid-template-columns:1fr}
+ .route-technique [data-source-record="rec624075708"] .source-copy-groups{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+ .route-home [data-source-record="rec622025102"]{margin-top:32px}
+ .source-team{padding-block:12px 50px}
+ .team-cards{grid-template-columns:1fr;gap:12px}
+ .team-card{display:grid;grid-template-columns:96px 1fr;gap:15px;align-items:center;padding:12px;border-radius:16px}
+ .team-card img{width:96px;border-radius:12px}
+ .team-card figcaption{padding:0}
+ .team-card h3{font-size:16px}
+ .team-card p{font-size:13px}
+ .source-protocols,.source-trust,.source-price-section{padding-block:44px}
+ .source-trust{gap:18px}
+ .source-question{gap:18px;padding:24px 20px}
+ .source-question#rec624843327>div:first-child{padding:20px}
+ .source-question h2,.source-trust h2,.source-price-section h2{font-size:clamp(24px,6.2vw,29px)}
+ .source-price-section .comparison-prices{grid-template-columns:1fr}
+ .source-price-section .comparison-prices>div{min-height:160px;padding:22px}
+ .source-price-section .comparison-note{padding:20px}
+ .source-service-callout{flex-direction:column;align-items:stretch;gap:14px;padding:0;background:transparent}
+ .source-service-callout>div:first-child{padding:28px 20px;background:#24553f;border-radius:20px}
+ .source-service-callout .source-actions{width:100%}
+ .route-technique .source-section:not(.has-media):not(:has(.source-copy-groups.multiple)),
+ .route-services .source-section:not(.has-media):not(:has(.source-copy-groups.multiple)),
+ .route-about-clinic .source-section:not(.has-media):not(:has(.source-copy-groups.multiple)){padding:25px 20px}
+ .route-articles [data-source-record="rec626520317"],.route-articles [data-source-record="rec626524092"]{padding:25px 20px}
+ .route-technique [data-source-record="rec624075708"]{display:flex;flex-direction:column;padding-block:40px}
+ .route-technique [data-source-record="rec624075708"] .source-copy-groups p{font-size:15px;line-height:1.55}
+}
+
+/* Final information hierarchy: related ideas share one visual surface. */
+.route-about-clinic [data-source-record="rec625193524"] .source-copy-groups.multiple>div,
+.route-about-clinic .source-section:not(.has-media) .source-copy-groups.multiple>div,
+.route-technique .source-section:not(.has-media) .source-copy-groups.multiple>div,
+.route-services .source-section:not(.has-media) .source-copy-groups.multiple>div{border:2px solid #e36844;background:#fffdf9}
+.source-team{padding-top:12px}
+.team-cards{gap:18px}
+.team-card{padding:0;overflow:hidden;border:1px solid #e36844;background:#fffdf9;box-shadow:0 8px 26px rgba(36,85,63,.06)}
+.team-card img{display:block;width:100%;aspect-ratio:4/4.5;object-fit:cover;border-radius:0;background:#f1ece3}
+.team-card figcaption{padding:20px 20px 24px}
+.team-card h3{color:#d45d38}
+.team-card p{font-size:14px;line-height:1.5}
+.source-trust{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:38px;align-items:center;margin-block:25px;padding:42px;background:#f6efe4;border:1px solid #e36844;border-radius:26px}
+.trust-content{min-width:0}
+.trust-intro h2{margin-bottom:18px}
+.trust-intro p:last-child{margin-bottom:0}
+.source-trust .trust-questions{display:block;margin:24px 0 0;padding:4px 20px;background:#fffdf9;border:1px solid #e36844;border-radius:18px}
+.source-trust .trust-questions li{padding:16px 0;background:transparent;border:0;border-radius:0;font-weight:600}
+.source-trust .trust-questions li+li{border-top:1px solid #e8d3c3}
+.source-trust .source-gallery{grid-column:2;grid-row:1;max-width:none;min-width:0;margin:0}
+.source-trust .source-gallery-track{display:flex;justify-content:flex-start}
+.source-trust .source-gallery-track figure{flex:0 0 100%}
+.source-trust .source-gallery-track img{width:100%;height:480px;object-fit:cover}
+.source-protocols{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:20px 34px;align-items:start}
+.source-protocols h2{grid-column:1/-1;max-width:20ch}
+.protocol-grid{display:grid;grid-template-columns:1fr;gap:12px}
+.protocol-grid article{position:relative;min-height:0;padding:19px 22px 19px 38px;border:2px solid #e36844;background:#fffdf9}
+.protocol-grid article::before{content:'';position:absolute;left:18px;top:28px;width:7px;height:7px;border-radius:50%;background:#e36844}
+.protocol-grid p{font-size:16px;line-height:1.55}
+.source-protocols .source-gallery{width:100%;max-width:none;margin:0}
+.source-protocols .source-gallery-track img{height:420px;object-fit:cover}
+.source-orthodontist{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:40px;align-items:center;padding-block:58px}
+.source-orthodontist h2{margin:0 0 25px;color:#e36844;font-size:clamp(29px,3vw,45px);line-height:1.15}
+.orthodontist-points{max-width:66ch;display:grid;gap:0}
+.orthodontist-points p{margin:0;padding:15px 0;border-top:1px solid #e36844;color:#24553f;font-size:17px;line-height:1.65}
+.source-orthodontist .source-gallery-track img{height:540px;object-fit:cover}
+.source-examination{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:38px;align-items:start;padding-block:60px}
+.examination-list{min-width:0}
+.examination-step{display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;min-width:0;padding:22px 0;border-top:1px solid #e36844}
+.examination-number{color:#d45d38;font:700 14px/1.5 Manrope,Arial,sans-serif}
+.examination-step h2{margin:0 0 10px;color:#d45d38;font:400 clamp(21px,2vw,27px)/1.22 TenorEste,Georgia,serif}
+.examination-step p{max-width:72ch;margin:0;color:#24553f;font-size:16px;line-height:1.65}
+.source-examination .source-gallery{position:sticky;top:100px;max-width:none}
+.source-examination .source-gallery-track img{height:560px;object-fit:cover}
+.route-technique [data-source-record="rec627012913"] .source-copy-groups>div,
+.route-profitable [data-source-record="rec627014657"] .source-copy-groups>div,
+.route-about-clinic [data-source-record="rec627003393"] .source-copy-groups>div{max-width:70ch}
+.route-technique [data-source-record="rec627012913"] .source-copy-groups p,
+.route-profitable [data-source-record="rec627014657"] .source-copy-groups p,
+.route-about-clinic [data-source-record="rec627003393"] .source-copy-groups p{padding:16px 0;margin:0;border-top:1px solid #e36844;line-height:1.7}
+.source-question#rec624843327 .question-answer .source-copy-groups>div:last-child{padding:22px!important;background:#fff3e9;border:2px solid #e36844;border-radius:18px}
+.source-question#rec624843327 .question-answer .source-copy-groups>div:last-child h3{color:#d45d38}
+.source-question#rec624843327 .question-answer .source-copy-groups>div:last-child p:first-of-type{font-weight:700;font-size:18px;line-height:1.4}
+.source-question#rec624843327 .question-answer .source-copy-groups>div:last-child p+p{padding-top:14px;border-top:1px solid #e8b49b}
+.source-question#rec625268857 .question-answer p{padding:12px 0;margin:0;border-top:1px solid #e36844}
+.source-price-section h2{font:400 clamp(30px,3vw,45px)/1.15 TenorEste,Georgia,serif;letter-spacing:0;color:#e36844}
+.comparison-layout{display:grid;grid-template-columns:minmax(250px,.72fr) minmax(0,1.28fr);gap:24px;align-items:stretch}
+.comparison-layout .market-price{padding:27px 30px;border:1px solid #d6ddd1;border-radius:20px;background:#fffaf3}
+.comparison-layout .market-price h3,.comparison-layout .clinic-price h3{margin:0 0 16px;color:#24553f;font:650 19px/1.35 Manrope,Arial,sans-serif}
+.comparison-layout .market-price p{color:#24553f;font-size:15px;line-height:1.55}
+.comparison-layout .market-price strong,.comparison-layout .clinic-price strong{display:block;margin-top:18px;font:650 clamp(30px,3vw,44px)/1.1 Manrope,Arial,sans-serif}
+.comparison-layout .market-price strong{color:#24553f}
+.comparison-layout .market-price,.comparison-layout .clinic-offer{min-width:0}
+.comparison-layout .market-price p{overflow-wrap:anywhere}
+.comparison-layout .clinic-offer{overflow:hidden;border:2px solid #e36844;border-radius:22px;background:#fffdf9}
+.comparison-layout .clinic-price{position:relative;padding:27px 30px;background:#24553f}
+.comparison-layout .clinic-price h3,.comparison-layout .clinic-price strong{color:#fffdf9}
+.comparison-layout .clinic-price span{display:inline-block;margin-top:12px;color:#ffd6c0;font-weight:700}
+.comparison-layout .comparison-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin:0}
+.comparison-layout .comparison-note{padding:24px 28px;border:0;border-radius:0;background:#fffdf9}
+.comparison-layout .comparison-note+article{border-left:1px solid #efd8c8}
+.comparison-layout .comparison-note h3{margin:0 0 8px;color:#d45d38;font-size:17px}
+.comparison-layout .comparison-note p{margin:0;color:#24553f;font-size:15px;line-height:1.6}
+.route-articles [data-source-record="rec626524092"]{border:2px solid #e36844;background:#fffdf9}
+.route-articles [data-source-record="rec626524092"] .source-copy-groups p{max-width:66ch;line-height:1.7}
+/* Keep the previously approved 17-year fact card on the About page unchanged. */
+.route-about-clinic [data-source-record="rec627003393"] .experience-callout{max-width:600px;margin-top:22px;padding:17px 22px;border:1px solid #24553f;border-radius:18px;background:#f6f0e7}
+.route-about-clinic [data-source-record="rec627003393"] .experience-callout p,
+.route-about-clinic [data-source-record="rec627003393"] .experience-callout strong{display:inline;color:#24553f;font:400 16px/1.6 Manrope,Arial,sans-serif}
+@media(max-width:900px){
+ .source-protocols,.source-orthodontist,.source-examination{grid-template-columns:1fr}
+ .source-protocols h2{grid-column:auto}
+ .source-examination .source-gallery{position:static}
+ .comparison-layout{grid-template-columns:1fr}
+ .source-trust{display:block}
+ .source-trust .source-gallery{margin-top:24px}
+}
+@media(max-width:760px){
+ .team-card{display:grid;grid-template-columns:112px minmax(0,1fr);gap:0;padding:0}
+ .team-card img{width:112px;height:100%;min-height:136px;aspect-ratio:auto;object-fit:cover}
+ .team-card figcaption{padding:15px 16px}
+ .team-card h3{font-size:15px}
+ .team-card p{font-size:12px;line-height:1.45}
+ .source-trust{display:block;padding:24px 20px;border-radius:20px}
+ .source-trust .trust-questions{margin-top:20px}
+ .source-trust .source-gallery{margin-top:24px}
+ .source-trust .source-gallery-track{justify-content:flex-start}
+ .source-trust .source-gallery-track figure{flex:0 0 100%}
+ .source-trust .source-gallery-track img{height:280px}
+ .source-protocols{gap:20px}
+ .source-protocols .source-gallery-track img{height:300px}
+ .source-orthodontist{gap:24px;padding-block:38px}
+ .source-orthodontist .source-gallery-track img{height:330px}
+ .orthodontist-points p{font-size:16px}
+ .source-examination{gap:22px;padding-block:38px}
+ .examination-step{grid-template-columns:28px minmax(0,1fr);gap:10px;padding:18px 0}
+ .examination-step h2{font-size:21px;overflow-wrap:anywhere}
+ .examination-step p{font-size:15px;line-height:1.6}
+ .source-examination .source-gallery-track img{height:330px}
+ .comparison-layout .comparison-notes{grid-template-columns:1fr}
+ .comparison-layout .comparison-note+article{border-left:0;border-top:1px solid #efd8c8}
+ .source-price-section h2{font:500 clamp(23px,6vw,28px)/1.2 Manrope,Arial,sans-serif;overflow-wrap:anywhere}
+}

@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import seo from '../sites/ilmira/seo-config.json';
 
 export default function robots(): MetadataRoute.Robots {
-  const routeRule = { disallow: '/p/', allow: ['/p/ilmira$', '/p/ilmira/', '/p/ilmira?'] };
+  const routeRule = { disallow: ['/p/', '/st-kids/'], allow: ['/p/ilmira$', '/p/ilmira/', '/p/ilmira?'] };
   return {
     rules: [
       { userAgent: '*', ...routeRule },

@@ -1,0 +1,147 @@
+/* Shared reading hierarchy: brand orange for headings, deep green for explanation. */
+.source-section h2,.source-page-hero h1{color:#e36844}
+.source-section h3,.source-section p,.source-page-hero p{color:#24553f}
+.source-copy-groups{gap:18px}
+.source-copy-groups p{max-width:65ch}
+.source-copy-groups p strong{color:inherit;font-weight:750}
+.route-home [data-source-record="rec622022822"] .source-copy-groups p strong{color:inherit}
+
+/* The same four problems keep a complete frame on inner pages too. */
+.route-about-clinic [data-source-record="rec625193524"] .source-copy-groups.multiple,
+.route-doctor [data-source-record="rec625231581"] .source-copy-groups.multiple{gap:14px}
+.route-about-clinic [data-source-record="rec625193524"] .source-copy-groups.multiple>div,
+.route-doctor [data-source-record="rec625231581"] .source-copy-groups.multiple>div{padding:23px 25px;border:2px solid #e36844;border-radius:20px;background:#fffaf3;min-height:172px}
+.route-about-clinic [data-source-record="rec625193524"] .source-copy-groups h3,
+.route-doctor [data-source-record="rec625231581"] .source-copy-groups h3{margin:0 0 10px;color:#24553f;font-size:clamp(22px,2vw,27px)}
+.route-about-clinic [data-source-record="rec625193524"] .source-copy-groups p,
+.route-doctor [data-source-record="rec625231581"] .source-copy-groups p{margin:0;line-height:1.55}
+
+/* Lists supplied by the clinic stay verbatim; only their visual grouping changes. */
+.route-about-clinic [data-source-record="rec622036080"] .source-copy-groups>div,
+.route-about-clinic [data-source-record="rec622049173"] .source-copy-groups>div,
+.route-about-clinic [data-source-record="rec622054959"] .source-copy-groups>div,
+.route-profitable [data-source-record="rec624841252"] .source-copy-groups>div,
+.route-profitable [data-source-record="rec624843982"] .source-copy-groups>div{padding:22px 25px;border:1px solid #a9baa9;border-radius:18px;background:#fffaf3}
+.route-about-clinic [data-source-record="rec622036080"] .source-copy-groups p,
+.route-about-clinic [data-source-record="rec622049173"] .source-copy-groups p,
+.route-about-clinic [data-source-record="rec622054959"] .source-copy-groups p,
+.route-profitable [data-source-record="rec624841252"] .source-copy-groups p,
+.route-profitable [data-source-record="rec624843982"] .source-copy-groups p{position:relative;margin:0;padding:11px 0 11px 19px;border-bottom:1px solid #d5dfd2;font-size:16px;line-height:1.55}
+.route-about-clinic [data-source-record="rec622036080"] .source-copy-groups p::before,
+.route-about-clinic [data-source-record="rec622049173"] .source-copy-groups p::before,
+.route-about-clinic [data-source-record="rec622054959"] .source-copy-groups p::before,
+.route-profitable [data-source-record="rec624841252"] .source-copy-groups p::before,
+.route-profitable [data-source-record="rec624843982"] .source-copy-groups p::before{content:"";position:absolute;left:0;top:21px;width:7px;height:7px;border-radius:50%;background:#e36844}
+.route-about-clinic [data-source-record="rec622036080"] .source-copy-groups p:last-child,
+.route-about-clinic [data-source-record="rec622049173"] .source-copy-groups p:last-child,
+.route-about-clinic [data-source-record="rec622054959"] .source-copy-groups p:last-child,
+.route-profitable [data-source-record="rec624841252"] .source-copy-groups p:last-child,
+.route-profitable [data-source-record="rec624843982"] .source-copy-groups p:last-child{border-bottom:0}
+
+/* An original proof, not a full-screen numeral. */
+.source-section .experience-callout{display:inline-block;max-width:600px;margin-top:22px;padding:17px 22px;border:1px solid #e36844;border-radius:18px;background:#fffaf3}
+.source-section .experience-callout p,.source-section .experience-callout strong{display:inline;color:#24553f;font:650 16px/1.6 Manrope,Arial,sans-serif}
+.route-home [data-source-record="rec626995065"] .experience-callout{background:rgba(255,250,243,.09);border-color:rgba(255,250,243,.43)}
+.route-home [data-source-record="rec626995065"] .experience-callout p,
+.route-home [data-source-record="rec626995065"] .experience-callout strong{color:#fffaf3}
+
+/* The five original photo destinations need an introduction after the concerns. */
+.route-home .source-directory .directory-heading{grid-column:1/-1;margin:0 0 4px;color:#e36844;font:400 clamp(28px,3vw,42px)/1.15 TenorEste,Georgia,serif}
+
+/* Both previous/next and a compact pause control remain available. */
+.gallery-controls .gallery-pause{width:44px;min-width:44px;height:44px;padding:0;border-radius:50%;font-size:17px}
+
+/* A direct like-for-like price comparison, with the explanation below it. */
+.route-profitable [data-source-record="rec624845903"]{align-items:start}
+.route-profitable [data-source-record="rec624845903"] .source-copy{grid-column:1/-1}
+.route-profitable [data-source-record="rec624845903"] .source-gallery{grid-column:1/-1;max-width:850px}
+.comparison-prices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:22px}
+.comparison-prices>div{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-height:190px;padding:25px 28px;border:1.5px solid #24553f;border-radius:20px;background:#fffaf3}
+.comparison-prices>div:last-child{border-color:#e36844}
+.comparison-prices p{margin:0;max-width:34ch;color:#24553f;font-size:17px;line-height:1.45}
+.comparison-prices strong{display:block;margin-top:18px;color:#24553f;font:650 clamp(28px,3vw,42px)/1.1 Manrope,Arial,sans-serif;font-variant-numeric:tabular-nums}
+.comparison-prices span{position:absolute;right:26px;bottom:28px;color:#b54526;font:700 clamp(20px,2vw,28px)/1 Manrope,Arial,sans-serif}
+.comparison-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px;margin-top:26px}
+.comparison-note{padding:24px 0;border-top:2px solid #e36844}
+.comparison-note h3{margin:0 0 14px;color:#24553f;font-size:clamp(22px,2vw,29px)}
+.comparison-note p{position:relative;margin:0;padding:8px 0 8px 19px;line-height:1.55}
+.comparison-note p::before{content:"";position:absolute;left:0;top:18px;width:7px;height:7px;border-radius:50%;background:#e36844}
+
+@media(max-width:1100px){
+ .header-top .brand{margin-right:auto}
+ .header-top .header-phone{display:none}
+ .header-top .mobile-phone{margin-left:auto}
+ .header-top .menu-button{margin-left:0}
+}
+@media(max-width:760px){
+ :root{--cta-width:calc(100vw - 36px);--cta-height:58px}
+ .route-home .original-hero h1{font-size:clamp(97px,31vw,143px);letter-spacing:-.06em}
+ .route-home .original-hero .hero-actions,
+ .source-actions{width:100%;flex-direction:column;align-items:stretch!important}
+ .route-home .original-hero .hero-actions .button,
+ .button,.button-small,.button-light,.form .button,.hero-actions .button,.source-section .button,.source-page-hero .button{width:100%!important;max-width:none;flex:0 0 auto!important;height:var(--cta-height);min-height:var(--cta-height);justify-content:space-between}
+ .source-page-hero .button{margin-inline:0}
+ .route-home .source-directory .directory-heading{font-size:30px;margin-bottom:3px}
+ .route-home .directory-entry,.route-home .directory-entry:nth-child(n){grid-template-columns:minmax(0,1fr) 30%}
+ .route-home .directory-entry>div:first-child{min-width:0}
+ .route-home .directory-entry h2,.route-home .directory-entry:nth-child(n) h2{font-size:clamp(18px,5.4vw,23px);overflow-wrap:anywhere}
+ .route-home [data-source-record="rec626995065"] h2,
+ .route-about-clinic [data-source-record="rec627003393"] h2,
+ .route-technique [data-source-record="rec627012913"] h2,
+ .route-profitable [data-source-record="rec627014657"] h2{font-size:clamp(27px,7.1vw,33px);line-height:1.18;overflow-wrap:normal;hyphens:none}
+ .route-about-clinic [data-source-record="rec625193524"] .source-copy-groups.multiple>div,
+ .route-doctor [data-source-record="rec625231581"] .source-copy-groups.multiple>div{min-height:0;padding:19px 20px}
+ .route-about-clinic [data-source-record="rec622036080"] .source-copy-groups>div,
+ .route-about-clinic [data-source-record="rec622049173"] .source-copy-groups>div,
+ .route-about-clinic [data-source-record="rec622054959"] .source-copy-groups>div,
+ .route-profitable [data-source-record="rec624841252"] .source-copy-groups>div,
+ .route-profitable [data-source-record="rec624843982"] .source-copy-groups>div{padding:18px 19px}
+ .source-section p,.source-copy-groups p{font-size:15px;line-height:1.62}
+ .route-home [data-source-record="rec622022822"] .source-copy-groups p{font-weight:400;color:#fffaf3}
+ .comparison-prices,.comparison-notes{grid-template-columns:1fr;gap:12px}
+ .comparison-prices>div{min-height:140px;padding:19px 21px}
+ .comparison-prices span{right:20px;bottom:21px}
+ .comparison-note{padding:19px 0}
+}
+@media(prefers-reduced-motion:reduce){.source-gallery-track{scroll-behavior:auto}}
+
+/* The medical explanation remains complete and readable: orange headings, green prose. */
+.route-home [data-source-record="rec622022822"],
+.route-home [data-source-record="rec626995065"]{background:#fffaf3!important;border:1px solid #e36844}
+.route-home [data-source-record="rec622022822"] h2,
+.route-home [data-source-record="rec626995065"] h2{color:#c44f2e}
+.route-home [data-source-record="rec622022822"] h3,
+.route-home [data-source-record="rec626995065"] h3,
+.route-home [data-source-record="rec622022822"] p,
+.route-home [data-source-record="rec626995065"] p,
+.route-home [data-source-record="rec622022822"] .source-copy-groups p,
+.route-home [data-source-record="rec626995065"] .source-copy-groups p,
+.route-home [data-source-record="rec622022822"] .source-copy-groups p strong,
+.route-home [data-source-record="rec626995065"] .source-copy-groups p strong{color:#24553f}
+.route-home [data-source-record="rec626995065"] .source-copy-groups p:last-child{color:#24553f}
+.route-home [data-source-record="rec626995065"] .experience-callout{background:#f6f0e7;border-color:#24553f}
+.route-home [data-source-record="rec626995065"] .experience-callout p,
+.route-home [data-source-record="rec626995065"] .experience-callout strong{color:#24553f}
+.route-home [data-source-record="rec626995065"] .source-copy-groups.multiple>div{border-color:#e36844}
+.route-home [data-source-record="rec626995065"] .gallery-controls>span{color:#24553f}
+.route-home [data-source-record="rec626995065"] .gallery-controls button{border-color:#24553f;color:#24553f}
+.route-home [data-source-record="rec622022822"] .gallery-controls>span{color:#24553f}
+.route-home [data-source-record="rec622022822"] .gallery-controls button{border-color:#24553f;color:#24553f}
+.route-home [data-source-record="rec622015033"]{border-top:0}
+
+/* Mobile: quieter headlines, no intraword breaks in long Russian terms. */
+@media(max-width:760px){
+ .source-section h2,.source-section.has-media h2,.source-page-hero h1,
+ .route-home .source-section h2,.route-home .source-section.has-media h2{
+  font-family:Manrope,Arial,sans-serif;font-size:clamp(24px,6.2vw,29px);font-weight:650;
+  line-height:1.23;letter-spacing:-.025em;overflow-wrap:normal;word-break:normal;hyphens:none;
+  text-wrap:pretty;
+ }
+ .route-home .source-directory .directory-heading{font-family:TenorEste,Georgia,serif;font-weight:400}
+ .route-home .directory-entry h2,.route-home .directory-entry:nth-child(n) h2{overflow-wrap:normal;word-break:normal;hyphens:none}
+ .route-home [data-source-record="rec622022822"] .source-copy-groups p{color:#24553f}
+}
+@media(max-width:360px){
+ .source-section h2,.source-section.has-media h2,.source-page-hero h1,
+ .route-home .source-section h2,.route-home .source-section.has-media h2{font-size:23px}
+}
