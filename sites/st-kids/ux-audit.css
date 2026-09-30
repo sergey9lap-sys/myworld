@@ -1,5 +1,5 @@
 /* Local patient-language proposal based on ESTE_UX_Audit_FINAL.docx. */
-.route-home .original-hero.audit-hero{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);gap:clamp(22px,3.5vw,56px);align-items:center;min-height:0;padding-block:48px 58px;border-bottom:0;overflow:visible}
+.route-home .original-hero.audit-hero{display:grid;grid-template-columns:minmax(0,1.14fr) minmax(0,.86fr);gap:clamp(22px,3.5vw,56px);align-items:center;min-height:0;padding-block:48px 58px;border-bottom:0;overflow:visible}
 .route-home .audit-hero .hero-content{display:block;min-width:0;padding:0}
 .route-home .audit-hero .hero-mark{margin:8px 0 3px;color:#e36844;font:400 clamp(72px,8.2vw,120px)/.94 TenorEste,Georgia,serif;letter-spacing:-.055em;white-space:nowrap}
 .route-home .audit-hero .original-specialties{max-width:570px;min-height:44px;margin:0 0 25px!important}

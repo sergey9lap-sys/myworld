@@ -1,0 +1,328 @@
+/* Source-derived clover, bird, heart and treatment imagery. */
+.motif{display:block;flex:none;width:56px;height:56px;background:#24553f;-webkit-mask:center/contain no-repeat;mask:center/contain no-repeat}
+.motif-clover{-webkit-mask-image:url('/public/assets/source/clover-mask.svg');mask-image:url('/public/assets/source/clover-mask.svg')}
+.motif-bird{-webkit-mask-image:url('/public/assets/source/bird-mask.svg');mask-image:url('/public/assets/source/bird-mask.svg')}
+.motif-heart{-webkit-mask-image:url('/public/assets/source/heart-mask.svg');mask-image:url('/public/assets/source/heart-mask.svg')}
+.clinic-service-overview,.appliance-choice,.method-service-section,.gift-section,.profit-benefits{color:#24553f}
+.clinic-service-overview{padding-block:42px 58px}
+.clinic-service-heading{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:24px}
+.clinic-service-heading h2,.appliance-copy h2,.method-service-section>h2,.gift-copy h2{color:#e36844;margin:0;font:400 clamp(30px,3.1vw,43px)/1.14 TenorEste,Georgia,serif}
+.clinic-service-heading p{margin:0;max-width:33ch;font-size:16px;line-height:1.55}
+.clinic-service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.clinic-service-card{position:relative;min-height:340px;padding:28px 28px 78px;border-radius:26px;background:#ebf3d0;overflow:hidden}
+.clinic-service-card h3{margin:0 0 22px;color:#24553f;font:650 clamp(22px,2vw,30px)/1.22 Manrope,Arial,sans-serif}
+.clinic-service-card ul{margin:0;padding-left:20px;max-width:44ch;font-size:15px;line-height:1.55}
+.clinic-service-card li+li{margin-top:9px}
+.clinic-service-card .motif{position:absolute;right:24px;bottom:20px;width:49px;height:49px}
+.clinic-service-overview .source-actions{margin-top:22px}
+.appliance-choice{display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:clamp(30px,5vw,80px);padding:42px;min-height:540px;border-radius:28px;background:#ebf3d0}
+.appliance-choice>*{min-width:0}
+.appliance-copy p{font-size:16px;line-height:1.64;max-width:57ch}
+.appliance-copy h2{margin-bottom:25px;color:#24553f}
+.appliance-logos ul{position:relative;min-height:500px;max-width:550px;margin:0;padding:0;list-style:none}
+.appliance-logo{position:absolute;display:grid;place-items:center;width:clamp(108px,10vw,140px);aspect-ratio:1;padding:17px;border:1px solid #93b694;border-radius:50%;background:#f8faec}
+.appliance-logo:nth-child(1){left:1%;top:3%;width:126px}
+.appliance-logo:nth-child(2){left:27%;top:12%;width:164px}
+.appliance-logo:nth-child(3){left:76%;top:1%;width:125px}
+.appliance-logo:nth-child(4){left:2%;top:42%;width:157px}
+.appliance-logo:nth-child(5){left:42%;top:54%;width:126px}
+.appliance-logo:nth-child(6){left:77%;top:39%;width:121px}
+.appliance-logo:nth-child(7){left:15%;top:75%;width:138px}
+.appliance-logo img{display:block;width:100%;max-height:88px;object-fit:contain}
+.method-service-section{padding-block:55px}
+.method-service-section>h2{margin-bottom:24px}
+.method-service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.method-service-card{position:relative;display:flex;flex-direction:column;min-height:390px;padding:34px 38px;border-radius:28px;background:#faf4eb;overflow:hidden}
+.method-service-card h3{margin:0 0 22px;color:#e36844;font:650 clamp(23px,2.3vw,34px)/1.16 Manrope,Arial,sans-serif;max-width:25ch}
+.method-service-card p{margin:0 0 22px;color:#24553f;font-size:16px;line-height:1.55;max-width:51ch}
+.method-service-card .method-motif{width:180px;height:176px;margin-top:auto;-webkit-mask:center/contain no-repeat;mask:center/contain no-repeat}
+.method-service-card .method-motif.motif-heart{width:222px;height:212px;-webkit-mask-size:145% 145%;mask-size:145% 145%}
+.method-service-card .method-motif.motif-heart{-webkit-mask-image:url('/public/assets/source/heart-mask.svg');mask-image:url('/public/assets/source/heart-mask.svg')}
+.method-service-card .method-motif.motif-clover{-webkit-mask-image:url('/public/assets/source/clover-mask.svg');mask-image:url('/public/assets/source/clover-mask.svg')}
+.method-motif img{display:block;width:100%;height:100%;object-fit:cover}
+.method-service-card:nth-child(2n) .method-motif{align-self:center}
+.method-service-section .source-actions{margin-top:24px}
+.gift-section{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,70px);align-items:center;padding:clamp(26px,4vw,58px);margin-block:40px;border-radius:28px;background:#ebf3d0}
+.gift-photo{position:relative;min-width:0}
+.gift-photo>img{display:block;width:100%;height:auto;max-height:480px;object-fit:cover;border-radius:20px;transform:rotate(-3deg)}
+.gift-photo .motif{position:absolute;top:4px;left:-15px;width:82px;height:82px;background:#e36844;transform:rotate(-15deg)}
+.gift-copy p{font-size:17px;line-height:1.6;max-width:47ch}
+.gift-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:16px;margin-block:25px}
+.gift-price s{font:650 31px/1.1 Manrope,Arial,sans-serif}
+.gift-price strong{font:650 18px/1.4 Manrope,Arial,sans-serif}
+.gift-detail{display:inline-flex;gap:10px;align-items:center;margin-top:18px;color:#24553f;font-weight:650;text-underline-offset:4px}
+.gift-detail svg{width:21px;height:21px}
+.yandex-section{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:38px;align-items:start;padding-block:48px}
+.yandex-section h2{margin:0 0 18px;color:#e36844;font:400 clamp(30px,3vw,42px)/1.16 TenorEste,Georgia,serif}
+.yandex-section p{max-width:50ch;font-size:16px;line-height:1.6}
+.yandex-reviews{min-width:0}
+.yandex-review-cards{display:grid;gap:12px}
+.yandex-review{margin:0;padding:21px 24px;border:1px solid #24553f;border-radius:20px;background:#fffaf3}
+.yandex-review blockquote{margin:0;color:#24553f;font:500 17px/1.55 Manrope,Arial,sans-serif}
+.yandex-review figcaption{margin-top:14px;color:#24553f;font:650 13px/1.4 Manrope,Arial,sans-serif}
+.yandex-preview{display:flex;align-items:center;gap:14px;margin-top:16px;color:#24553f;font-size:14px;font-weight:650;text-underline-offset:3px;outline-offset:4px}
+.yandex-preview img{display:block;width:76px;height:76px;object-fit:cover;object-position:top;border-radius:20px}
+.exam-roles-section{padding-block:48px}
+.exam-roles-section h2{margin:0 0 14px;color:#e36844;font:400 clamp(30px,3vw,42px)/1.15 TenorEste,Georgia,serif}
+.exam-roles-section>div>p{max-width:65ch;color:#24553f;font-size:16px;line-height:1.6}
+.exam-roles-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-block:24px}
+.exam-roles-grid article{padding:24px;border:2px solid #e36844;border-radius:20px;background:#fffaf3}
+.exam-roles-grid h3{margin:0 0 10px;color:#24553f;font:650 21px/1.3 Manrope,Arial,sans-serif}
+.exam-roles-grid p{margin:0;color:#24553f;font-size:15px;line-height:1.58}
+.exam-roles-section .source-gallery{max-width:720px}
+.comparison-layout .market-price s{display:block;margin-top:18px;color:#24553f;font:650 clamp(30px,3vw,44px)/1.1 Manrope,Arial,sans-serif}
+.comparison-layout .market-price,.comparison-layout .clinic-price{min-height:210px}
+.profit-benefits{padding-block:15px 56px}
+.profit-benefits h2{margin:0 0 21px;color:#e36844;font:400 clamp(28px,2.7vw,39px)/1.17 TenorEste,Georgia,serif}
+.profit-benefits .comparison-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.profit-benefits .comparison-note{position:relative;min-height:260px;padding:28px 34px 74px;border-radius:24px;background:#ebf3d0}
+.profit-benefits .comparison-note h3{margin:0 0 14px;color:#24553f;font:650 23px/1.24 Manrope,Arial,sans-serif}
+.profit-benefits .comparison-note p{margin:0;color:#24553f;font-size:15px;line-height:1.6}
+.profit-benefits .comparison-note .motif{position:absolute;right:24px;bottom:20px;width:46px;height:46px}
+.route-home .clinic-film{width:100%;max-width:none;border-radius:20px;background:#f6f0e7;margin-block:0}
+.route-home .clinic-film .source-video{border-radius:20px!important}
+.route-home .source-directory .brand-photo,.route-home .source-directory .directory-entry:first-child .brand-photo{position:relative;width:min(100%,172px);max-width:172px;aspect-ratio:1;justify-self:center;overflow:visible;background-image:var(--photo);background-repeat:no-repeat;background-size:cover;-webkit-mask:url('/public/assets/source/clover-mask.svg') center/contain no-repeat;mask:url('/public/assets/source/clover-mask.svg') center/contain no-repeat}
+.route-home .source-directory .brand-photo.bird-photo{-webkit-mask-image:url('/public/assets/source/bird-mask.svg');mask-image:url('/public/assets/source/bird-mask.svg')}
+.route-home .source-directory .directory-photo-0{background-size:100% 150%;background-position:center 70%}
+.route-home .source-directory .directory-photo-2{background-size:100% 115%;background-position:center bottom}
+.route-home .source-directory .directory-photo-3{background-size:100% 135%;background-position:center bottom}
+.route-home .source-directory .directory-photo-4{background-size:130% 130%;background-position:center bottom}
+.yandex-section{grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:18px 38px}
+.yandex-review-cards{grid-column:2;grid-row:1 / span 2}
+.yandex-source{grid-column:1 / -1;margin:4px 0 0}
+.yandex-source figcaption{margin-bottom:10px;color:#24553f;font-size:14px;font-weight:650}
+.yandex-source-scroll{max-width:776px;overflow:auto;border:1px solid #b7c6b4;border-radius:18px;background:#fff;outline-offset:3px}
+.yandex-source-scroll img{display:block;width:776px;max-width:none;height:auto}
+.yandex-section .source-actions{grid-column:1 / -1;margin-top:2px}
+.specialist-review-intro{position:relative;padding-block:45px 18px}
+.specialist-review-intro h2{max-width:20ch;margin:0 0 10px;color:#e36844;font:400 clamp(30px,3vw,43px)/1.16 TenorEste,Georgia,serif}
+.specialist-review-intro p{max-width:56ch;margin:0;color:#24553f;font-size:17px;line-height:1.55}
+.specialist-review-intro .motif{position:absolute;right:20px;top:46px;width:46px;height:46px}
+.specialist-review-section{max-width:1000px;padding-block:14px 50px}
+.specialist-review-story{padding:clamp(24px,3vw,38px);border:1px solid #24553f;border-radius:26px;background:#fffaf3;color:#24553f}
+.specialist-review-story[hidden]{display:none}
+.specialist-review-meta{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 18px;color:#24553f;font-size:14px;font-weight:700}
+.specialist-review-story blockquote{margin:20px 0 0;font:500 clamp(17px,1.65vw,20px)/1.65 Manrope,Arial,sans-serif;white-space:pre-line}
+.specialist-review-response{margin-top:24px;padding-top:18px;border-top:1px solid #bfd1bf}
+.specialist-review-response strong{display:block;margin-bottom:9px;font-size:14px}
+.specialist-review-response p{margin:0;font-size:15px;line-height:1.65;white-space:pre-line}
+.specialist-review-controls{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:15px;color:#24553f;font-size:15px}
+.specialist-review-controls>div{display:flex;gap:9px}
+.specialist-review-controls button{display:grid;place-items:center;width:48px;height:48px;border:1px solid #24553f;border-radius:50%;background:#fffaf3;color:#24553f;cursor:pointer}
+.specialist-review-controls button:first-child svg{transform:rotate(180deg)}
+.specialist-review-controls button svg{width:21px;height:21px}
+.specialist-review-controls button:hover,.specialist-review-controls button:focus-visible{background:#ebf3d0}
+.protocol-heading{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.protocol-heading .motif{width:44px;height:44px;background:#e36844}
+.first-visit-copy{position:relative}
+.first-visit-copy>.motif{position:absolute;right:22px;bottom:22px;width:38px;height:38px;background:#24553f}
+.source-service-callout{position:relative}
+.source-service-callout>.motif{position:absolute;right:28px;bottom:22px;width:42px;height:42px;background:#e36844}
+.audit-journey-intro .motif{width:48px;height:48px;margin-top:22px;background:#e36844}
+.motif.is-visible.motif-heart,.method-motif.is-visible.motif-heart{animation:motif-heartbeat 1.55s ease-in-out 2}
+.motif.is-visible.motif-bird,.bird-photo.is-visible{animation:motif-flight 2.2s ease-in-out 2}
+.motif.is-visible.motif-clover,.method-motif.is-visible.motif-clover,.clover-photo.is-visible{animation:motif-bloom 2s ease-in-out 2}
+@keyframes motif-heartbeat{0%,100%{transform:scale(1)}25%{transform:scale(1.045)}48%{transform:scale(.995)}66%{transform:scale(1.025)}}
+@keyframes motif-flight{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes motif-bloom{0%,100%{transform:rotate(0) scale(1)}50%{transform:rotate(3deg) scale(1.035)}}
+@media(max-width:1100px){.clinic-service-grid{grid-template-columns:1fr 1fr}.appliance-choice{grid-template-columns:minmax(0,1fr);min-height:0}.appliance-logos ul{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px 18px;min-height:0;max-width:none;padding:12px 8px 24px}.appliance-logo,.appliance-logo:nth-child(n){position:static;flex:0 0 clamp(108px,16vw,154px);width:clamp(108px,16vw,154px)}.appliance-logo:nth-child(2),.appliance-logo:nth-child(4),.appliance-logo:nth-child(7){flex-basis:clamp(135px,19vw,175px);width:clamp(135px,19vw,175px)}.yandex-section{grid-template-columns:1fr}.yandex-review-cards,.yandex-source,.yandex-section .source-actions{grid-column:1;grid-row:auto}}
+@media(max-width:700px){.clinic-service-overview{padding-block:35px}.clinic-service-heading{display:block}.clinic-service-heading p{margin-top:12px}.clinic-service-grid,.method-service-grid,.gift-section,.profit-benefits .comparison-notes,.exam-roles-grid{grid-template-columns:1fr}.clinic-service-card{min-height:0;padding:25px 24px 88px}.appliance-choice{padding:27px 20px;border-radius:22px}.appliance-logos ul{gap:8px;padding:9px 0 18px}.appliance-logo,.appliance-logo:nth-child(2),.appliance-logo:nth-child(4),.appliance-logo:nth-child(7){flex:0 0 calc(33.33% - 8px);width:calc(33.33% - 8px);padding:9px;transform:none}.appliance-logo:nth-child(2),.appliance-logo:nth-child(5){transform:translateY(6px)}.appliance-logo:nth-child(3),.appliance-logo:nth-child(6){transform:translateY(-5px)}.appliance-logo img{max-height:54px}.appliance-copy h2{font-size:28px}.method-service-section{padding-block:35px}.method-service-card{min-height:0;padding:26px 24px}.method-service-card h3{font-size:23px}.method-service-card p{font-size:15px}.method-service-card .method-motif{width:138px;height:138px}.method-service-card .method-motif.motif-heart{width:210px;height:200px}.gift-section{gap:24px;padding:22px;margin-block:25px}.gift-photo>img{max-height:350px}.gift-copy h2{font-size:28px}.gift-price{margin-block:17px}.profit-benefits .comparison-note{min-height:0}.route-home .clinic-film{min-height:390px}.yandex-review{padding:19px 20px}.yandex-review blockquote{font-size:16px}}
+@media(prefers-reduced-motion:reduce){.motif.is-visible,.method-motif.is-visible,.bird-photo.is-visible,.clover-photo.is-visible{animation:none!important}.gift-photo>img,.gift-photo .motif{transform:none}}
+@media(max-width:700px){.specialist-review-intro{padding-block:32px 12px;padding-right:50px}.specialist-review-intro .motif{right:6px;top:34px;width:34px;height:34px}.specialist-review-intro p{font-size:15px}.specialist-review-section{padding-block:10px 35px}.specialist-review-story{border-radius:20px}.specialist-review-story blockquote{font-size:17px;line-height:1.6}.specialist-review-response p{font-size:14px}.route-home .source-directory .brand-photo{width:min(100%,172px)}}
+@media(max-width:360px){.appliance-copy h2{font-size:24px;overflow-wrap:normal;word-break:normal}.appliance-logo,.appliance-logo:nth-child(2),.appliance-logo:nth-child(4),.appliance-logo:nth-child(7){flex-basis:calc(50% - 8px);width:calc(50% - 8px)}.route-profitable{overflow-x:clip}}
+
+/* The protocols read as one heading, then the photograph beside the three points. */
+.route-about-clinic .source-protocols{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:18px 24px;padding-block:38px 50px;align-items:start}
+.route-about-clinic .protocol-heading{grid-column:1/-1;min-width:0}
+.route-about-clinic .protocol-heading h2{max-width:24ch;margin:0}
+.route-about-clinic .protocol-heading .motif{flex:0 0 40px;width:40px;height:40px}
+.route-about-clinic .source-protocols .source-gallery{grid-column:1;grid-row:2;align-self:start;width:100%;margin:0}
+.route-about-clinic .source-protocols .source-gallery-track figure{height:440px}
+.route-about-clinic .source-protocols .source-gallery-track img{width:100%;height:100%!important;object-fit:cover;object-position:center 42%}
+.route-about-clinic .protocol-grid{grid-column:2;grid-row:2;gap:10px}
+.route-about-clinic .protocol-grid article{padding:16px 19px;border-width:1px;border-radius:16px;gap:7px}
+.route-about-clinic .protocol-grid article::before{content:none}
+.route-about-clinic .protocol-grid h3{margin:0;color:#24553f}
+.route-about-clinic .protocol-doc-link{padding:16px 19px;border-radius:16px}
+
+/* The source team photographs occupy the media column rather than a narrow strip. */
+.route-about-clinic .source-trust{gap:24px;align-items:center;padding:30px 34px}
+.route-about-clinic .source-trust .source-gallery{width:100%;max-width:none;margin:0}
+.route-about-clinic .source-trust .source-gallery-track figure{aspect-ratio:16/11}
+.route-about-clinic .source-trust .source-gallery-track img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* A single Yandex proof composition, close to the clinic source and without meta captions. */
+.route-about-clinic .yandex-section{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,580px);gap:28px;align-items:center;padding:24px 28px;background:#ebf3d0;border-radius:28px}
+.route-about-clinic .yandex-intro{position:relative;min-width:0}
+.route-about-clinic .yandex-section h2{max-width:15ch;margin:0 0 13px;color:#24553f}
+.route-about-clinic .yandex-award{display:block;width:128px;max-width:42%;height:auto;margin:4px 0 8px}
+.route-about-clinic .yandex-review-cards{display:grid;grid-column:auto;grid-row:auto;gap:0;margin:0}
+.route-about-clinic .yandex-review{padding:10px 0;margin:0;border:0;border-top:1px solid #93b694;border-radius:0;background:transparent}
+.route-about-clinic .yandex-review blockquote{font-size:15px;line-height:1.48}
+.route-about-clinic .yandex-review figcaption{margin-top:5px;font-size:12px}
+.route-about-clinic .yandex-section .source-actions{grid-column:auto;margin-top:17px}
+.route-about-clinic .yandex-source{grid-column:2;grid-row:1;min-width:0;margin:0}
+.route-about-clinic .yandex-source img{display:block;width:100%;height:auto;border-radius:20px}
+
+/* Two readable review cards per desktop view; one swipeable card on a phone. */
+.route-about-clinic .specialist-review-section{max-width:1280px;padding-block:45px 55px}
+.route-about-clinic .specialist-review-heading{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:22px}
+.route-about-clinic .specialist-review-heading h2{max-width:20ch;margin:0;color:#24553f;font:400 clamp(30px,3vw,43px)/1.16 TenorEste,Georgia,serif}
+.route-about-clinic .specialist-review-stage{display:flex;align-items:flex-start;gap:16px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#e36844 #ebf3d0;outline-offset:3px}
+.route-about-clinic .specialist-review-story{flex:0 0 calc((100% - 16px)/2);min-width:0;scroll-snap-align:start;padding:25px 27px;border:0;border-radius:28px;background:#24553f;color:#fffaf3}
+.route-about-clinic .specialist-review-story:nth-child(even){background:#ebf3d0;color:#24553f}
+.route-about-clinic .specialist-review-meta{color:inherit;font-size:14px}
+.route-about-clinic .specialist-review-story blockquote{margin-top:18px;color:inherit;font-size:18px;line-height:1.55}
+.route-about-clinic .specialist-review-response{margin-top:20px;padding-top:15px;border-color:currentColor}
+.route-about-clinic .specialist-review-response p{color:inherit;font-size:14px;line-height:1.55}
+.route-about-clinic .specialist-review-controls{flex:0 0 auto;margin:0}
+@media(max-width:900px){
+ .route-about-clinic .source-protocols{grid-template-columns:1fr}
+ .route-about-clinic .protocol-heading{grid-column:1;grid-row:1}
+ .route-about-clinic .source-protocols .source-gallery{grid-column:1;grid-row:2}
+ .route-about-clinic .protocol-grid{grid-column:1;grid-row:3}
+ .route-about-clinic .source-protocols .source-gallery-track figure{height:340px}
+ .route-about-clinic .source-trust{display:block}
+ .route-about-clinic .source-trust .source-gallery{margin-top:22px}
+ .route-about-clinic .source-trust .source-gallery-track figure{aspect-ratio:16/9}
+ .route-about-clinic .yandex-section{grid-template-columns:1fr}
+ .route-about-clinic .yandex-source{grid-column:1;grid-row:auto}
+}
+@media(max-width:700px){
+ .route-about-clinic .source-protocols{padding-block:32px;gap:16px}
+ .route-about-clinic .protocol-heading h2{font-size:28px}
+ .route-about-clinic .source-protocols .source-gallery-track figure{height:260px}
+ .route-about-clinic .source-trust{padding:24px 20px}
+ .route-about-clinic .source-trust .source-gallery-track figure{aspect-ratio:4/3}
+ .route-about-clinic .yandex-section{padding:23px 20px;border-radius:24px}
+ .route-about-clinic .yandex-award{width:100px}
+ .route-about-clinic .yandex-review blockquote{font-size:16px}
+ .route-about-clinic .specialist-review-section{padding-block:34px}
+ .route-about-clinic .specialist-review-heading{align-items:flex-start}
+ .route-about-clinic .specialist-review-heading h2{font-size:27px}
+ .route-about-clinic .specialist-review-controls{gap:8px}
+ .route-about-clinic .specialist-review-controls>div{gap:5px}
+ .route-about-clinic .specialist-review-controls button{width:36px;height:36px}
+ .route-about-clinic .specialist-review-story{flex-basis:100%;padding:23px 21px;border-radius:24px}
+ .route-about-clinic .specialist-review-story blockquote{font-size:17px}
+}
+@media(max-width:360px){
+ .signature-copy,.route-documentation .contact-layout>div,.route-documentation .contact-layout .form{min-width:0}
+ .signature-copy h2,.route-documentation #tax h2{font-size:24px}
+ .route-about-clinic .specialist-review-heading{flex-wrap:wrap}
+ .route-about-clinic .specialist-review-controls{margin-left:auto}
+}
+
+/* Copy restoration must not change the approved spatial hierarchy. */
+.shell{width:min(1440px,calc(100% - 96px))}
+.route-home .original-hero.restored-brand-hero .hero-mark{order:0;max-width:none;margin:0 0 24px;font:400 clamp(100px,12vw,180px)/1 TenorEste,Georgia,serif;letter-spacing:-.035em;color:#e36844}
+.route-home .restored-brand-hero .original-specialties{order:1;display:flex;width:min(100%,570px);min-height:58px;margin:0 0 26px!important}
+.route-home .restored-brand-hero .hero-actions{order:2}
+.adaptation-section .experience-callout{display:block;max-width:600px;margin-top:20px;padding:16px 20px;border:1px solid #24553f;border-radius:18px;background:#f6f0e7;color:#24553f}
+.adaptation-section .experience-callout p,.adaptation-section .experience-callout strong{display:inline;margin:0;color:#24553f;font:400 16px/1.6 Manrope,Arial,sans-serif}
+.signature-section{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:center}
+.signature-section .signature-copy{min-width:0}
+.signature-section .signature-portrait{width:100%;max-width:520px;margin:auto}
+.signature-section .signature-boy{width:100%;max-height:580px;height:auto;object-fit:contain;border-radius:20px}
+.signature-section .signature-copy h2{max-width:none;font-size:clamp(28px,2.4vw,36px);line-height:1.18}
+.signature-section .signature-doctor{position:static;display:flex;width:fit-content;max-width:100%;margin-top:24px;padding:12px 18px 12px 12px;background:#fffaf3;border:1px solid #24553f;border-radius:20px;box-shadow:none;font-size:15px}
+.signature-section .signature-avatar{width:72px;height:72px;flex-basis:72px}
+.source-trust.exam-roles-section{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:36px;align-items:start;padding:30px;border:1px solid #e36844;border-radius:24px;background:#fffaf3}
+.source-trust.exam-roles-section .source-gallery{width:100%;max-width:none;margin:0}
+.source-trust.exam-roles-section .source-gallery-track figure{height:440px}
+.trust-questions{margin:16px 0 0;padding-left:22px;color:#24553f;font:400 16px/1.6 Manrope,Arial,sans-serif}
+.trust-questions li+li{margin-top:8px}
+.source-question{display:block}
+.source-question .question-heading{padding:0!important;background:transparent!important;margin-bottom:24px}
+.source-question .question-heading h2{max-width:38ch}
+.source-question .question-answer .source-copy-groups.multiple{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.source-question .question-answer .source-copy-groups>div{padding:24px!important;border:1px solid #24553f!important;border-radius:20px;background:#fffaf3!important}
+.source-question .question-answer .source-copy-groups h3{margin-bottom:18px}
+.source-question .question-answer .source-copy-groups p{padding-left:0;margin-bottom:14px;list-style:none}
+.source-question .question-answer .source-copy-groups p::before{content:none!important}
+.route-home .clinic-film{width:min(1440px,calc(100% - 96px));max-width:1440px;margin:24px auto;min-height:460px}
+.route-home #rec622022822{grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:36px}
+.route-home #rec622022822 .source-gallery{width:100%;max-width:none}
+.route-home #rec622022822 .source-gallery-track figure{height:540px;max-width:none}
+.route-home #rec622022822 .source-gallery-track img{height:540px;max-height:540px;width:100%;max-width:none}
+.route-home .source-directory .directory-entry:first-child .directory-photo-0{background-size:155% 155%;background-position:center 85%}
+@media(max-width:1100px){.shell,.route-home .clinic-film{width:calc(100% - 56px)}}
+@media(max-width:760px){
+ .shell,.route-home .clinic-film{width:calc(100% - 36px)}
+ .route-home .original-hero.restored-brand-hero .hero-mark{font-size:clamp(78px,22vw,130px);margin-bottom:14px}
+ .route-home .restored-brand-hero .original-specialties{min-height:48px;margin-bottom:18px!important}
+ .signature-section,.source-trust.exam-roles-section{grid-template-columns:1fr;gap:24px}
+ .signature-section .signature-portrait{max-width:450px}
+ .signature-section .signature-copy h2{font:650 26px/1.2 Manrope,Arial,sans-serif}
+ .signature-section .signature-boy{max-height:450px}
+ .source-trust.exam-roles-section{padding:24px 20px}
+ .source-trust.exam-roles-section .source-gallery-track figure{height:300px}
+ .source-question .question-answer .source-copy-groups.multiple{grid-template-columns:1fr}
+ .source-question .question-answer .source-copy-groups>div{padding:20px!important}
+ .route-home #rec622022822 .source-gallery-track figure,.route-home #rec622022822 .source-gallery-track img{height:420px;max-height:420px}
+ .route-home .clinic-film{min-height:330px}
+}
+@media(prefers-reduced-motion:reduce){.restored-brand-hero .specialty-caret{display:none}}
+
+/* Explicit media frames: round the photo pixels, not a contain-letterbox. */
+.signature-section .signature-boy{width:auto;max-width:100%;margin-inline:auto;object-fit:initial}
+.route-home #rec622022822 .source-gallery-track figure{display:flex;justify-content:center;align-items:center}
+.route-home #rec622022822 .source-gallery-track img{width:auto;max-width:100%;object-fit:initial;height:auto;max-height:540px;border-radius:20px!important}
+.route-home .directory-entry{position:relative;align-items:start;padding-bottom:66px!important}
+.route-home .directory-entry .directory-arrow{position:absolute;left:26px;bottom:24px;margin:0}
+.route-home .directory-last svg{transition:transform .22s ease}
+.route-home .directory-last:hover svg,.route-home .directory-last:focus-visible svg{transform:translateX(6px)}
+.route-home .clinic-film{width:100%;max-width:none;height:clamp(360px,41vw,620px);min-height:0;margin:24px 0;aspect-ratio:auto}
+.route-about-clinic .yandex-section{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;padding:40px}
+.route-about-clinic .yandex-section h2{max-width:none;font-size:clamp(30px,3vw,42px)}
+.route-about-clinic .yandex-award{width:160px;margin:32px 0 36px 28px}
+.route-about-clinic .yandex-review-cards{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.route-about-clinic .specialist-review-section{max-width:1440px}
+.route-about-clinic .specialist-review-heading h2{max-width:none}
+.route-about-clinic .specialist-review-story{position:relative;padding:26px;align-self:flex-start}
+.review-image-scroll{overflow-x:auto;scrollbar-color:#e36844 #ebf3d0;scrollbar-width:thin;border-radius:12px;background:#fff;outline-offset:4px}
+.review-image-scroll img{display:block;width:100%;height:auto;border-radius:12px;max-width:none}
+.review-accessible-copy{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.route-technique .source-page-hero{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:24px}
+.route-technique .source-page-hero h1{max-width:none}
+@media(max-width:760px){
+ .route-home .original-hero.restored-brand-hero .hero-mark{width:100%;font-size:clamp(96px,33vw,250px);text-align:center;letter-spacing:-.035em}
+ .route-home .clinic-film{width:100%;height:clamp(240px,65vw,420px);min-height:0;margin-inline:0}
+ .route-home #rec622022822 .source-gallery-track img{height:auto;max-height:420px}
+ .route-about-clinic .yandex-section{grid-template-columns:1fr;gap:24px;padding:28px 22px}
+ .route-about-clinic .yandex-award{width:140px;margin:26px 0 28px 18px}
+ .route-about-clinic .specialist-review-story{padding:18px;flex-basis:100%}
+ .review-image-scroll img{width:max(100%,640px)}
+ .route-technique .source-page-hero{grid-template-columns:1fr}
+ .contact-layout{gap:28px;min-width:0}
+ .contact-layout .form{width:100%;min-width:0;padding:26px 22px;border-radius:20px;box-sizing:border-box}
+ .contact-layout .form-fields,.contact-layout .form label{min-width:0}
+ .contact-layout .form input:not([type=checkbox]),.contact-layout .form textarea{width:100%;box-sizing:border-box}
+ .contact-layout .form .button{width:100%!important;min-width:0!important;max-width:none!important}
+}
+@media(prefers-reduced-motion:reduce){.route-home .directory-last svg{transition:none}}
+
+/* 30.09: aligned video width is independent of its established height. */
+.experience-callout{display:block!important;width:100%;max-width:560px!important;margin-top:22px!important;padding:18px 22px!important;border:1px solid #e36844!important;border-radius:18px!important;background:#fff0e6!important;color:#24553f!important;box-sizing:border-box}
+.experience-callout p{display:inline!important;margin:0!important;color:#24553f!important;font:400 16px/1.6 Manrope,Arial,sans-serif!important}
+.experience-callout strong{display:inline!important;color:inherit!important;font:650 16px/1.6 Manrope,Arial,sans-serif!important}
+.appliance-choice.section.shell{border-radius:28px!important;clip-path:inset(0 round 28px);overflow:hidden;isolation:isolate;margin-bottom:24px}
+@media(max-width:760px){.experience-callout{margin-top:18px!important;padding:16px 18px!important}.appliance-choice.section.shell{border-radius:22px!important;clip-path:inset(0 round 22px)}}
+.route-home .clinic-film{width:min(1440px,calc(100% - 96px));max-width:1440px;margin:24px auto;height:clamp(360px,41vw,620px)}
+.source-section.section.shell{border-color:#24553f;border-width:1px}
+.adaptation-section.section.shell,.first-visit-section.section.shell{border:1px solid #e36844!important}
+.protocol-grid article,.source-copy-groups.multiple>div{border-width:1px!important}
+.adaptation-section .experience-callout{border:1px solid #e36844;background:#fff0e6;color:#24553f}
+.adaptation-section .source-gallery,.first-visit-section .source-gallery{max-width:460px}
+.adaptation-section .source-gallery-track figure,.first-visit-section .source-gallery-track figure{height:420px}
+.route-about-clinic .specialist-review-story,.route-about-clinic .specialist-review-story:nth-child(even){height:100%;background:#24553f;color:#fffaf3}
+.route-about-clinic .specialist-review-controls button:disabled{opacity:.35;cursor:default}
+.route-services .source-page-hero,.route-articles .source-page-hero{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:24px}
+.route-services .source-page-hero h1,.route-articles .source-page-hero h1{max-width:none}
+@media(max-width:1100px){.route-home .clinic-film{width:calc(100% - 56px)}}
+@media(max-width:760px){
+ .route-home .clinic-film{width:calc(100% - 36px);height:clamp(240px,65vw,420px);margin-inline:auto}
+ .adaptation-section .source-gallery,.first-visit-section .source-gallery{max-width:360px}
+ .adaptation-section .source-gallery-track figure,.first-visit-section .source-gallery-track figure{height:340px}
+ .route-services .source-page-hero,.route-articles .source-page-hero{grid-template-columns:1fr}
+}
