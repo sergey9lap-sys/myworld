@@ -4,6 +4,7 @@ import { randomBytes, createHmac, timingSafeEqual, scryptSync } from 'node:crypt
 import { mkdirSync, readFileSync, existsSync, writeFileSync } from 'node:fs';
 import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createNotifier } from './notifications.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 export function openStore(dataDir) {
@@ -14,7 +15,8 @@ export function openStore(dataDir) {
     CREATE TABLE IF NOT EXISTS leads(id TEXT PRIMARY KEY,partner TEXT REFERENCES partners(code),name TEXT NOT NULL,contact TEXT NOT NULL,brief TEXT NOT NULL,status TEXT NOT NULL DEFAULT 'new',created TEXT NOT NULL,consent_version TEXT NOT NULL);
     CREATE TABLE IF NOT EXISTS visits(partner TEXT NOT NULL REFERENCES partners(code),day TEXT NOT NULL,count INTEGER NOT NULL DEFAULT 0,PRIMARY KEY(partner,day));
     CREATE TABLE IF NOT EXISTS sessions(token TEXT PRIMARY KEY,expires INTEGER NOT NULL);
-    CREATE TABLE IF NOT EXISTS limits(key TEXT PRIMARY KEY,count INTEGER NOT NULL,expires INTEGER NOT NULL);`);
+    CREATE TABLE IF NOT EXISTS limits(key TEXT PRIMARY KEY,count INTEGER NOT NULL,expires INTEGER NOT NULL);
+    CREATE TABLE IF NOT EXISTS notifications(lead_id TEXT PRIMARY KEY REFERENCES leads(id),attempts INTEGER NOT NULL DEFAULT 0,next_attempt INTEGER NOT NULL DEFAULT 0,sent_at TEXT,last_error TEXT);`);
   return db;
 }
 const id = () => randomBytes(24).toString('hex');
@@ -44,12 +46,16 @@ export function saveLead(db, body, partner) {
     const leadId = id();
     db.prepare('INSERT INTO leads(id,partner,name,contact,brief,created,consent_version) VALUES(?,?,?,?,?,?,?)')
       .run(leadId, partner || null, value.name, value.contact, value.brief, new Date().toISOString(), '2026-10-06-v1');
+    db.prepare('INSERT INTO notifications(lead_id) VALUES(?)').run(leadId);
     db.exec('COMMIT'); return leadId;
   } catch (error) { db.exec('ROLLBACK'); throw error; }
 }
 
-export function createApp({ dataDir, origin, secure = true, mediaDir = resolve(here, '../public') }) {
+export function createApp({ dataDir, origin, secure = true, mediaDir = resolve(here, '../public'), telegram = {} }) {
   const db = openStore(dataDir);
+  const notifier = createNotifier(db, telegram);
+  const notificationTimer = setInterval(() => { void notifier.flush(); }, 30000);
+  notificationTimer.unref();
   const secretPath = join(dataDir, 'secret');
   if (!existsSync(secretPath)) writeFileSync(secretPath, id() + id(), { mode: 0o600, flag: 'wx' });
   const secret = readFileSync(secretPath, 'utf8').trim();
@@ -104,6 +110,7 @@ export function createApp({ dataDir, origin, secure = true, mediaDir = resolve(h
           if (!visitor || !equal(body.csrf, visitor.token)) return json(403, { error: 'Обновите страницу: срок формы закончился.' });
           if (!limiter(`lead:${ipKey}`, 6, 3600000)) return json(429, { error: 'Слишком много заявок. Попробуйте через час.' });
           try { saveLead(db, body, partner?.code); } catch (error) { return json(400, { error: error.message }); }
+          void notifier.flush();
           return json(201, { ok: true });
         }
         if (url.pathname === '/partners/api/login') {
@@ -143,12 +150,13 @@ export function createApp({ dataDir, origin, secure = true, mediaDir = resolve(h
       return json(404, { error: 'Не найдено.' });
     } catch { if (!res.headersSent) json(500, { error: 'Не удалось сохранить. Попробуйте позже.' }); else res.end(); }
   });
+  server.on('close', () => clearInterval(notificationTimer));
   return { server, db };
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const port = Number(process.env.PORT || 4342);
   const origin = process.env.PUBLIC_ORIGIN || `http://127.0.0.1:${port}`;
   if (process.env.NODE_ENV === 'production' && !origin.startsWith('https://')) throw new Error('Production requires HTTPS PUBLIC_ORIGIN.');
-  const app = createApp({ dataDir: process.env.DATA_DIR || resolve(here, '.data'), origin, secure: origin.startsWith('https://'), mediaDir: process.env.MEDIA_DIR || resolve(here, '../public') });
+  const app = createApp({ dataDir: process.env.DATA_DIR || resolve(here, '.data'), origin, secure: origin.startsWith('https://'), mediaDir: process.env.MEDIA_DIR || resolve(here, '../public'), telegram: { token: process.env.TELEGRAM_BOT_TOKEN, chatId: process.env.TELEGRAM_OWNER_CHAT_ID } });
   app.server.listen(port, '127.0.0.1', () => console.log(`MyWorld referrals: ${origin}/work/`));
 }

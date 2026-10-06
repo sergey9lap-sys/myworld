@@ -1,15 +1,14 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-06T21:28:20Z",
+  "generatedAt": "2026-10-06T23:15:21Z",
   "title": "MyWorld — расширение рекомендаций",
   "extensions": {
     "shadows": [
       { "name": "portrait", "value": "0 16px 28px #29262226", "purpose": "Мягкая глубина бумажного портрета." },
-      { "name": "note", "value": "0 9px 18px #29262218", "purpose": "Отдельный бумажный слой записки." },
-      { "name": "project", "value": "0 12px 25px #29262220", "purpose": "Архивная работа над бумажной поверхностью." }
+      { "name": "note", "value": "0 9px 18px #29262218", "purpose": "Отдельный бумажный слой записки." }
     ],
     "motion": [
-      { "name": "state-transition", "value": "180ms ease-out", "purpose": "Hover кнопок и превью; отключён при reduced motion." }
+      { "name": "state-transition", "value": "180ms ease-out", "purpose": "Hover кнопок; отключён при reduced motion." }
     ],
     "breakpoints": [
       { "name": "compact-desktop", "value": "850px" },
@@ -23,8 +22,16 @@
       "kind": "button",
       "refersTo": "button-primary",
       "description": "Основное действие страницы или кабинета.",
-      "html": "<button class=\"ds-primary\">Расскажите о задаче<svg viewBox=\"0 0 24 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 19 19 5M5 5h14v14\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button>",
+      "html": "<button class=\"ds-primary\">Обсудить мой проект<svg viewBox=\"0 0 24 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 19 19 5M5 5h14v14\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button>",
       "css": ".ds-primary{position:relative;width:min(100%,400px);height:60px;padding:16px 48px;border:0;border-radius:14px;background:#a44737;color:#fff8e9;font:650 16px/1.5 Manrope,sans-serif;transition:box-shadow 180ms ease-out,translate 180ms ease-out}.ds-primary svg{position:absolute;right:22px;top:19px;width:22px;height:22px}.ds-primary:focus-visible{outline:3px solid #a44737;outline-offset:5px}.ds-primary:disabled{background:#766b5d;cursor:wait}@media(hover:hover) and (pointer:fine){.ds-primary:not(:disabled):hover{translate:0 -2px;box-shadow:0 8px 16px #a4473733}}@media(prefers-reduced-motion:reduce){.ds-primary{transition:none}.ds-primary:hover{translate:none}}"
+    },
+    {
+      "name": "Full-width Enquiry Submit",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Полноширинная отправка формы: сначала запись заявки, затем Telegram с черновиком, который посетитель отправляет сам.",
+      "html": "<button class=\"ds-submit\">Сохранить заявку и открыть Telegram <svg viewBox=\"0 0 24 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 19 19 5M5 5h14v14\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button>",
+      "css": ".ds-submit{position:relative;width:100%;height:auto;min-height:60px;padding:16px 48px;border:0;border-radius:14px;background:#a44737;color:#fff8e9;font:650 16px/1.5 Manrope,sans-serif;transition:box-shadow 180ms ease-out,translate 180ms ease-out}.ds-submit svg{position:absolute;right:22px;top:50%;transform:translateY(-50%);width:22px;height:22px}.ds-submit:focus-visible{outline:3px solid #a44737;outline-offset:5px}.ds-submit:disabled{background:#766b5d;cursor:wait}@media(hover:hover) and (pointer:fine){.ds-submit:not(:disabled):hover{translate:0 -2px;box-shadow:0 8px 16px #a4473733}}@media(max-width:600px){.ds-submit{font-size:15px;padding-left:18px;padding-right:42px}.ds-submit svg{right:16px}}@media(prefers-reduced-motion:reduce){.ds-submit{transition:none}.ds-submit:hover{translate:none}}"
     },
     {
       "name": "Secondary Button",
@@ -46,9 +53,9 @@
   "narrative": {
     "northStar": "Личный мир на бумаге",
     "overview": "Расширение следует уже выбранному миру MyWorld: washi, графит, приглушённая киноварь, реальные фотографии и сохранённые работы. Локальные шрифты и исходные изображения связывают страницу с доской, при этом форма читается как последовательная вертикальная страница.",
-    "keyCharacteristics": ["Бумажная фактура", "Живая фотография", "Немного повёрнутые архивные объекты", "Ясные подписи", "Один акцент действий"],
+    "keyCharacteristics": ["Бумажная фактура", "Живая фотография", "Немного повёрнутые портрет и записка", "Ясные подписи", "Один акцент действий"],
     "rules": [{ "name": "The One Accent Rule", "body": "Основные действия используют киноварь; вторичные действия кабинета — её контур и текст.", "section": "colors" }],
-    "dos": ["Do сохранять реальные portrait.jpg, sakura.jpg и washi-world.png и локальные шрифты.", "Do держать основные CTA одинаковыми на соответствующей ширине и сохранять видимый фокус.", "Do отделять локальную реализацию, визуальный вердикт и подтверждённое развёртывание."],
+    "dos": ["Do сохранять реальный portrait.jpg, исходный архив Sakura на доске, washi-world.png и локальные шрифты.", "Do держать основные CTA одинаковыми на соответствующей ширине и сохранять видимый фокус.", "Do отделять локальную реализацию, визуальный вердикт и подтверждённое развёртывание."],
     "donts": ["Don't менять правила или состав исходной доски при работе с этим расширением.", "Don't выдавать открытия за уникальных людей, покупки или основание для начислений.", "Don't обещать автоматические финансовые награды: их нет в реализованном интерфейсе."]
   }
 }

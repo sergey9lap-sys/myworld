@@ -48,7 +48,7 @@ export default function InfiniteCanvas(){
   };
   const down=(e:PointerEvent)=>{
    if(e.button!==0&&e.button!==1)return;
-   if((e.target as HTMLElement).closest('video, .media-play, .detail-close'))return;
+   if((e.target as HTMLElement).closest('a, video, .media-play, .detail-close'))return;
    e.preventDefault();window.getSelection()?.removeAllRanges();
    stop();pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
    dragged=false;suppress.current=false;last=start={x:e.clientX,y:e.clientY};velocity={x:0,y:0};lastTime=performance.now();
@@ -77,7 +77,8 @@ export default function InfiniteCanvas(){
   const clickCapture=(e:MouseEvent)=>{if(suppress.current){e.preventDefault();e.stopPropagation();suppress.current=false}};
   const key=(e:KeyboardEvent)=>{if((e.target as HTMLElement).closest('input,textarea,video'))return;if(e.key==='Escape'){back();setHelp(false)}if(e.key==='Home'){e.preventDefault();commands.current?.go('home')}if(e.key==='+'||e.key==='='){e.preventDefault();zoomAt(1.2,width/2,height/2)}if(e.key==='-'){e.preventDefault();zoomAt(1/1.2,width/2,height/2)}const offsets:Record<string,[number,number]>={ArrowLeft:[160,0],ArrowRight:[-160,0],ArrowUp:[0,160],ArrowDown:[0,-160]};if(offsets[e.key]){e.preventDefault();const [dx,dy]=offsets[e.key];move({...c,x:bound(c.x+dx,WORLD.w,width,c.s),y:bound(c.y+dy,WORLD.h,height,c.s)},.18)}};
   const resize=()=>{const oldW=width,oldH=height;width=el.clientWidth;height=el.clientHeight;c.x+=(width-oldW)/2;c.y+=(height-oldH)/2;paint()};
-  Object.assign(c,homeTarget());paint();setReady(true);
+  const hashZone=zones.find(z=>z.id===window.location.hash.slice(1));
+  Object.assign(c,hashZone?fit(hashZone,width<600?20:70):homeTarget());if(hashZone)setZone(hashZone.id);paint();setReady(true);
   el.addEventListener('pointerdown',down);el.addEventListener('pointermove',drag);el.addEventListener('pointerup',up);el.addEventListener('pointercancel',up);el.addEventListener('wheel',wheel,{passive:false});el.addEventListener('click',clickCapture,true);window.addEventListener('keydown',key);window.addEventListener('resize',resize);
   return()=>{stop();commands.current=null;el.removeEventListener('pointerdown',down);el.removeEventListener('pointermove',drag);el.removeEventListener('pointerup',up);el.removeEventListener('pointercancel',up);el.removeEventListener('wheel',wheel);el.removeEventListener('click',clickCapture,true);window.removeEventListener('keydown',key);window.removeEventListener('resize',resize)};
  },[]);
@@ -94,7 +95,7 @@ export default function InfiniteCanvas(){
      return <article key={item.id} data-item={item.id} className={`world-item ${item.type} ${item.accent||''} ${opened?'opened':''}`} style={style}>
       {item.type==='intro'?<><h1>{item.title}</h1><p>{item.body}</p><button className="explore" onClick={()=>commands.current?.go('works')}>Посмотреть работы <Icon name="arrow"/></button></>:null}
       {item.type==='text'?<><h2>{item.title}</h2><p>{item.body}</p></>:null}
-      {item.type==='note'?<><h3>{item.title}</h3><p>{item.body}</p></>:null}
+      {item.type==='note'?<><h3>{item.title}</h3><p>{item.body}</p>{item.href&&<a className="enquiry-link" href={process.env.NODE_ENV==='development'&&item.href==='/work/'?'http://127.0.0.1:4342/work/':item.href}>Оставить заявку на проект <Icon name="arrow"/></a>}</>:null}
       {item.type==='photo'||item.type==='sticker'?<button className="image-object" onClick={()=>activate(item)} aria-label={item.type==='photo'?`Приблизить: ${item.title}`:item.title}><img draggable="false" src={`/media/${item.src}`} alt={item.title||''} loading={item.zone==='home'?'eager':'lazy'}/>{item.type==='photo'&&<span className="photo-caption">{item.title} <Icon name="arrow"/></span>}</button>:null}
       {item.type==='project'&&!opened?<button className="project-cover" onClick={()=>activate(item)} aria-label={`Открыть проект ${item.title}`}><div className="project-image"><img draggable="false" src={`/media/${item.src}`} alt={`Сайт ${item.title}`} loading={item.zone==='home'?'eager':'lazy'}/></div><div className="project-label"><h3>{item.title}</h3><span>{item.gallery?'Войти внутрь':'Посмотреть'} <Icon name="arrow"/></span></div></button>:null}
       {item.type==='project'&&opened?<div className="project-inside"><div className="inside-title"><div><h2>{item.title}</h2><p>{item.body}</p></div><button className="detail-close" onClick={()=>commands.current?.back()} aria-label="Вернуться к доске"><Icon name="close"/></button></div>
@@ -105,7 +106,7 @@ export default function InfiniteCanvas(){
    </div>
   </div>
   {active&&<button className="back-button" onClick={()=>commands.current?.back()}><Icon name="back"/>{detail!==null?'Все экраны':'Назад к миру'}<kbd>Esc</kbd></button>}
-  {hint&&!active&&<div className="drag-hint"><Icon name="hand"/><span>Потяни за свободное место.<br/><b>Здесь можно в любую сторону.</b></span></div>}
+  {(hint||zone==='works')&&!active&&<div className="drag-hint"><Icon name="hand"/><span>Перетаскивайте фон мышкой или пальцем.<br/><b>Колесо меняет масштаб.</b></span></div>}
   <div className="bottom-controls"><button onClick={()=>commands.current?.overview()} aria-label="Показать весь мир" title="Весь мир"><Icon name="map"/></button><span className="control-divider"/><button onClick={()=>commands.current?.zoom(1/1.2)} aria-label="Отдалить"><Icon name="minus"/></button><span ref={zoomLabel} className="zoom-label">100%</span><button onClick={()=>commands.current?.zoom(1.2)} aria-label="Приблизить"><Icon name="plus"/></button><button className="mobile-home" onClick={()=>commands.current?.go('home')} aria-label="Вернуться в начало"><Icon name="home"/></button></div>
   <button className="map-toggle" onClick={()=>setMapOpen(!mapOpen)}>{mapOpen?'Скрыть карту':'Карта мира'} <Icon name="map"/></button>
   {mapOpen&&<div className="minimap"><svg viewBox="3400 1700 5200 4300" aria-label="Карта областей">{zones.map(z=><g key={z.id} onClick={()=>commands.current?.go(z.id)}><rect x={z.x} y={z.y} width={z.w} height={z.h} rx="80"/><text x={z.x+z.w/2} y={z.y+z.h/2}>{z.label}</text></g>)}<rect ref={mapBox} className="camera-box" x={-cam.current.x/cam.current.s} y={-cam.current.y/cam.current.s} width={typeof window!=='undefined'?window.innerWidth/cam.current.s:1500} height={typeof window!=='undefined'?window.innerHeight/cam.current.s:1000}/></svg></div>}

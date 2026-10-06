@@ -4,7 +4,32 @@ import { mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { scryptSync } from 'node:crypto';
-import { createApp, addPartner, validateLead } from './server.mjs';
+import { createApp, addPartner, validateLead, openStore, saveLead } from './server.mjs';
+import { createNotifier, notificationText } from './notifications.mjs';
+
+test('durable Telegram outbox retries without duplicate enquiries or exposing transport errors', async () => {
+  const db = openStore(mkdtempSync(join(tmpdir(), 'myworld-outbox-')));
+  const body = { name: 'Тест', contact: '@synthetic_test', brief: '', consent: true };
+  const lead = saveLead(db, body);
+  assert.equal(saveLead(db, body), lead);
+  assert.equal(db.prepare('SELECT count(*) AS n FROM notifications').get().n, 1);
+  const disabled = createNotifier(db);
+  await disabled.flush(); assert.equal(disabled.configured, false);
+  let calls = 0;
+  const notifier = createNotifier(db, { token: '12345:synthetic_token', chatId: '12345', request: async (_url, options) => {
+    calls++; assert.equal(JSON.parse(options.body).chat_id, '12345');
+    if (calls === 1) throw new Error('private transport details');
+    return { ok: true, json: async () => ({ ok: true }) };
+  } });
+  await notifier.flush();
+  const job = db.prepare('SELECT * FROM notifications').get();
+  assert.equal(job.sent_at, null); assert.equal(job.attempts, 1); assert.ok(!job.last_error.includes('private'));
+  db.prepare('UPDATE notifications SET next_attempt=0').run();
+  await notifier.flush(); await notifier.flush();
+  assert.equal(calls, 2); assert.ok(db.prepare('SELECT sent_at FROM notifications').get().sent_at);
+  assert.match(notificationText({ id: lead, ...body }), /не заполнено/);
+  db.close();
+});
 
 test('referral API: attribution, durable leads, isolation, CSRF, validation and owner actions', async () => {
   const dataDir = mkdtempSync(join(tmpdir(), 'myworld-referral-test-'));

@@ -1,5 +1,5 @@
 export type Zone = 'home'|'works'|'barca'|'photos'|'reactions'|'notes';
-export type WorldItem = { id:string; type:'intro'|'project'|'photo'|'sticker'|'text'|'note'; x:number;y:number;w:number;h:number;rotation?:number;title?:string;body?:string;src?:string;video?:string;zone:Zone;accent?:string;gallery?:string[]; };
+export type WorldItem = { id:string; type:'intro'|'project'|'photo'|'sticker'|'text'|'note'; x:number;y:number;w:number;h:number;rotation?:number;title?:string;body?:string;src?:string;video?:string;zone:Zone;accent?:string;gallery?:string[];href?:string; };
 export const zones: {id:Zone;label:string;x:number;y:number;w:number;h:number}[] = [
  {id:'home',label:'Начало',x:5140,y:3310,w:1340,h:940},
  {id:'works',label:'Сайты',x:3950,y:4470,w:1530,h:1050},
@@ -9,6 +9,7 @@ export const zones: {id:Zone;label:string;x:number;y:number;w:number;h:number}[]
  {id:'notes',label:'На полях',x:3770,y:2670,w:1200,h:1020},
 ];
 export const items:WorldItem[] = [
+ {id:'project-enquiry',type:'note',zone:'home',x:6440,y:3400,w:400,h:290,rotation:-3,title:'Сделаем ваш проект?',body:'Сайты, Telegram-боты и мини-приложения. Расскажите, что хотите сделать.',href:'/work/',accent:'pink'},
  {id:'hello',type:'intro',zone:'home',x:5200,y:3450,w:670,h:365,title:'Личный\nархив.',body:'Я Сергей. Собираю здесь свои сайты,\nфотографии и мысли. Архив пополняется.'},
  {id:'portrait',type:'photo',zone:'home',x:5970,y:3400,w:300,h:370,rotation:7,src:'portrait.jpg',title:'Привет, это я'},
  {id:'home-cat',type:'sticker',zone:'home',x:6180,y:3660,w:205,h:200,rotation:-9,src:'cat-home-relaxed.webp',title:'Кошка одобряет'},
