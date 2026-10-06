@@ -1,0 +1,8 @@
+[Unit]
+Description=Daily MyWorld referral backup
+[Timer]
+OnCalendar=*-*-* 04:20:00
+Persistent=true
+RandomizedDelaySec=600
+[Install]
+WantedBy=timers.target

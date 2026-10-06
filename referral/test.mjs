@@ -1,0 +1,62 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { scryptSync } from 'node:crypto';
+import { createApp, addPartner, validateLead } from './server.mjs';
+
+test('referral API: attribution, durable leads, isolation, CSRF, validation and owner actions', async () => {
+  const dataDir = mkdtempSync(join(tmpdir(), 'myworld-referral-test-'));
+  const origin = 'http://127.0.0.1:4349';
+  const { server, db } = createApp({ dataDir, origin, secure: false });
+  addPartner(db, 'ilmira', 'Ильмира'); addPartner(db, 'other', 'Другой партнёр');
+  await new Promise(done => server.listen(4349, '127.0.0.1', done));
+  const get = (path, cookie = '') => fetch(origin + path, { headers: { cookie }, redirect: 'manual' });
+  const post = (path, body, cookie = '', extra = {}) => fetch(origin + path, { method: 'POST', headers: { Origin: origin, 'Content-Type': 'application/json', cookie, ...extra }, body: JSON.stringify(body) });
+  try {
+    assert.equal((await get('/partners/api/data')).status, 401);
+    assert.equal((await get('/r/missing')).status, 404);
+    const referral = await get('/r/ilmira'); assert.equal(referral.status, 302);
+    assert.equal(referral.headers.get('location'), '/work/');
+    const refCookie = referral.headers.get('set-cookie').split(';')[0];
+    const second = await get('/r/other', refCookie); assert.equal(second.headers.get('set-cookie'), null);
+    const session = await get('/work/api/session', refCookie);
+    const data = await session.json(); assert.equal(data.recommender, 'Ильмира');
+    const cookie = refCookie + '; ' + session.headers.get('set-cookie').split(';')[0];
+    const body = { name: 'Тестовый клиент', contact: '@synthetic_test', brief: '<script>no execution</script>', consent: true, website: '', csrf: data.csrf };
+    assert.equal((await post('/work/api/lead', body)).status, 403);
+    assert.equal((await post('/work/api/lead', { ...body, consent: false }, cookie)).status, 400);
+    assert.equal((await post('/work/api/lead', { ...body, contact: '../bad' }, cookie)).status, 400);
+    assert.equal((await post('/work/api/lead', body, cookie, { Origin: 'https://evil.example' })).status, 403);
+    assert.equal((await post('/work/api/lead', body, cookie)).status, 201);
+    assert.equal((await post('/work/api/lead', body, cookie)).status, 201);
+    assert.equal(db.prepare('SELECT count(*) AS n FROM leads').get().n, 1);
+    assert.equal(db.prepare('SELECT partner FROM leads').get().partner, 'ilmira');
+    const tampered = refCookie.slice(0, -4) + 'xxxx';
+    assert.equal((await (await get('/work/api/session', tampered)).json()).recommender, null);
+    writeFileSync(join(dataDir, 'admin-password.json'), JSON.stringify({ salt: 'synthetic-only', hash: scryptSync('synthetic-test-password', 'synthetic-only', 64).toString('hex') }));
+    assert.equal((await post('/partners/api/login', { csrf: data.csrf, password: 'wrong' }, cookie)).status, 401);
+    const login = await post('/partners/api/login', { csrf: data.csrf, password: 'synthetic-test-password' }, cookie); assert.equal(login.status, 200);
+    const adminCookie = login.headers.get('set-cookie').split(';')[0];
+    const admin = await (await get('/partners/api/data', adminCookie)).json();
+    assert.equal(admin.leads.length, 1);
+    assert.equal((await post('/partners/api/partner', { code: 'client-one', name: 'Клиент' }, adminCookie)).status, 403);
+    assert.equal((await post('/partners/api/partner', { code: 'client-one', name: 'Клиент' }, adminCookie, { 'X-CSRF-Token': admin.csrf })).status, 201);
+    assert.equal((await post('/partners/api/status', { id: admin.leads[0].id, status: 'paid' }, adminCookie, { 'X-CSRF-Token': admin.csrf })).status, 200);
+    assert.equal((await post('/partners/api/logout', {}, adminCookie, { 'X-CSRF-Token': admin.csrf })).status, 200);
+    assert.equal((await get('/partners/api/data', adminCookie)).status, 401);
+    assert.equal((await get('/work/')).headers.get('content-security-policy').includes("frame-ancestors 'none'"), true);
+    assert.equal((await get('/work/../../server.mjs')).status, 404);
+    assert.throws(() => validateLead({ ...body, website: 'bot' }));
+    assert.match(readFileSync(new URL('./public/admin.js', import.meta.url), 'utf8'), /textContent/);
+  } finally { await new Promise(done => server.close(done)); db.close(); }
+  const reopened = createApp({ dataDir, origin, secure: false });
+  assert.equal(reopened.db.prepare('SELECT count(*) AS n FROM leads').get().n, 1); reopened.db.close();
+});
+
+test('production-cookie policy and unknown contacts', () => {
+  assert.throws(() => validateLead({ name: 'X', contact: '@username', consent: true }));
+  assert.throws(() => validateLead({ name: 'Имя', contact: 'https://t.me/user', consent: true }));
+  assert.throws(() => validateLead({ name: 'Имя', contact: '@username', consent: true, brief: 'x'.repeat(2001) }));
+});
