@@ -4,7 +4,7 @@ const submit = form.querySelector('button');
 let csrf = '';
 let pendingRecommendation = new URLSearchParams(location.search).get('ref') || '';
 const cookieNotice = document.querySelector('#cookie-notice');
-document.querySelector('#cookie-settings')?.addEventListener('click', () => { cookieNotice.hidden = false; cookieNotice.scrollIntoView({block:'center',behavior:'auto'}); });
+document.querySelector('#cookie-settings')?.addEventListener('click', () => { cookieNotice.hidden = false; cookieNotice.querySelector('button')?.focus({preventScroll:true}); });
 for (const button of document.querySelectorAll('[data-cookie-choice]')) button.addEventListener('click',async()=>{
   const buttons=[...document.querySelectorAll('[data-cookie-choice]')]; buttons.forEach(item=>item.disabled=true);
   try {

@@ -84,3 +84,22 @@ main>.cookie-notice{padding:16px 20px}
   .services-album dt,.outcome-paper h3,.approach-list h3{font-size:19px;line-height:1.4}.services-album dd,.outcome-paper p,.approach-list p{font-size:16px;line-height:1.65}
   main>.cookie-notice{border-width:44px 26px;border-image-width:44px 26px;padding:14px 10px}.contact .form-paper .consent{font-size:13px}.contact .form-paper .field-help{font-size:13px}
 }
+
+/* Mobile poster: retain desktop tsuba, blend the original portrait into paper on phones. */
+main>.cookie-notice{position:fixed;z-index:1000;inset:auto 20px max(16px,env(safe-area-inset-bottom));width:min(680px,calc(100% - 40px));max-height:calc(100dvh - 40px);overflow:auto;margin:0 auto;padding:22px 24px;border:1px solid var(--line);border-image:none;border-radius:14px;background:var(--paper);box-shadow:0 12px 36px #29262230}
+.cookie-notice h2{font-size:18px}.cookie-notice p{font-size:14px;line-height:1.5}.cookie-actions{gap:10px;margin-top:16px}.cookie-actions .secondary{flex:1;font-size:14px;line-height:1.4}.cookie-notice [role=status]:empty{display:none}
+@media(max-width:600px){
+  .hero{display:block;position:relative;isolation:isolate;padding:22px 0 44px;overflow:visible}
+  .hero .intro{position:relative;z-index:2}
+  .hero h1{width:65%;font-size:clamp(23px,6.05vw,32px);line-height:1.28;text-wrap:initial}
+  .hero .lead{width:65%;font-size:16px;line-height:1.6;margin:22px 0 26px}
+  .hero .intro .button{width:100%;margin-top:6px}
+  .hero .small{font-size:13px;line-height:1.6}
+  .hero .portrait-composition{position:absolute;z-index:0;top:10px;right:-20px;width:57%;max-width:none;height:480px;margin:0;padding:0;pointer-events:none}
+  .hero .tsuba-portrait,.hero .portrait-frame{width:100%;max-width:none;height:100%;aspect-ratio:auto}
+  .hero .portrait-person{inset:0;width:100%;height:100%;border-radius:0;object-fit:cover;object-position:58% 25%;mask-image:linear-gradient(to right,transparent,black 35%),linear-gradient(to bottom,transparent,black 12%,black 70%,transparent);mask-composite:intersect;-webkit-mask-image:linear-gradient(to right,transparent,black 35%),linear-gradient(to bottom,transparent,black 12%,black 70%,transparent);-webkit-mask-composite:source-in}
+  .hero .tsuba-overlay,.hero figcaption,.hero .katana-accent{display:none}
+  .author-intro h2,.author-intro .section-lead{width:100%;max-width:none;text-align:left;align-self:stretch;text-wrap:initial}
+  main>.cookie-notice{inset:auto 12px max(12px,env(safe-area-inset-bottom));width:calc(100% - 24px);padding:18px;border:1px solid var(--line);border-image:none}
+  .cookie-actions{display:grid;grid-template-columns:1fr;gap:8px}.cookie-actions .secondary{min-height:44px}
+}
