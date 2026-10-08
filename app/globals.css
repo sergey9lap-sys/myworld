@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Fixed controls belong to the viewport, never the moving world. */
+.direction-pad{position:fixed;z-index:75;right:24px;bottom:90px;display:flex;flex-direction:column;align-items:center;gap:10px;padding:12px;background:#faf9f3;color:#292622;border:1px solid #b5a58b;border-radius:16px;box-shadow:0 8px 24px #29262220;touch-action:none;user-select:none}
+.direction-caption{font:600 12px/1.45 Manrope,sans-serif;text-align:center}
+.direction-buttons{display:grid;grid-template-columns:repeat(3,46px);grid-template-rows:repeat(3,46px);gap:3px}
+.direction-buttons button{display:grid;place-items:center;background:#e8dfcd;color:#292622;border:1px solid #b5a58b;border-radius:12px;width:46px;height:46px;touch-action:none;cursor:pointer}
+.direction-buttons button:active{background:#292622;color:#fff9ed}.direction-buttons button:focus-visible{outline:3px solid #a44737;outline-offset:2px}
+.direction-up{grid-column:2;grid-row:1}.direction-left{grid-column:1;grid-row:2}.direction-right{grid-column:3;grid-row:2}.direction-down{grid-column:2;grid-row:3}
+@media(max-width:600px){.direction-pad{right:12px;bottom:max(88px,calc(env(safe-area-inset-bottom) + 76px));padding:9px;gap:6px}.direction-buttons{grid-template-columns:repeat(3,44px);grid-template-rows:repeat(3,44px);gap:2px}.direction-buttons button{width:44px;height:44px}.direction-caption{font-size:11px}.canvas-app .drag-hint{display:none}.canvas-app .minimap{bottom:270px}}
+
 /* Washi, ink and faded vermilion: the canvas is a physical sketchbook. */
 .canvas-app{background:linear-gradient(#ede0c966,#ede0c966),#e6d7bd url('/media/washi-world.png') center/cover no-repeat}
 .viewport,.viewport *{user-select:none;-webkit-user-select:none;-webkit-user-drag:none}

@@ -42,13 +42,22 @@ test('referral API: attribution, durable leads, isolation, CSRF, validation and 
   try {
     assert.equal((await get('/partners/api/data')).status, 401);
     assert.equal((await get('/r/missing')).status, 404);
-    const referral = await get('/r/ilmira'); assert.equal(referral.status, 302);
-    assert.equal(referral.headers.get('location'), '/work/');
+    const pending = await get('/r/ilmira'); assert.equal(pending.headers.get('set-cookie'),null);
+    assert.equal(pending.headers.get('location'), '/work/?ref=ilmira');
+    const referral = await get('/r/ilmira','mw_preferences=recommendations'); assert.equal(referral.status, 302);
+    assert.equal(referral.headers.get('location'), '/work/?ref=ilmira');
     const refCookie = referral.headers.get('set-cookie').split(';')[0];
     const second = await get('/r/other', refCookie); assert.equal(second.headers.get('set-cookie'), null);
     const session = await get('/work/api/session', refCookie);
     const data = await session.json(); assert.equal(data.recommender, 'Ильмира');
     const cookie = refCookie + '; ' + session.headers.get('set-cookie').split(';')[0];
+    assert.equal((await post('/work/api/preferences',{csrf:data.csrf,recommendations:false})).status,403);
+    const reject = await post('/work/api/preferences',{csrf:data.csrf,recommendations:false},cookie);
+    assert.equal(reject.status,200); assert.ok(reject.headers.get('set-cookie').includes('mw_ref=;'));
+    assert.equal((await (await get('/work/api/session',cookie+'; mw_preferences=essential')).json()).recommender,null);
+    const allow = await post('/work/api/preferences',{csrf:data.csrf,recommendations:true,code:'ilmira'},cookie);
+    assert.equal(allow.status,200); assert.ok(allow.headers.get('set-cookie').includes('mw_preferences=recommendations'));
+    for(const path of ['/work/privacy/','/work/consent/','/work/cookies/']) {const doc=await get(path);assert.equal(doc.status,200);assert.match(await doc.text(),/Проект от 08.10.2026, не утверждён/);}
     const body = { name: 'Тестовый клиент', contact: '@synthetic_test', brief: '<script>no execution</script>', consent: true, website: '', csrf: data.csrf };
     assert.equal((await post('/work/api/lead', body)).status, 403);
     assert.equal((await post('/work/api/lead', { ...body, consent: false }, cookie)).status, 400);
@@ -69,9 +78,17 @@ test('referral API: attribution, durable leads, isolation, CSRF, validation and 
     assert.equal((await post('/partners/api/partner', { code: 'client-one', name: 'Клиент' }, adminCookie)).status, 403);
     assert.equal((await post('/partners/api/partner', { code: 'client-one', name: 'Клиент' }, adminCookie, { 'X-CSRF-Token': admin.csrf })).status, 201);
     assert.equal((await post('/partners/api/status', { id: admin.leads[0].id, status: 'paid' }, adminCookie, { 'X-CSRF-Token': admin.csrf })).status, 200);
+    const settings={intro:'Тестовое описание',services:'Сайты\nБоты',channel:'https://t.me/test_channel'};
+    assert.equal((await post('/partners/api/bot-settings',settings,adminCookie)).status,403);
+    assert.equal((await post('/partners/api/bot-settings',{...settings,channel:'https://evil.example'},adminCookie,{'X-CSRF-Token':admin.csrf})).status,400);
+    assert.equal((await post('/partners/api/bot-settings',settings,adminCookie,{'X-CSRF-Token':admin.csrf})).status,200);
+    db.prepare('INSERT INTO bot_welcome_bonuses(telegram_id,name,username,discount,created) VALUES(42,?,?,30,?)').run('Тест','test_user',new Date().toISOString());
+    assert.equal((await post('/partners/api/bonus-status',{telegramId:42,status:'used'},adminCookie,{'X-CSRF-Token':admin.csrf})).status,200);
+    assert.equal(db.prepare('SELECT status FROM bot_welcome_bonuses WHERE telegram_id=42').get().status,'used');
     assert.equal((await post('/partners/api/logout', {}, adminCookie, { 'X-CSRF-Token': admin.csrf })).status, 200);
     assert.equal((await get('/partners/api/data', adminCookie)).status, 401);
-    assert.equal((await get('/work/')).headers.get('content-security-policy').includes("frame-ancestors 'none'"), true);
+    assert.equal((await get('/work/')).headers.get('content-security-policy').includes('frame-ancestors https://web.telegram.org'), true);
+    assert.equal((await get('/partners/')).headers.get('content-security-policy').includes("frame-ancestors 'none'"), true);
     assert.equal((await get('/work/../../server.mjs')).status, 404);
     assert.throws(() => validateLead({ ...body, website: 'bot' }));
     assert.match(readFileSync(new URL('./public/admin.js', import.meta.url), 'utf8'), /textContent/);

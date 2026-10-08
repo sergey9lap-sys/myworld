@@ -1,0 +1,11 @@
+import { scryptSync, randomBytes } from 'node:crypto';
+import { existsSync, writeFileSync, chownSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+const path='/var/lib/myworld-referrals/admin-password.json';
+if(existsSync(path)) throw new Error('Доступ уже настроен; пароль не изменён.');
+const password=process.env.MYWORLD_ADMIN_PASSWORD || '';
+if(password.length<12 || password.length>200) throw new Error('Пароль должен содержать 12–200 символов.');
+const salt=randomBytes(32).toString('hex');
+const uid=Number(execFileSync('id',['-u','myworldref'],{encoding:'utf8'}).trim()),gid=Number(execFileSync('id',['-g','myworldref'],{encoding:'utf8'}).trim());
+writeFileSync(path,JSON.stringify({salt,hash:scryptSync(password,salt,64).toString('hex')}),{mode:0o600,flag:'wx'});chownSync(path,uid,gid);
+console.log('Пароль кабинета сохранён как закрытый хеш.');

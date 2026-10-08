@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import {items,zones,WORLD, type WorldItem,type Zone} from '../lib/world';
 type Camera={x:number;y:number;s:number};
 type Rect={x:number;y:number;w:number;h:number};
-type Commands={go:(id:Zone)=>void;zoom:(factor:number)=>void;overview:()=>void;back:()=>void;focus:(item:WorldItem)=>void;detail:(index:number)=>void};
+type Commands={go:(id:Zone)=>void;pan:(dx:number,dy:number)=>void;zoom:(factor:number)=>void;overview:()=>void;back:()=>void;focus:(item:WorldItem)=>void;detail:(index:number)=>void};
 const clamp=(v:number,a:number,b:number)=>Math.max(a,Math.min(b,v));
 function Icon({name}:{name:string}) { const paths:Record<string,React.ReactNode>={plus:<path d="M12 5v14M5 12h14"/>,minus:<path d="M5 12h14"/>,arrow:<path d="m6 18 12-12M6 6h12v12"/>,back:<path d="m10 5-7 7 7 7M3 12h18"/>,map:<><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 3v18m8-18v18M3 8h18M3 16h18"/></>,home:<><path d="m3 10 9-7 9 7v11H3Z"/><path d="M9 21v-8h6v8"/></>,close:<path d="m5 5 14 14M5 19 19 5"/>,hand:<path d="M8 12V6a2 2 0 0 1 4 0v5-7a2 2 0 0 1 4 0v7-5a2 2 0 0 1 4 0v9c0 4-3 7-7 7-3 0-5-2-6-4l-4-5a2 2 0 0 1 3-2l2 1Z"/>,play:<path d="m8 4 12 8-12 8Z"/>};return <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name]||paths.arrow}</svg> }
 export default function InfiniteCanvas(){
@@ -13,6 +13,10 @@ export default function InfiniteCanvas(){
  const [active,setActive]=useState<string|null>(null),[zone,setZone]=useState<Zone>('home'),[help,setHelp]=useState(false),[hint,setHint]=useState(true),[ready,setReady]=useState(false),[overview,setOverview]=useState(false),[reaction,setReaction]=useState(''),[mapOpen,setMapOpen]=useState(false);
  const [playing,setPlaying]=useState(false),[detail,setDetail]=useState<number|null>(null);
  const playingRef=useRef<HTMLVideoElement>(null);
+ const panTimer=useRef<ReturnType<typeof setInterval>|null>(null);
+ const stopPan=()=>{if(panTimer.current!==null){clearInterval(panTimer.current);panTimer.current=null}};
+ const startPan=(dx:number,dy:number)=>{stopPan();commands.current?.pan(dx*100,dy*100);panTimer.current=setInterval(()=>commands.current?.pan(dx*38,dy*38),100)};
+ useEffect(()=>{window.addEventListener('blur',stopPan);const visibility=()=>{if(document.hidden)stopPan()};document.addEventListener('visibilitychange',visibility);return()=>{stopPan();window.removeEventListener('blur',stopPan);document.removeEventListener('visibilitychange',visibility)}},[]);
  useEffect(()=>{
   const el=viewport.current!,plane=world.current!,c=cam.current;
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -40,6 +44,7 @@ export default function InfiniteCanvas(){
   const back=()=>{if(detailSaved){move(detailSaved);detailSaved=null;setDetail(null);return}if(saved){const target=saved;clearFocus();move(target);return}isOverview=false;setOverview(false);move(homeTarget());setZone('home')};
   const zoomAt=(factor:number,x:number,y:number)=>{stop();const s=clamp(c.s*factor,.07,2);const wx=(x-c.x)/c.s,wy=(y-c.y)/c.s;c.x=x-wx*s;c.y=y-wy*s;c.s=s;c.x=bound(c.x,WORLD.w,width,s);c.y=bound(c.y,WORLD.h,height,s);paint()};
   commands.current={
+   pan(dx,dy){stop();setHint(false);c.x=bound(c.x+dx,WORLD.w,width,c.s);c.y=bound(c.y+dy,WORLD.h,height,c.s);lastPaint=0;paint()},
    go(id){clearFocus();setZone(id);setHint(false);isOverview=false;setOverview(false);move(id==='home'?homeTarget():fit(zones.find(z=>z.id===id)!,width<600?20:70));},
    zoom(factor){zoomAt(factor,width/2,height/2)},
    overview(){clearFocus();isOverview=!isOverview;setOverview(isOverview);move(fit(isOverview?{x:3700,y:1900,w:4540,h:3900}:homeRect(),width<600?24:85));},back,
@@ -108,6 +113,7 @@ export default function InfiniteCanvas(){
   {active&&<button className="back-button" onClick={()=>commands.current?.back()}><Icon name="back"/>{detail!==null?'Все экраны':'Назад к миру'}<kbd>Esc</kbd></button>}
   {(hint||zone==='works')&&!active&&<div className="drag-hint"><Icon name="hand"/><span>Перетаскивайте фон мышкой или пальцем.<br/><b>Колесо меняет масштаб.</b></span></div>}
   <div className="bottom-controls"><button onClick={()=>commands.current?.overview()} aria-label="Показать весь мир" title="Весь мир"><Icon name="map"/></button><span className="control-divider"/><button onClick={()=>commands.current?.zoom(1/1.2)} aria-label="Отдалить"><Icon name="minus"/></button><span ref={zoomLabel} className="zoom-label">100%</span><button onClick={()=>commands.current?.zoom(1.2)} aria-label="Приблизить"><Icon name="plus"/></button><button className="mobile-home" onClick={()=>commands.current?.go('home')} aria-label="Вернуться в начало"><Icon name="home"/></button></div>
+  <div className="direction-pad" role="group" aria-label="Перемещение по доске"><span className="direction-caption">Двигайтесь стрелками<br/>Можно удерживать</span><div className="direction-buttons">{[{id:'up',label:'Выше по доске',dx:0,dy:1,rotation:0},{id:'left',label:'Левее по доске',dx:1,dy:0,rotation:-90},{id:'right',label:'Правее по доске',dx:-1,dy:0,rotation:90},{id:'down',label:'Ниже по доске',dx:0,dy:-1,rotation:180}].map(d=><button key={d.id} className={`direction-${d.id}`} aria-label={d.label} onPointerDown={e=>{e.preventDefault();e.currentTarget.setPointerCapture(e.pointerId);startPan(d.dx,d.dy)}} onPointerUp={stopPan} onPointerCancel={stopPan} onLostPointerCapture={stopPan} onClick={e=>{if(e.detail===0)commands.current?.pan(d.dx*100,d.dy*100)}}><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{transform:`rotate(${d.rotation}deg)`}}><path d="M12 20V4m-6 6 6-6 6 6"/></svg></button>)}</div></div>
   <button className="map-toggle" onClick={()=>setMapOpen(!mapOpen)}>{mapOpen?'Скрыть карту':'Карта мира'} <Icon name="map"/></button>
   {mapOpen&&<div className="minimap"><svg viewBox="3400 1700 5200 4300" aria-label="Карта областей">{zones.map(z=><g key={z.id} onClick={()=>commands.current?.go(z.id)}><rect x={z.x} y={z.y} width={z.w} height={z.h} rx="80"/><text x={z.x+z.w/2} y={z.y+z.h/2}>{z.label}</text></g>)}<rect ref={mapBox} className="camera-box" x={-cam.current.x/cam.current.s} y={-cam.current.y/cam.current.s} width={typeof window!=='undefined'?window.innerWidth/cam.current.s:1500} height={typeof window!=='undefined'?window.innerHeight/cam.current.s:1000}/></svg></div>}
   {help&&<aside className="help-panel"><h2>Осмотрись.</h2><p>Тяни фон мышкой или одним пальцем. Колесо, прокрутка трекпада и жест двумя пальцами меняют масштаб.</p><p>Нажми на работу или фото, чтобы приблизиться. В Барселоне можно войти ещё глубже — в отдельный экран.</p><p><kbd>← ↑ ↓ →</kbd> — двигаться · <kbd>+ −</kbd> — масштаб · <kbd>Home</kbd> — начало · <kbd>Esc</kbd> — назад.</p><button onClick={()=>setHelp(false)}>Понятно, исследую <Icon name="arrow"/></button></aside>}

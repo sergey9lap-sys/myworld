@@ -1,0 +1,11 @@
+import { DatabaseSync } from 'node:sqlite';
+import { readFileSync, writeFileSync, chmodSync } from 'node:fs';
+const db=new DatabaseSync('/var/lib/myworld-referrals/referrals.sqlite',{readOnly:true});
+const candidate=db.prepare('SELECT telegram_id FROM bot_owner_candidate WHERE id=1').get();db.close();
+if(!candidate) throw new Error('Сначала отправьте /start боту со своего аккаунта @lp_sergey. Ничего не изменено.');
+const path='/etc/myworld-referrals.env', original=readFileSync(path,'utf8');
+const existing=original.match(/^TELEGRAM_OWNER_CHAT_ID=(.*)$/m)?.[1];
+if(existing && existing!==String(candidate.telegram_id)) throw new Error('Получатель уже настроен; менять доступ автоматически нельзя.');
+const line='TELEGRAM_OWNER_CHAT_ID='+candidate.telegram_id;
+writeFileSync(path,/^TELEGRAM_OWNER_CHAT_ID=.*$/m.test(original)?original.replace(/^TELEGRAM_OWNER_CHAT_ID=.*$/m,line):original.trimEnd()+'\n'+line+'\n',{mode:0o600});chmodSync(path,0o600);
+console.log('Получатель уведомлений подтверждён по /start от @lp_sergey.');
