@@ -19,7 +19,7 @@ test('services are explained, while enquiries and portfolio stay in place',()=>{
   const services=html.match(/id="services"[\s\S]*?<\/section>/)?.[0];
   assert.equal((services.match(/<dt>/g)||[]).length,7);
   for(const phrase of ['веб-сервисы','Телеграм-боты','Мини-приложения','Автоворонки','PDF','Монтаж видео и анимация графики']) assert.ok(text.includes(phrase));
-  for(const marker of ['id="lead-form"','name="consent"','id="privacy"','href="/#works"','src="/work/media/portrait.jpg"','id="success"']) assert.ok(html.includes(marker));
+  for(const marker of ['id="lead-form"','name="consent"','id="privacy"','href="/#works"','srcset="/work/media/closeup.jpg"','id="success"']) assert.ok(html.includes(marker));
   assert.ok(text.includes('съёмку и сценарий не включаю в монтаж по умолчанию'));
 });
 test('layout and public labels follow the revised brief',()=>{
