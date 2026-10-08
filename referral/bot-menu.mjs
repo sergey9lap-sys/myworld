@@ -33,8 +33,8 @@ export function welcomeMenu(chatId, origin, settings = defaultBotSettings) {
     reply_markup: { inline_keyboard: [
       [{ text: '🎁 Забрать бонус −30%', style: 'success', callback_data: 'welcome_bonus' }, { text: '🔗 Моя ссылка', callback_data: 'my_referral' }],
       [{ text: 'Открыть приложение', style: 'primary', web_app: { url: new URL('/work/', origin).href } }],
-      [{ text: '💬 Написать Сергею', url: 'https://t.me/lp_sergey' }],
-      [settings.channel ? { text: 'Канал Сергея ↗', url: settings.channel } : { text: 'Канал · скоро', callback_data: 'channel_soon' }]
+      [{ text: '💬 Написать мне', url: 'https://t.me/lp_sergey' }],
+      [settings.channel ? { text: 'Мой канал ↗', url: settings.channel } : { text: 'Мой канал · скоро', callback_data: 'channel_soon' }]
     ] } };
 }
 export function personalPartner(db, user) {
@@ -63,7 +63,7 @@ export async function menuCallback(db, api, callback, origin) {
     const bonus = db.prepare('SELECT status FROM bot_welcome_bonuses WHERE telegram_id=?').get(user.id);
     message = { chat_id: user.id, text: bonus.status === 'used' ? 'Ваш приветственный бонус уже использован.' :
       '🎁 Ваш бонус сохранён: скидка 30% на первый заказ.\n\nНапишите мне, чтобы обсудить проект. Сообщите, что забрали бонус в боте — я проверю его и учту скидку при согласовании стоимости. Это скидка, не денежный баланс.',
-      reply_markup: { inline_keyboard: [[{text:'💬 Написать Сергею',url:'https://t.me/lp_sergey'}],[{text:'Открыть приложение',web_app:{url:new URL('/work/',origin).href}}]] } };
+      reply_markup: { inline_keyboard: [[{text:'💬 Написать мне',url:'https://t.me/lp_sergey'}],[{text:'Открыть приложение',web_app:{url:new URL('/work/',origin).href}}]] } };
   } else {
     const code = personalPartner(db,user), link = `https://t.me/lpsflowbot?start=ref_${code}`;
     message = { chat_id: user.id, disable_web_page_preview: true,

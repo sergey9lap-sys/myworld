@@ -27,6 +27,7 @@ test('layout and public labels follow the revised brief',()=>{
   assert.ok(!text.includes('мир Сергея'));
   assert.ok(!text.includes('Сначала сохраним заявку'));
   assert.ok(!text.includes('О вашей заявке'));
+  assert.ok(text.includes('Написать мне'));assert.ok(!text.includes('Написать Сергею'));
   for(const phrase of ['Ценю ваше время','Вовлекаюсь в','Делаю общение комфортным','Отправить заявку']) assert.ok(text.includes(phrase));
   for(const path of ['/work/privacy/','/work/consent/','/work/cookies/']) assert.ok(html.includes(path));
   assert.ok(html.includes('class="author-photo tsuba-portrait"'));

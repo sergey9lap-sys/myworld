@@ -11,11 +11,13 @@ test('menu settings escape markup, validate channel, keep compact truthful menu'
  assert.equal(botSettings(db).channel,settings.channel);const m=welcomeMenu(20,'https://space.lpsflow.ru',settings);
  assert.match(m.text,/&lt;script&gt;/);assert.match(m.text,/30%/);assert.deepEqual(m.reply_markup.inline_keyboard.map(r=>r.length),[2,1,1,1]);
  assert.equal(m.reply_markup.inline_keyboard[0][0].style,'success');assert.equal(m.reply_markup.inline_keyboard.at(-1)[0].url,settings.channel);
+ assert.equal(m.reply_markup.inline_keyboard[2][0].text,'💬 Написать мне');assert.equal(m.reply_markup.inline_keyboard.at(-1)[0].text,'Мой канал ↗');
  assert.throws(()=>saveBotSettings(db,{...settings,channel:'https://evil.test'}));assert.throws(()=>saveBotSettings(db,{...settings,discount:99}));}finally{db.close();}
 });
 test('claim once, preserve used bonus, personal code stable and no self referral',async()=>{
  const db=store(),sent=[],api=async(method,payload)=>{if(method==='sendMessage')sent.push(payload);};try{
  await menuCallback(db,api,cb('welcome_bonus'),'https://space.lpsflow.ru');await menuCallback(db,api,cb('welcome_bonus'),'https://space.lpsflow.ru');
+ assert.equal(sent.at(-1).reply_markup.inline_keyboard[0][0].text,'💬 Написать мне');
  assert.equal(db.prepare('SELECT count(*) n FROM bot_welcome_bonuses').get().n,1);assert.equal(db.prepare('SELECT discount FROM bot_welcome_bonuses').get().discount,30);
  db.prepare("UPDATE bot_welcome_bonuses SET status='used'").run();await menuCallback(db,api,cb('welcome_bonus'),'https://space.lpsflow.ru');assert.match(sent.at(-1).text,/уже использован/);
  await menuCallback(db,api,cb('my_referral'),'https://space.lpsflow.ru');const link=sent.at(-1).reply_markup.inline_keyboard[0][0].copy_text.text;
