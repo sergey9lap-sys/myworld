@@ -30,7 +30,7 @@ test('layout and public labels follow the revised brief',()=>{
   for(const phrase of ['Ценю ваше время','Вовлекаюсь в','Делаю общение комфортным','Отправить заявку']) assert.ok(text.includes(phrase));
   for(const path of ['/work/privacy/','/work/consent/','/work/cookies/']) assert.ok(html.includes(path));
   assert.ok(html.includes('class="author-photo tsuba-portrait"'));
-  assert.ok(html.includes('src="/work/media/night.jpg"'));
+  assert.ok(html.includes('src="/work/media/sergey-japan.png"'));
   assert.equal((html.match(/class="album-leaf"/g)||[]).length,7);
   const script=readFileSync(new URL('./public/page.js',import.meta.url),'utf8');assert.ok(script.includes('disableVerticalSwipes'));
 });
