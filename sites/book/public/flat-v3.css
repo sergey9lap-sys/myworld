@@ -1,0 +1,56 @@
+:root{--paper:#f4e9cf;--ink:#202b1c}
+.paper{background:var(--paper) url('assets/paper-flat-v3.webp') repeat;background-size:700px;color:var(--ink)}
+.hero{max-width:none;background:var(--forest);padding:0}
+.hero-art{position:relative;height:auto;overflow:visible}
+.hero-art img{width:100%;height:auto;object-fit:contain;aspect-ratio:2/1}
+.hero-brand{position:absolute;z-index:1;top:2%;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:22px;gap:14px}
+.hero-brand img{width:52px;height:40px}
+.hero-copy{top:20%;left:12%;width:34%;padding:0}
+.hero h1{font-size:clamp(28px,3vw,52px);line-height:1.08}
+.hero-ingredients{font-size:clamp(16px,1.45vw,24px);margin-top:16px}
+.hero-description{font-size:clamp(16px,1.35vw,22px);line-height:1.45;margin-top:20px}
+.hero .actions{display:grid;justify-items:start;gap:10px;margin-top:24px}
+.hero .next-note{font-size:clamp(13px,1.05vw,17px);margin-top:18px;padding-top:12px}
+.format{padding-top:42px}
+.ingredient>p{font-size:17px;line-height:1.65}
+.route{gap:24px;margin-top:44px;padding-block:28px;border-block:1px solid #75571855}
+.route li{font-size:18px;font-weight:600;line-height:1.5;gap:16px;color:var(--ink)}
+.route li:before{font-size:36px;color:var(--ink)}
+@media(min-width:701px) and (max-width:1400px){
+ .hero .actions{margin-top:18px}
+ .hero-ingredients{margin-top:12px}
+ .hero-description{margin-top:16px}
+ .hero .next-note{margin-top:12px;padding-top:8px}
+ .ingredient{grid-template-columns:1fr;max-width:240px;margin:auto;gap:14px}
+ .book-cover{width:190px;margin:auto}
+}
+@media(min-width:701px) and (max-width:1000px){
+ .hero{background:var(--paper) url('assets/paper-flat-v3.webp') repeat;background-size:700px;padding-bottom:26px}
+ .hero-copy{display:contents}
+ .hero-intro{position:absolute;top:10vw;left:12%;width:34%}
+ .hero h1{font-size:2.9vw}
+ .hero-ingredients{font-size:14px;margin-top:8px}
+ .hero-description{font-size:17px;margin:22px var(--gutter) 0}
+ .hero-description br{display:none}
+ .hero .actions{margin:24px var(--gutter) 0;gap:12px;display:flex;justify-content:center}
+ .hero .next-note{font-size:16px;padding-top:18px;margin:24px var(--gutter) 0}
+ .ingredients-grid{gap:18px}.ingredient>p{font-size:16px}
+ .route{gap:18px}.route li{font-size:16px}
+}
+@media(max-width:700px){
+ .hero{padding:0 0 28px;background:var(--paper) url('assets/paper-flat-v3.webp') repeat;background-size:700px}
+ .hero-art img{aspect-ratio:3/4;object-fit:contain}
+ .hero-brand{top:12px;font-size:16px;gap:8px}.hero-brand img{width:38px;height:29px}
+ .hero-copy{display:contents}
+ .hero-intro{position:absolute;top:34vw;left:8%;width:38%}
+ .hero h1{font-size:clamp(19px,5.5vw,30px);line-height:1.12}
+ .hero-ingredients{font-size:14px;line-height:1.45;margin-top:14px}
+ .hero-description{font-size:17px;line-height:1.55;margin:0 var(--gutter) 24px;padding-top:20px}
+ .hero-description br{display:none}
+ .hero .actions{margin:12px var(--gutter) 0;gap:12px;justify-items:stretch}
+ .hero .next-note{margin:22px var(--gutter) 0;padding-top:18px;font-size:14px}
+ .ingredient>p{font-size:16px;line-height:1.6}
+ .route{gap:22px;margin-top:32px;padding-block:26px}
+ .route li{font-size:18px;gap:20px;align-items:center}
+ .route li:before{font-size:30px;width:32px;flex-shrink:0}
+}

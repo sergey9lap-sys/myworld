@@ -11,6 +11,7 @@ const sites = [
   { slug: 'elmira', directory: path.join(root, 'sites', 'elmira') },
   { slug: 'julia', directory: path.join(root, 'sites', 'julia') },
   { slug: 'ilmira', directory: path.join(root, 'sites', 'ilmira') },
+  { slug: 'book', directory: path.join(root, 'sites', 'book'), base: '/book/' },
 ];
 
 await mkdir(publishRoot, { recursive: true });
@@ -28,7 +29,7 @@ for (const site of sites) {
 
   const indexPath = path.join(target, 'index.html');
   const index = await readFile(indexPath, 'utf8');
-  const base = `  <base href="/p/${site.slug}/">\n`;
+  const base = `  <base href="${site.base ?? `/p/${site.slug}/`}">\n`;
   await writeFile(indexPath, index.replace('<head>\n', `<head>\n${base}`));
 }
 
