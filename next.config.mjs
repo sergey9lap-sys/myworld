@@ -4,6 +4,7 @@ export default {
   async rewrites() {
     return [
       { source: '/book', destination: '/p/book/index.html' },
+      { source: '/book/italy', destination: '/p/book/italy/index.html' },
       { source: '/book/:path*', destination: '/p/book/:path*' },
       { source: '/p/:client', destination: '/p/:client/index.html' },
       { source: '/st-kids', destination: '/st-kids/index.html' },

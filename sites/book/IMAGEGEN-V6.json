@@ -1,0 +1,16 @@
+{
+  "tool": "built-in ImageGen",
+  "photosEdited": false,
+  "assets": [
+    {
+      "file": "public/assets/polaroid-real-v6.webp",
+      "original": "public/assets/polaroid-real-v6.png",
+      "prompt": "Use case: product-mockup. Create a photorealistic EMPTY instant-film Polaroid print FRAME, for overlaying genuine photographs in a book-travel website. Portrait 4:5 canvas. Straight front-facing perfectly top-down, unrotated, flat parallel to camera. Single aged warm ivory instant-film print occupying almost the entire canvas, thin top and side borders and a generous empty bottom caption margin, subtle real paper grain, slightly uneven worn edges and tiny curled upper corner, a tactile translucent amber paper tape strip over its upper edge. Authentic real object lit by warm daylight upper left, restrained soft cast shadow bottom right, not digital CSS box, not vector. CENTRAL SQUARE PHOTO APERTURE MUST BE COMPLETELY TRANSPARENT, also transparent around the outside silhouette. Opening aligned horizontally: approximate canvas x9% to91%, y9% to74%, bottom margin to94%. No photo, no people, no picture inside aperture, no lettering, no text, no handwritten captions, no watermark, no logo. Only the material frame and tape and contact shadow. Website palette cream and forest green, no colorful extra props."
+    },
+    {
+      "file": "public/assets/photo-album-real-v6.webp",
+      "original": "public/assets/photo-album-real-v6.png",
+      "prompt": "Use case: product-mockup. Website scene asset, landscape 3:2 canvas. Photorealistic top-down OPEN PHOTOGRAPH ALBUM with two broad thick blank cream archival paper pages, empty without photographs or lettering. Full album visible with breathing room and transparent exterior, no table background. Left and right pages parallel to camera and rectangular, approximately symmetrical page area. Real deep forest green linen hardcover edges, sewn central binding and slightly curved paper along the inner seam only; warm yellowed paper tooth, feathered page edges and thin page stack visible along lower edge. Warm afternoon side light, soft tactile shadows under album and at central crease. Bare pages sufficiently clean for superimposed photographs and live website text; no frames already drawn inside pages, no writing or ornament inside pages. One burgundy ribbon bookmark extending slightly below the binding. No people, no food, no added objects, no text, no logo, no watermark. Transparent outside the object. Accurate overhead product photograph, not vector, not illustration, not CSS-like graphic. Website palette forest green #363e2e, ivory #f4e9cf, antique soft gold, burgundy binding detail."
+    }
+  ]
+}
