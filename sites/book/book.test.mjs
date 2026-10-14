@@ -3,9 +3,13 @@ import assert from 'node:assert/strict';
 import {readFile,stat} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {russianTypography} from './public/typography.mjs';
 const root=path.join(path.dirname(fileURLToPath(import.meta.url)),'public');
-const main=await readFile(path.join(root,'index.html'),'utf8');
-const italy=await readFile(path.join(root,'italy/index.html'),'utf8');
+const mainRaw=await readFile(path.join(root,'index.html'),'utf8');
+const italyRaw=await readFile(path.join(root,'italy/index.html'),'utf8');
+const main=mainRaw.replaceAll('\u00a0',' ').replaceAll('\u2011','-');
+const italy=italyRaw.replaceAll('\u00a0',' ').replaceAll('\u2011','-');
+const tactileStyles=await readFile(path.join(root,'tactile-album-v6.css'),'utf8');
 test('all seven source sections and the approved book hero remain',()=>{
  for(const id of ['format','next','passport','memories','faq','join'])assert.ok(main.includes(`id="${id}"`));
  assert.equal((main.match(/<section\b/g)||[]).length,7);
@@ -30,13 +34,24 @@ test('Italy route fragments stay on Italy and all ten supplied photos remain rep
  assert.doesNotMatch(italy,/italy-99|italy-100/);
  for(const page of [main,italy]){assert.equal((page.match(/<video controls playsinline preload="none"/g)||[]).length,2);assert.doesNotMatch(page,/<video[^>]*autoplay/);}
 });
-test('tactile album uses real bitmap materials and retains a static three-spread fallback',()=>{
- assert.match(main,/tactile-album-v6.css/);
- assert.equal((main.match(/class="album-spread"/g)||[]).length,3);
- assert.equal((main.match(/class="instant-shot"/g)||[]).length,6);
- assert.match(main,/photo-album-real-v6.webp/);assert.match(main,/polaroid-real-v6.webp/);
+test('ring album includes every supplied photograph once and integrates both videos',()=>{
+ assert.match(main,/photo-report-v7.css/);
+ assert.equal((main.match(/class="report-spread(?: film-spread)?"/g)||[]).length,6);
+ assert.equal((main.match(/class="album-leaf(?: film-leaf)?"/g)||[]).length,12);
+ assert.match(main,/ring-album-v7.webp/);
+ const report=main.match(/<div class="report-album"[\s\S]*?<div class="report-navigation"/)[0];
+ for(let n=89;n<=98;n++)assert.equal((report.match(new RegExp(`src="assets/live/italy-${n}-480.webp"`,'g'))||[]).length,1);
+ assert.match(tactileStyles,/polaroid-real-v6.webp/);
  assert.doesNotMatch(main,/class="photo-reel"|class="cta secondary" href="italy\/"/);
  assert.match(main,/data-album-next/);
+ assert.equal((main.match(/data-report-chapter="\d"/g)||[]).length,6);
+ assert.doesNotMatch(main,/class="live-films"/);
+});
+test('five moments use the user-selected sources without repeating the format books',()=>{
+ const steps=main.match(/<ol class="route evening-stops">[\s\S]*?<\/ol>/)[0];
+ const sources=[...steps.matchAll(/<li(?: class="passport-stop")?><img src="([^"]+)"/g)].map(m=>m[1]);
+ assert.deepEqual(sources,['assets/live/italy-91-480.webp','assets/live/italy-98-480.webp','assets/live/italy-94-480.webp','assets/live/italy-89-480.webp','assets/passport-original.webp']);
+ assert.match(main,/<article class="album-item album-atmosphere">[\s\S]*?italy-90-480.webp/);
 });
 test('all stylesheet/image/video/script paths resolve inside the static package',async()=>{
  for(const page of [main,italy]){
@@ -45,4 +60,13 @@ test('all stylesheet/image/video/script paths resolve inside the static package'
    const file=path.resolve(root,asset.split('?')[0]);assert.ok(file.startsWith(root+path.sep));assert.ok((await stat(file)).isFile(),asset);
   }
  }
+});
+test('prepositions are bound on both pages and dynamic captions use the same typography',()=>{
+ assert.equal(russianTypography('в книге и на столе, не просто ужин, 30 минут, что-то'),'в\u00a0книге и\u00a0на\u00a0столе, не\u00a0просто ужин, 30\u00a0минут, что\u2011то');
+ for(const page of [mainRaw,italyRaw]){
+  const text=page.replace(/<script[\s\S]*?<\/script>/g,'').replace(/<[^>]+>/g,' ');
+  assert.equal(russianTypography(text),text);
+ }
+ assert.doesNotMatch(mainRaw,/report-film-note|Лучше один раз увидеть|Два коротких видео с первой встречи/);
+ assert.match(mainRaw,/type="module" src="site.js\?v=8"/);
 });

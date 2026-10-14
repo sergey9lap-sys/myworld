@@ -1,0 +1,42 @@
+/* One tangible report: genuine photographs and films, a photographic ring album. */
+:root{--photo-radius:10px}
+.album-item .polaroid>img,.evening-stops li>img,.event-scene img,.archive-grid img,.reading-pair img,.live-films video{border-radius:var(--photo-radius)}
+.album-atmosphere .polaroid>img{object-position:50% 62%}
+.evening-stops .passport-stop>img{object-fit:contain;object-position:center;width:160px!important;height:auto!important;aspect-ratio:567/802}
+.report-album{max-width:1100px;margin:24px auto 0;perspective:1400px;min-width:0}
+.report-spread{position:relative;aspect-ratio:3/2;isolation:isolate;margin-bottom:36px}
+.report-material{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;filter:drop-shadow(6px 18px 20px #15201066)}
+.report-pages{position:absolute;inset:16% 7% 22%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:minmax(0,1fr);gap:12%;align-items:center}
+.album-leaf{height:100%;min-height:0;min-width:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:16px;align-items:center}
+.leaf-media{min-height:0;height:100%;display:flex;align-items:center;justify-content:center}
+.leaf-media>img,.leaf-media>video{display:block;max-width:100%;max-height:100%;width:auto;height:auto;border-radius:var(--photo-radius);box-shadow:3px 8px 14px #202b1c30}
+.leaf-media>video{height:100%;width:auto;object-fit:contain;background:#202b1c}
+.album-leaf figcaption{color:var(--ink);font:500 clamp(16px,1.35vw,20px)/1.4 Manrope,Arial,sans-serif;text-align:center;margin:0;min-height:2.8em;display:grid;place-items:center}
+.report-album [hidden]{display:none!important}
+.report-album.is-enhanced .report-spread{margin-bottom:0;transform-origin:50% 50%}
+.report-navigation{display:none;max-width:1100px;margin:30px auto 0;align-items:center;justify-content:space-between;gap:20px}
+.report-navigation.is-ready{display:flex}
+.report-navigation p{font-size:17px;line-height:1.5;margin:0;max-width:48ch}
+.report-navigation .gallery-controls button{color:var(--paper);border-color:var(--gold)}
+.report-navigation .gallery-controls button:disabled{color:var(--paper)}
+.report-chapters{display:none;max-width:1100px;margin:22px auto 0;gap:12px;flex-wrap:wrap}
+.report-chapters.is-ready{display:flex}
+.report-chapters button{min-height:44px;padding:9px 16px;border:0;border-radius:var(--photo-radius);background:transparent;color:var(--paper);font:500 16px/1.4 Manrope,Arial,sans-serif;cursor:pointer;box-shadow:inset 0 -1px #e2b96066;transition:background-color 160ms var(--ease),color 160ms var(--ease)}
+.report-chapters button[aria-current="true"]{background:var(--paper);color:var(--ink);box-shadow:none}
+.report-album:focus-visible{outline:2px solid var(--gold);outline-offset:8px}
+@media(hover:hover) and (pointer:fine){.report-chapters button:hover{background:var(--paper);color:var(--ink)}.report-navigation .gallery-controls button:not(:disabled):hover{background:var(--paper);color:var(--ink)}}
+@media(min-width:701px) and (max-width:1400px){.report-album,.report-navigation,.report-chapters{max-width:1000px}}
+@media(max-width:700px){
+ .report-album{margin-top:20px}.report-spread{aspect-ratio:auto;overflow:hidden;border-radius:var(--photo-radius)}
+ .report-material{display:none}.report-pages{position:relative;inset:auto;display:grid;grid-template-columns:1fr;gap:32px;padding:28px;background:var(--paper) url('assets/paper-flat-v3.webp') repeat}
+ .album-leaf{height:360px;gap:14px}.album-leaf figcaption{font-size:16px;line-height:1.4;min-height:2.8em}
+ .report-album.is-enhanced .report-spread{aspect-ratio:3/4}
+ .report-album.is-enhanced .report-material{display:block;width:200%;height:100%;max-width:none;left:-100%;filter:none}
+ .report-album.is-enhanced .report-pages{position:absolute;inset:16% 9% 22% 14%;display:block;padding:0;background:none}
+ .report-album.is-enhanced .album-leaf{height:100%;width:100%}
+ .report-navigation{gap:12px;margin-top:24px}.report-navigation p{font-size:15px;max-width:20ch}.report-navigation .gallery-controls{gap:8px}
+ .report-chapters{gap:8px;margin-top:18px}.report-chapters button{padding:9px 13px;font-size:15px;flex:1 0 26%}
+ .evening-stops .passport-stop>img{width:84px!important}
+}
+@media(max-width:360px){.report-album.is-enhanced .report-pages{inset:16% 8% 21% 14%}.album-leaf{gap:10px}.album-leaf figcaption{font-size:15px}.report-navigation .gallery-controls button{width:44px;height:44px}.evening-stops .passport-stop>img{width:110px!important}}
+@media(prefers-reduced-motion:reduce){.report-album{perspective:none}.report-chapters button{transition:none}}

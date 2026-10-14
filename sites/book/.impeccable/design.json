@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-13T21:13:06+03:00",
+  "generatedAt": "2026-10-14",
   "title": "Design System: Читаем со вкусом",
   "extensions": {
     "colorMeta": {
@@ -213,15 +213,31 @@
         "purpose": "Пустая подлинная материальная рамка ImageGen; настоящие фотографии отдельными HTML img."
       },
       {
-        "file": "public/assets/photo-album-real-v6.webp",
-        "original": "public/assets/photo-album-real-v6.png",
+        "file": "public/assets/ring-album-v7.webp",
+        "original": "public/assets/ring-album-v7.png",
         "width": 1536,
         "height": 1024,
-        "bytes": 124160,
         "alpha": true,
-        "purpose": "Пустой раскрытый альбом ImageGen: три desktop разворота / шесть mobile страниц."
+        "purpose": "Фотоальбом на кольцах: шесть desktop разворотов / двенадцать mobile страниц; десять фото и два видео."
       }
-    ]
+    ],
+    "photoReportV7": {
+      "material": "public/assets/ring-album-v7.webp",
+      "desktopSpreads": 6,
+      "mobilePages": 12,
+      "uniquePhotos": 10,
+      "nativeFilms": 2,
+      "mediaRadius": "10px",
+      "noJs": "All six spreads visible; navigation enhanced progressively",
+      "motion": "260ms existing --ease; rotation 6deg, translation 2%, opacity .85; instant keyboard/reduced-motion",
+      "missingFilm": "IMG_5574.MOV exceeded export size; not available"
+    },
+    "finalV8": {
+      "prepositions": "NBSP in both static pages and dynamic captions via typography.mjs",
+      "passport": "Natural 567/802 aspect ratio, object-fit contain",
+      "filmIntro": "Removed by user request",
+      "narrowLabels": "15px navigation/captions retained from v7; ordinary body remains 16px or larger"
+    }
   },
   "components": [
     {
@@ -271,7 +287,7 @@
   ],
   "narrative": {
     "northStar": "Книжная бумага и живой альбом",
-    "overview": "Это описание уже собранного визуального мира, а не новое предложение названия или стиля. Раскрытая книга, тёмно-зелёный паспорт и его оригинальный золотой знак связывают страницы. Бумажная поверхность поддерживает литературный характер, а реальные фотографии возвращают внимание к людям и общему столу.\n\nЖивой альбом расширяет существующий мир: настоящие фотографии накладываются отдельными HTML-изображениями на растровые материальные подложки ImageGen. Сгенерированы только пустая Polaroid-рамка со скотчем и раскрытый фотоальбом; лица, книги и еда остаются подлинными. Контентные плоскости ровные в состоянии покоя. Документ относится только к sites/book; дизайн корневого MyWorld не является источником для этого проекта. Текущая локальная сборка v6 документирована без заявления о публикации или пользовательском одобрении.",
+    "overview": "Это описание уже собранного визуального мира, а не новое предложение названия или стиля. Раскрытая книга, тёмно-зелёный паспорт и его оригинальный золотой знак связывают страницы. Бумажная поверхность поддерживает литературный характер, а реальные фотографии возвращают внимание к людям и общему столу.\n\nЖивой альбом расширяет существующий мир: настоящие фотографии накладываются отдельными HTML-изображениями на растровые материальные подложки ImageGen. Сгенерированы только пустая Polaroid-рамка со скотчем и раскрытый фотоальбом; лица, книги и еда остаются подлинными. Контентные плоскости ровные в состоянии покоя. Документ относится только к sites/book; дизайн корневого MyWorld не является источником для этого проекта. Текущая локальная сборка v8 документирована без заявления о публикации или пользовательском одобрении.",
     "keyCharacteristics": [
       "Оригинальный паспортный знак и раскрытая книга.",
       "Зелёные поверхности, кремовая бумага и золотые детали.",
