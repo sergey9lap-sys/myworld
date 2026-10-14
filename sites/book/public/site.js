@@ -36,6 +36,7 @@ if (album) {
   const navigation=document.querySelector('.report-navigation');
   const chapters=document.querySelector('.report-chapters');
   const tabs=[...chapters.querySelectorAll('button')];
+  const tabNames=tabs.map(tab=>tab.textContent);
   const mobile=matchMedia('(max-width:700px)');
   const reduced=matchMedia('(prefers-reduced-motion:reduce)');
   let single=mobile.matches,page=0,animation;
@@ -53,7 +54,9 @@ if (album) {
     next.setAttribute('aria-label',single?'Следующая страница':'Следующий разворот');
     tabs.forEach((tab,i)=>tab.setAttribute('aria-current',i===index?'true':'false'));
     const label=single?leaves[page].querySelector('figcaption').textContent:spreads[index].dataset.chapter;
-    status.textContent=russianTypography(`${single?'Страница':'Разворот'} ${page+1} из ${count} · ${label}`);
+    status.textContent=russianTypography(single
+      ? `${tabNames[index]} · ${index===5?'видео':'фото'} ${page%2+1} из 2`
+      : `Разворот ${page+1} из ${count} · ${label}`);
     if(animate&&!reduced.matches){
       animation=spreads[index].animate([
         {transform:`rotateY(${direction*6}deg) translateX(${direction*2}%)`,opacity:.85},

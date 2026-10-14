@@ -134,6 +134,8 @@ components:
 
 ### Photo cards and album
 
+Mobile v9 uses a separate complete portrait ring album (1086×1448), while desktop retains its two-page spread. The status is chapter-local: “Стол · фото 1 из 2”, rather than an unexplained global page number. The mobile brand is enlarged and the existing travel sentence is placed on the left book page. See MOBILE-V9.md and IMAGEGEN-V9.json.
+
 Четыре тематических Polaroid сохраняют подлинные кадры и пустую RGBA-подложку ImageGen (1122×1402). Фото остаётся отдельным HTML-изображением под рамкой: x 8%, y 10.7%, ширина 84%, высота 67%. Новый пустой фотоальбом на латунных кольцах ImageGen (1536×1024) — основа шести разворотов. В отчёте все десять исходных фото используются ровно по одному разу, затем два настоящих видео. Сгенерированы только пустые предметные материалы, не лица и детали встречи. IMAGEGEN-V6.json и IMAGEGEN-V7.json фиксируют происхождение ассетов.
 
 Круглые prev/next с SVG, тематические кнопки, ArrowLeft/ArrowRight и горизонтальный свайп переключают разворот или мобильную страницу. aria-live сообщает номер и подпись; границы отключают стрелку. На телефоне видна одна фотография или один плеер. WAAPI rotateY от ±6° к 0, translateX от ±2% к 0 и opacity от .85 к 1 (260ms, существующий --ease) объясняет смену страницы; прежняя анимация отменяется. Клавиатура и reduced motion переключают мгновенно. Без JS все шесть разворотов и двенадцать материалов остаются видимым HTML. Свайп по плееру не перехватывается. Видео останавливается перед скрытием страницы.

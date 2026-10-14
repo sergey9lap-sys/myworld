@@ -68,5 +68,11 @@ test('prepositions are bound on both pages and dynamic captions use the same typ
   assert.equal(russianTypography(text),text);
  }
  assert.doesNotMatch(mainRaw,/report-film-note|Лучше один раз увидеть|Два коротких видео с первой встречи/);
- assert.match(mainRaw,/type="module" src="site.js\?v=8"/);
+ assert.match(mainRaw,/type="module" src="site.js\?v=9"/);
+});
+test('mobile album is a complete separate object with chapter-local counters',async()=>{
+ assert.equal((mainRaw.match(/srcset="assets\/mobile-ring-album-v9.webp"/g)||[]).length,6);
+ assert.ok((await stat(path.join(root,'assets/mobile-ring-album-v9.webp'))).isFile());
+ const script=await readFile(path.join(root,'site.js'),'utf8');
+ assert.match(script,/tabNames\[index\]/);assert.match(script,/page%2\+1/);
 });

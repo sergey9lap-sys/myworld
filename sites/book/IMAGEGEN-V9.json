@@ -1,0 +1,14 @@
+{
+  "prompt": "Use case: product-mockup. Asset type: transparent photographic backdrop for a mobile photo album on a literary supper website. Generate a COMPLETE standalone PORTRAIT ring-bound photo album viewed perfectly straight from above, flat, level, no perspective tilt. This is a single broad blank cream cardstock page mounted on a dark forest-green linen album back cover with a FULL three-ring brass binding visible along its LEFT edge, each ring complete with space around it. NOT half of an open book, NOT an image cut down its middle, NOT a double-page spread. Entire physical object and all outside corners visible. Portrait canvas 3:4, object occupies x4%-96%, y4%-94%, small transparent outside breathing space. Cream rectangular page occupies x15%-90%, y8%-89%, one uninterrupted blank surface for a separate real photograph and live caption. Tangible stack of rounded thick cardstock leaves at right/bottom and green linen backboard; subtle soft daylight from upper left with directional soft shadow below/right. Same restrained cream/forest-green/brass material as a high-quality handmade travel photo album. Photorealistic tactile paper and linen grain, smooth quiet blank page, no aged stains, no ornamentation. No photos, no lettering, no stamp, no people, no surrounding props, no logos, no holes or photo pockets, no watercolor, no CSS/vector look. Genuinely transparent alpha outside album and shadow. The right and top outer album edges must be fully finished, the left binding must look like the intentionally complete edge of a portrait photo album.",
+  "generator": "image_gen.imagegen",
+  "source": "C:/Users/User/.codex/generated_images/01a004a0-79b1-7bc0-84c2-39e98907cfbe/exec-5e9c8bb1-f6d2-4aab-8898-849882440d52.png",
+  "outputs": [
+    "public/assets/mobile-ring-album-v9.png",
+    "public/assets/mobile-ring-album-v9.webp"
+  ],
+  "dimensions": [
+    1086,
+    1448
+  ],
+  "transparent_background": true
+}
