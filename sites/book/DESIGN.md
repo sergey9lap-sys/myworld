@@ -134,6 +134,8 @@ components:
 
 ### Photo cards and album
 
+Feedback 14 October, final v15: the four real Polaroids form a compact horizontal clothesline on desktop, beneath a single heading. The generated wooden clothespin is sampled at its natural aspect ratio, not vertically compressed with the entire line. Phones show one print at a time in an alternating left/right vertical composition, joined by a wavy cord. Print angles vary gently; descriptive paragraphs remain level. Hero geometry remains v13. Album captions use the approved human wording, a closer crop highlights the real candle, and FAQ addresses arriving without knowing anyone. FEEDBACK-2026-10-14.md maps all ten audio messages.
+
 Mobile v9 uses a separate complete portrait ring album (1086×1448), while desktop retains its two-page spread. The status is chapter-local: “Стол · фото 1 из 2”, rather than an unexplained global page number. The mobile brand is enlarged and the existing travel sentence is placed on the left book page. See MOBILE-V9.md and IMAGEGEN-V9.json.
 
 Четыре тематических Polaroid сохраняют подлинные кадры и пустую RGBA-подложку ImageGen (1122×1402). Фото остаётся отдельным HTML-изображением под рамкой: x 8%, y 10.7%, ширина 84%, высота 67%. Новый пустой фотоальбом на латунных кольцах ImageGen (1536×1024) — основа шести разворотов. В отчёте все десять исходных фото используются ровно по одному разу, затем два настоящих видео. Сгенерированы только пустые предметные материалы, не лица и детали встречи. IMAGEGEN-V6.json и IMAGEGEN-V7.json фиксируют происхождение ассетов.

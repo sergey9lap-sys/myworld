@@ -37,7 +37,7 @@ test('Italy route fragments stay on Italy and all ten supplied photos remain rep
 test('ring album includes every supplied photograph once and integrates both videos',()=>{
  assert.match(main,/photo-report-v7.css/);
  assert.equal((main.match(/class="report-spread(?: film-spread)?"/g)||[]).length,6);
- assert.equal((main.match(/class="album-leaf(?: film-leaf)?"/g)||[]).length,12);
+ assert.equal((main.match(/class="album-leaf(?: film-leaf| report-candle)?"/g)||[]).length,12);
  assert.match(main,/ring-album-v7.webp/);
  const report=main.match(/<div class="report-album"[\s\S]*?<div class="report-navigation"/)[0];
  for(let n=89;n<=98;n++)assert.equal((report.match(new RegExp(`src="assets/live/italy-${n}-480.webp"`,'g'))||[]).length,1);
@@ -46,6 +46,12 @@ test('ring album includes every supplied photograph once and integrates both vid
  assert.match(main,/data-album-next/);
  assert.equal((main.match(/data-report-chapter="\d"/g)||[]).length,6);
  assert.doesNotMatch(main,/class="live-films"/);
+});
+test('October 14 voice feedback is represented without losing original media',()=>{
+ assert.match(mainRaw,/class="photo-cord"/);assert.match(mainRaw,/feedback-v14.css/);
+ for(const caption of ['В предвкушении…','Красота в деталях','Романтическое настроение','Продумана каждая деталь'])assert.ok(mainRaw.includes(caption));
+ assert.match(mainRaw,/…никого не знаю\?/);
+ assert.doesNotMatch(mainRaw,/Стол ждёт гостей|<figcaption>Свечи в пасте|<figcaption>Итальянские песни|<figcaption>Имена на пасте/);
 });
 test('five moments use the user-selected sources without repeating the format books',()=>{
  const steps=main.match(/<ol class="route evening-stops">[\s\S]*?<\/ol>/)[0];

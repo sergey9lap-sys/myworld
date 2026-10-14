@@ -1,0 +1,10 @@
+{
+  "tool": "image_gen.imagegen",
+  "prompt": "Use case: product-mockup. Asset type: transparent photographic decorative hardware for a literary supper photo-gallery website. A single natural warm beige jute twine clothesline stretched horizontally with a gentle shallow curved sag and exactly FOUR small real wooden spring clothespins attached, front-facing, at x14%,38%,62%,86% of the canvas. The cord runs from x1% to99% near y35%, dipping to y52% in the middle. Each clothespin is vertical or slightly tilted, full visible metal spring and warm pale wood grain; bottom of pins at y70%. Wide landscape canvas 3:1. Soft window light, tiny offset soft shadow, tactile everyday home memory wall mood. Straight-on camera, photorealistic, not drawing or CSS/vector shapes. Genuinely transparent alpha everywhere except twine, pins and subtle shadow. NO photographs, no cards, no paper, no frames, no text, no wall, no backdrop, no extra decorations. Entire line and four pins visible with breathing room.",
+  "source": "C:/Users/User/.codex/generated_images/01a004a0-79b1-7bc0-84c2-39e98907cfbe/exec-1e46c9ab-8778-432e-9a9d-3a04ff3ac28e.png",
+  "outputs": [
+    "public/assets/clothesline-v14.png",
+    "public/assets/clothesline-v14.webp"
+  ],
+  "transparent_background": true
+}
