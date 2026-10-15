@@ -96,7 +96,7 @@ test('October 15 confirmed meeting, FAQ, tariff copy and offer are present',()=>
 test('payment URLs are fixed public invoices and no browser success can grant paid access',async()=>{
  const {paymentOptions,invoiceUrl}=await import('./public/payments.mjs');
  assert.equal(Object.keys(paymentOptions).length,3);
- assert.equal(invoiceUrl('test'),'https://auth.robokassa.ru/merchant/Invoice/2HStaz8Mf0STvHALQCj1Jg');
+ assert.equal(invoiceUrl('test'),'https://auth.robokassa.ru/merchant/Invoice/jz5rphMXq0uM4AYTCUEX2w');
  assert.equal(invoiceUrl('unexpected'),null);
  const script=await readFile(path.join(root,'payments.mjs'),'utf8');
  assert.doesNotMatch(script,/SignatureValue|Password1|postMessage|tusim812|localStorage/);
