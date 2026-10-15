@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-14",
+  "generatedAt": "2026-10-15",
   "title": "Design System: Читаем со вкусом",
   "extensions": {
     "colorMeta": {
@@ -185,6 +185,10 @@
     ],
     "breakpoints": [
       {
+        "name": "ticket-action-compact",
+        "value": "400px"
+      },
+      {
         "name": "compact",
         "value": "360px"
       },
@@ -232,6 +236,23 @@
       "motion": "260ms existing --ease; rotation 6deg, translation 2%, opacity .85; instant keyboard/reduced-motion",
       "missingFilm": "IMG_5574.MOV exceeded export size; not available"
     },
+    "paymentV17": {
+      "status": "Local only; published v16 unchanged",
+      "visualAuthority": "Pinned forest-green passport, cream paper tickets and burgundy actions; no replacement of approved copy or assets",
+      "ticketLayout": "Two columns, max 1140px, gap 32px; one column at 700px, gap 26px",
+      "compactAction": "At max-width 400px ticket action padding-inline 12px preserves the shared 240px CTA at viewport 320px",
+      "navigation": "Native GET forms target=_self; required unchecked acknowledgement; no JS interception or nested raw Invoice iframe",
+      "acknowledgement": "Ticket offers separate from test10 real-charge acknowledgement; no server consent log",
+      "currency": "Cyrillic Р in visible site copy by user clarification; provider UI unchanged",
+      "invoices": "New solo 4990; old duo 8980 retained by user until replacement; test10 is a real charge, not a ticket or verified sandbox",
+      "evidence": [
+        ".impeccable/review/payment-v17/desktop.png",
+        ".impeccable/review/payment-v17/mobile-320.png",
+        ".impeccable/review/payment-v17/mobile-test-320.png",
+        ".impeccable/review/payment-v17/VERDICT.md"
+      ],
+      "limits": "Scoped ship verdict after PRODUCT persistence fix; no actual payment, Telegram return or legal approval; see PAYMENT-V17.md"
+    },
     "finalV8": {
       "prepositions": "NBSP in both static pages and dynamic captions via typography.mjs",
       "passport": "Natural 567/802 aspect ratio, object-fit contain",
@@ -240,6 +261,13 @@
     }
   },
   "components": [
+    {
+      "name": "Подтверждение перед оплатой",
+      "kind": "input",
+      "description": "Нативная required-галочка перед билетной CTA, изначально не отмечена. Тест 10 Р имеет отдельный текст о реальном списании; это не журнал согласий.",
+      "html": "<label class=\"ds-payment-accept\"><input type=\"checkbox\" required><span>Принимаю условия <a href=\"https://drive.google.com/file/d/13hUKjdMwv9-sbd__mDnOi31UsIn6giex/view\" target=\"_blank\" rel=\"noopener noreferrer\">публичной оферты организатора</a>.</span></label>",
+      "css": ".ds-payment-accept{display:flex;align-items:flex-start;gap:12px;margin:0 0 22px;text-align:left;font:400 15px/1.6 Manrope,Arial,sans-serif;color:var(--ink,#202b1c);cursor:pointer}.ds-payment-accept input{appearance:auto;accent-color:var(--action,#852844);flex:0 0 22px;width:22px;height:22px;margin:1px 0 0;cursor:pointer}.ds-payment-accept a{color:var(--action,#852844);text-decoration:underline;text-underline-offset:3px}.ds-payment-accept a:hover{text-decoration-thickness:2px}.ds-payment-accept input:focus-visible,.ds-payment-accept a:focus-visible{outline:3px solid var(--action,#852844);outline-offset:4px}"
+    },
     {
       "name": "Основное действие",
       "kind": "button",
@@ -287,7 +315,7 @@
   ],
   "narrative": {
     "northStar": "Книжная бумага и живой альбом",
-    "overview": "Это описание уже собранного визуального мира, а не новое предложение названия или стиля. Раскрытая книга, тёмно-зелёный паспорт и его оригинальный золотой знак связывают страницы. Бумажная поверхность поддерживает литературный характер, а реальные фотографии возвращают внимание к людям и общему столу.\n\nЖивой альбом расширяет существующий мир: настоящие фотографии накладываются отдельными HTML-изображениями на растровые материальные подложки ImageGen. Сгенерированы только пустая Polaroid-рамка со скотчем и раскрытый фотоальбом; лица, книги и еда остаются подлинными. Контентные плоскости ровные в состоянии покоя. Документ относится только к sites/book; дизайн корневого MyWorld не является источником для этого проекта. Текущая локальная сборка v8 документирована без заявления о публикации или пользовательском одобрении.",
+    "overview": "Это описание уже собранного визуального мира, а не новое предложение названия или стиля. Раскрытая книга, тёмно-зелёный паспорт и его оригинальный золотой знак связывают страницы. Бумажная поверхность поддерживает литературный характер, а реальные фотографии возвращают внимание к людям и общему столу.\n\nЖивой альбом расширяет существующий мир: настоящие фотографии накладываются отдельными HTML-изображениями на растровые материальные подложки ImageGen. Сгенерированы только пустая Polaroid-рамка со скотчем и раскрытый фотоальбом; лица, книги и еда остаются подлинными. Контентные плоскости ровные в состоянии покоя. Документ относится только к sites/book; дизайн корневого MyWorld не является источником для этого проекта. Уточнение оплаты v17 сохраняет этот мир и документирует локальную сборку; опубликованная v16 остаётся без изменений. Локальная проверка не означает пользовательского одобрения.",
     "keyCharacteristics": [
       "Оригинальный паспортный знак и раскрытая книга.",
       "Зелёные поверхности, кремовая бумага и золотые детали.",
@@ -310,7 +338,7 @@
     "donts": [
       "Don't наклонять смысловой текст или фотографии ради скрапбук-эффекта.",
       "Don't заменять реальные лица, еду и детали встречи генерацией.",
-      "Don't добавлять вымышленные отзывы, цены, контакты или действующую оплату.",
+      "Don't добавлять вымышленные отзывы, цены, контакты или подтверждение завершённой оплаты.",
       "Don't считать локальную проверку, документацию или reviewer disposition пользовательским одобрением сайта."
     ]
   }
