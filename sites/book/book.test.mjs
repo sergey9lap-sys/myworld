@@ -113,5 +113,6 @@ test('payment URLs are fixed public invoices and no browser success can grant pa
   else assert.doesNotMatch(form[2],/Принимаю условия/);
  }
  assert.equal(invoiceUrl('solo'),'https://auth.robokassa.ru/merchant/Invoice/DcPY1nBgJka3xOSTkgmzDg');
+ assert.equal(invoiceUrl('duo'),'https://auth.robokassa.ru/merchant/Invoice/35Vu3FnlHEaj5C-T3T898Q');
  assert.equal(new Set(forms.map(m=>m[1].match(/action="([^"]+)"/)[1])).size,3);
 });
