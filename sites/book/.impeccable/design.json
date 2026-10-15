@@ -241,7 +241,7 @@
       "visualAuthority": "Pinned forest-green passport, cream paper tickets and burgundy actions; no replacement of approved copy or assets",
       "ticketLayout": "Two columns, max 1140px, gap 32px; one column at 700px, gap 26px",
       "compactAction": "At max-width 400px ticket action padding-inline 12px preserves the shared 240px CTA at viewport 320px",
-      "navigation": "Native GET forms target=_self; required unchecked acknowledgement; no JS interception or nested raw Invoice iframe",
+      "navigation": "Native GET forms target=_blank with noopener noreferrer; required unchecked acknowledgement; no JS interception or nested raw Invoice iframe",
       "acknowledgement": "Ticket offers separate from test10 real-charge acknowledgement; no server consent log",
       "currency": "Cyrillic Р in visible site copy by user clarification; provider UI unchanged",
       "invoices": "New solo 4990; old duo 8980 retained by user until replacement; test10 is a real charge, not a ticket or verified sandbox",

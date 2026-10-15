@@ -105,7 +105,7 @@ test('payment URLs are fixed public invoices and no browser success can grant pa
  assert.equal(forms.length,3);
  for(const [key,form] of ['solo','duo','test'].map(key=>[key,forms.find(m=>m[1].includes(`data-payment="${key}"`))])){
   assert.ok(form,key);assert.ok(form[1].includes(`action="${invoiceUrl(key)}"`));
-  assert.match(form[1],/method="get" target="_self"/);
+  assert.match(form[1],/method="get" target="_blank" rel="noopener noreferrer"/);
   assert.match(form[2],/<input type="checkbox" required>/);
   assert.doesNotMatch(form[2],/<input[^>]+(?:checked|name=)/);
   assert.match(form[2],/<button class="cta(?: secondary)?" type="submit">/);

@@ -5,5 +5,5 @@ export const paymentOptions=Object.freeze({
   test:{id:'5dXUIL7Shki2Utb203YJXQ',title:'Проверка оплаты · 10 Р',test:true}
 });
 export const invoiceUrl=key=>paymentOptions[key]?`https://auth.robokassa.ru/merchant/Invoice/${paymentOptions[key].id}`:null;
-// Native required-checkbox forms in index.html navigate in the same top-level tab.
+// Native required-checkbox forms in index.html open a new top-level tab with noopener noreferrer.
 // No JavaScript interception, nested checkout frame or simulated payment success.
